@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+
+[node name="TestScene" type="Node2D"]
+
+[node name="Floor" type="Node2D" parent="."]
+
+[node name="Sprite" type="Polygon2D" parent="Floor"]
+position = Vector2( 486.587, 454.597 )
+scale = Vector2( 13.3646, 2.05231 )
+texture = ExtResource( 1 )
+polygon = PoolVector2Array( 32, -32, 32, 32, -32, 32, -32, -32, 31, -32 )
+uv = PoolVector2Array( 64, 0, 64, 64, 0, 64, 0, 0, 63, 0 )
+polygons = [ PoolIntArray( 0, 1, 2, 3, 4 ) ]
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 398.592, 353.044 )
+texture = ExtResource( 1 )
