@@ -3,21 +3,19 @@ extends Node
 onready var sm = get_parent()
 onready var kino = get_parent().get_parent()
 
-func _ready():
-	set_physics_process(false)
 
-func stateStart():
-	set_physics_process(true)
+func startState():
 	sm.setAnimation("Jump")
 	kino.velocity.y = -600
 
-func stateEnd():
-	set_physics_process(false)
 
-func _physics_process(_delta):
+func physics_process(_delta):
 	get_input()
 	kino.velocity.y += sm.gravity * _delta
 	kino.velocity = kino.move_and_slide(kino.velocity, Vector2.UP)
+	
+	if kino.velocity.y > 0:
+		sm.changeState("Falling")
 	
 	if Input.is_action_just_released("Jump") and kino.velocity.y < 0:
 		kino.velocity.y = -200

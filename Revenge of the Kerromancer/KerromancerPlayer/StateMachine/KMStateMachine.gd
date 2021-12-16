@@ -23,9 +23,9 @@ var dir = 0
 func _ready():
 	changeState("Idle")
 
-#func _physics_process(delta):
-#	if state.has_method("_physics_process"):
-#		state._physics_process(delta)
+func _physics_process(delta):
+	if state.has_method("physics_process"):
+		state.physics_process(delta)
 
 func changeState(name):
 	if state != null:

@@ -3,18 +3,16 @@ extends Node
 onready var sm = get_parent()
 onready var kino = get_parent().get_parent()
 
-func _ready():
-	set_physics_process(false)
 
-func stateStart():
-	set_physics_process(true)
+func startState():
 	sm.setAnimation("Falling")
 
-func stateEnd():
-	set_physics_process(false)
+func endState():
+	sm.momentum = 0
 
-func _physics_process(_delta):
+func physics_process(_delta):
 	if kino.is_on_floor():
+		kino.velocity.x = 0
 		sm.changeState("Idle")
 	
 	get_input()
