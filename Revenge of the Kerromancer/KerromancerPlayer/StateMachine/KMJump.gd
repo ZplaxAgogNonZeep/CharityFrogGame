@@ -24,15 +24,15 @@ func physics_process(_delta):
 func get_input():
 	sm.dir = 0
 	
-	if Input.is_action_pressed("Right"):
+	if Input.is_action_pressed("Right") and not Input.is_action_pressed("Left"):
 		sm.dir += 1
-		sm.sprite.flip_h = false
+		kino.flip(false)
 		if sm.momentum < sm.MAX_MOMENTUM:
 			sm.momentum += 15
 
-	if Input.is_action_pressed("Left"):
+	if Input.is_action_pressed("Left") and not Input.is_action_pressed("Right"):
 		sm.dir -= 1
-		sm.sprite.flip_h = true
+		kino.flip(true)
 		if sm.momentum < sm.MAX_MOMENTUM:
 			sm.momentum += 15
 		
