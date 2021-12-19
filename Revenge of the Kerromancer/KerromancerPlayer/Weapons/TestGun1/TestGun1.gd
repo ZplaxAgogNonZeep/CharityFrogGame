@@ -16,7 +16,7 @@ func shoot(axis):
 	if get_parent().get_parent().sprite.flip_h:
 		dir = -1
 	
-	get_tree().root.get_node("Game").get_child(0).get_node("BulletManager").spawnBullet(
+	get_tree().root.get_node("Game").get_node("LevelManager").get_child(0).get_node("BulletManager").spawnBullet(
 		get_parent().get_parent().position + $ShootPosn.position, 
 		dir,
 		axis,

@@ -20,8 +20,6 @@ func physics_process(_delta):
 	
 	if Input.is_action_just_pressed("Jump"):
 		sm.changeState("Jump")
-	
-	print(kino.velocity.x)
 
 	if kino.velocity.x > 0:
 		if sm.dir == 0 and kino.velocity.x < 1:
@@ -42,8 +40,6 @@ func get_input():
 	if Input.is_action_pressed("Left") and not Input.is_action_pressed("Right"):
 		sm.dir -= 1
 		kino.flip(true)
-	
-	print(sm.dir)
 	
 	if sm.dir != 0:
 		kino.velocity.x = lerp(kino.velocity.x, sm.dir * sm.speed, sm.acceleration)
