@@ -17,7 +17,7 @@ func physics_process(_delta):
 	if kino.velocity.y > 0:
 		sm.changeState("Falling")
 	
-	if Input.is_action_just_released("Jump") and kino.velocity.y < 0:
+	if Input.is_action_just_released("Jump") and kino.velocity.y < -200:
 		kino.velocity.y = -200
 		sm.changeState("Falling")
 

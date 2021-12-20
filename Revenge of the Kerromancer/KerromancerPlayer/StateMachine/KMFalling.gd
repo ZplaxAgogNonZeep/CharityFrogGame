@@ -12,8 +12,8 @@ func endState():
 
 func physics_process(_delta):
 	if kino.is_on_floor():
-		kino.velocity.x = 0
-		sm.changeState("Idle")
+		#kino.velocity.x = 0
+		sm.changeState("Walk")
 	
 	get_input()
 	kino.velocity.y += sm.gravity * _delta

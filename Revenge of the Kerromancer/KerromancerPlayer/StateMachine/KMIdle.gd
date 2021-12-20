@@ -9,7 +9,6 @@ func startState():
 
 
 func physics_process(_delta):
-	
 	if not kino.is_on_floor():
 		sm.changeState("Falling")
 	
