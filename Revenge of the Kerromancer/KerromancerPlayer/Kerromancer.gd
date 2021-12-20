@@ -13,6 +13,9 @@ var velocity = Vector2.ZERO
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("Shoot"):
 		$WeaponManager.onShootPressed()
+	if Input.is_action_just_pressed("Magic"):
+		health -= 1
+		get_tree().root.get_node("Game").updateUI()
 
 func _physics_process(delta):
 	if Input.is_action_pressed("Up"):
