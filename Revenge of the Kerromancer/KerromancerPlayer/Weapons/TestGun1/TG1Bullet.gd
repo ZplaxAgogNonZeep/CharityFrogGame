@@ -40,9 +40,13 @@ func _physics_process(delta):
 
 
 func _on_TG1Bullet_body_entered(body):
-	if body.is_in_group("Enemy"):
-		body.takeDamage(1)
 	despawnBullet()
 
 func despawnBullet():
 	queue_free()
+
+
+func _on_TG1Bullet_area_shape_entered(area_id, area, area_shape, self_shape):
+	if area.is_in_group("Enemy"):
+		area.takeDamage(damage)
+	despawnBullet()

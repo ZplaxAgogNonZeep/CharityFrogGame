@@ -19,6 +19,10 @@ config/name="Revenge of the Kerromancer"
 run/main_scene="res://Game.tscn"
 config/icon="res://icon.png"
 
+[debug]
+
+gdscript/completion/autocomplete_setters_and_getters=true
+
 [importer_defaults]
 
 texture={
@@ -93,6 +97,8 @@ Magic={
 [layer_names]
 
 2d_physics/layer_1="Player"
+2d_physics/layer_2="Enviornment"
+2d_physics/layer_11="Player_Projectiles"
 
 [rendering]
 

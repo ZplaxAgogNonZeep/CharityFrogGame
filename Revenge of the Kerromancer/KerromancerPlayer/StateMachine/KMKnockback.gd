@@ -7,10 +7,13 @@ func startState():
 	sm.momentum = 0
 	kino.velocity.x = 0
 	kino.velocity.y = -300
+	kino.vulnerable = false
+	$Timer.start(1)
+
+func endState():
+	kino.vulnerable = true
 
 func physics_process(_delta):
-
-	
 	get_input()
 	
 	kino.velocity.y += sm.gravity * _delta
@@ -35,3 +38,9 @@ func get_input():
 		sm.dir = -1
 	
 	kino.velocity.x = lerp(kino.velocity.x, sm.dir * sm.speed, sm.acceleration)
+
+
+func _on_Timer_timeout():
+	if !kino.vulnerable:
+		kino.visible = true
+		sm.changeState("Idle")

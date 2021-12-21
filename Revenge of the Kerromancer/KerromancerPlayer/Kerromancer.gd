@@ -6,6 +6,8 @@ var MAX_health : int = 10
 var mana : int = 5
 var MAX_mana : int = 5
 
+var vulnerable = true
+
 onready var sprite = $Graphic
 onready var game = get_tree().root.get_node("Game")
 
@@ -46,15 +48,16 @@ func flip(isLeft : bool):
 	$WeaponManager.setSide(isLeft)
 
 func takeDamage(dmg : int):
-	health -= dmg
-	
-	if health <= 0:
-		health = 0
-		die()
-	
-	game.updateUI()
-	
-	$StateMachine.changeState("Knockback")
+	if vulnerable:
+		health -= dmg
+		
+		if health <= 0:
+			health = 0
+			die()
+		
+		game.updateUI()
+		$DamageNumbManager.show_value(dmg, false)
+		$StateMachine.changeState("Knockback")
 
 func die():
 	# TODO: Fix
