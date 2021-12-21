@@ -6,10 +6,15 @@ onready var kino = get_parent().get_parent()
 
 func startState():
 	sm.setAnimation("Jump")
-	kino.velocity.y = -600
+	kino.velocity.y = -625
 
 
 func physics_process(_delta):
+	if kino.is_on_floor() and kino.velocity.y > -625:
+		kino.velocity.y = 0
+		sm.momentum = 0
+		sm.changeState("Idle")
+	
 	get_input()
 	kino.velocity.y += sm.gravity * _delta
 	kino.velocity = kino.move_and_slide(kino.velocity, Vector2.UP)
