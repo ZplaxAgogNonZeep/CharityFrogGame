@@ -56,7 +56,7 @@ func takeDamage(dmg : int):
 			die()
 		
 		game.updateUI()
-		$DamageNumbManager.show_value(dmg, false)
+		get_tree().root.get_node("Game").callDamageNumber(dmg, position)
 		$StateMachine.changeState("Knockback")
 
 func die():

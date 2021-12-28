@@ -9,6 +9,11 @@ func startState():
 
 
 func physics_process(_delta):
+	
+	kino.velocity.x = 0
+	kino.velocity.y += sm.gravity * _delta
+	kino.velocity = kino.move_and_slide(kino.velocity, Vector2.UP)
+	
 	if not kino.is_on_floor():
 		sm.changeState("Falling")
 	

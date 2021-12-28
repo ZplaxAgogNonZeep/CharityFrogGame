@@ -13,6 +13,10 @@ var distance = 0
 
 func _physics_process(delta):
 	if axis == "Horizontal":
+		if dir < 0:
+			$Graphic.flip_h = true
+		else:
+			$Graphic.flip_h = false
 		velocity.x = SPEED * dir
 		distance += velocity.x
 		position += velocity
@@ -21,6 +25,7 @@ func _physics_process(delta):
 			despawnBullet()
 	
 	elif axis == "Up":
+		rotation_degrees = -90
 		velocity.y = SPEED
 		distance += velocity.y
 		position -= velocity
@@ -28,6 +33,7 @@ func _physics_process(delta):
 		if distance == 400:
 			despawnBullet()
 	elif axis == "Down":
+		rotation_degrees = 90
 		velocity.y = SPEED 
 		distance += velocity.y
 		position += velocity

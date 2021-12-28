@@ -36,7 +36,7 @@ func getDir():
 func takeDamage(dmg):
 	health -= dmg
 	
-	$DamageNumbManager.show_value(dmg, false)
+	get_tree().root.get_node("Game").callDamageNumber(dmg, position)
 	
 	if health <= 0:
 		health = 0

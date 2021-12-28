@@ -1,14 +1,18 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://KerromancerPlayer/Weapons/TestGun1/TestGun1.gd" type="Script" id=1]
-[ext_resource path="res://SpriteSheets/Weapons/TestGun1/Sprite-0001.png" type="Texture" id=2]
+[ext_resource path="res://SpriteSheets/Weapons/TestGun1/MagicGunStill-export.png" type="Texture" id=2]
 
 [node name="TestGun1" type="Node2D"]
 position = Vector2( -6, 20 )
+scale = Vector2( 2, 2 )
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 
-[node name="ShootPosn" type="Position2D" parent="."]
-position = Vector2( 2, 19.833 )
+[node name="RightShootPosn" type="Position2D" parent="."]
+position = Vector2( 8.40308, -2.07015 )
+
+[node name="LeftShootPosn" type="Position2D" parent="."]
+position = Vector2( -9, -2 )

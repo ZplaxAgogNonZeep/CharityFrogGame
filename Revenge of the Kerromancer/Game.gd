@@ -9,5 +9,8 @@ func _ready():
 	$LevelManager.get_child(0).get_node("PlayerManager").spawnPlayer(player)
 	updateUI()
 
+func callDamageNumber(dam, posn):
+	$DamageNumbManager.show_value(dam, false, posn)
+
 func updateUI():
 	UI.get_node("HUD").updateHUD(player)
