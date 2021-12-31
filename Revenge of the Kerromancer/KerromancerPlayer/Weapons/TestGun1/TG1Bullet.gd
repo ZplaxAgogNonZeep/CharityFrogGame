@@ -49,10 +49,16 @@ func _on_TG1Bullet_body_entered(body):
 	despawnBullet()
 
 func despawnBullet():
+	set_physics_process(false)
+	$Graphic.play("Despawn")
+
+
+func _on_TG1Bullet_area_shape_entered(_area_id, area, _area_shape, _self_shape):
+	if area.is_in_group("Enemy"):
+		area.takeDamage(damage)
 	queue_free()
 
 
-func _on_TG1Bullet_area_shape_entered(area_id, area, area_shape, self_shape):
-	if area.is_in_group("Enemy"):
-		area.takeDamage(damage)
-	despawnBullet()
+func _on_Graphic_animation_finished():
+	if $Graphic.animation == "Despawn":
+		queue_free()

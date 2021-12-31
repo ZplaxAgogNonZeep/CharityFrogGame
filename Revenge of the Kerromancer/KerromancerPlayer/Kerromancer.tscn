@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://KerromancerPlayer/Weapons/WeaponManager.gd" type="Script" id=1]
 [ext_resource path="res://KerromancerPlayer/Weapons/TestGun1/TestGun1.tscn" type="PackedScene" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://KerromancerPlayer/Magic/MagicManager.gd" type="Script" id=14]
 [ext_resource path="res://KerromancerPlayer/Magic/Spells/TestMagic/TestMagic2.tscn" type="PackedScene" id=15]
 [ext_resource path="res://KerromancerPlayer/StateMachine/KMKnockback.gd" type="Script" id=16]
+[ext_resource path="res://KerromancerPlayer/Interaction.gd" type="Script" id=17]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 12 )
@@ -144,6 +145,9 @@ animations = [ {
 radius = 21.7546
 height = 54.5205
 
+[sub_resource type="RectangleShape2D" id=28]
+extents = Vector2( 25.3654, 13.75 )
+
 [node name="Kerromancer" type="KinematicBody2D" groups=[
 "Player",
 ]]
@@ -153,7 +157,7 @@ script = ExtResource( 11 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 26 )
 animation = "Idle"
-frame = 4
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -164,6 +168,16 @@ shape = SubResource( 27 )
 position = Vector2( 0, -20 )
 current = true
 zoom = Vector2( 0.85, 0.85 )
+
+[node name="Interaction" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource( 17 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interaction"]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 0.335785, 50.7071 )
+shape = SubResource( 28 )
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 10 )
@@ -210,4 +224,6 @@ script = ExtResource( 14 )
 [node name="TestMagic1" parent="MagicManager" instance=ExtResource( 13 )]
 
 [node name="TestMagic2" parent="MagicManager" instance=ExtResource( 15 )]
+[connection signal="area_entered" from="Interaction" to="Interaction" method="_on_Interaction_area_entered"]
+[connection signal="area_exited" from="Interaction" to="Interaction" method="_on_Interaction_area_exited"]
 [connection signal="timeout" from="StateMachine/Knockback/Timer" to="StateMachine/Knockback" method="_on_Timer_timeout"]

@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+var dialogueName = "The Kerromancer"
+
 var health : int = 10
 var MAX_health : int = 10
 
@@ -7,13 +9,19 @@ var mana : int = 5
 var MAX_mana : int = 5
 
 var vulnerable = true
+var OutOfDialogue = false
 
 onready var sprite = $Graphic
 onready var game = get_tree().root.get_node("Game")
 
 var velocity = Vector2.ZERO
 
+
+
 func _unhandled_input(_event):
+	if Input.is_action_just_pressed("Interact") and !OutOfDialogue:
+		$Interaction.interact()
+	
 	if Input.is_action_just_pressed("Shoot"):
 		$WeaponManager.onShootPressed()
 	if Input.is_action_just_pressed("Magic"):
@@ -23,6 +31,9 @@ func _unhandled_input(_event):
 		$MagicManager.left()
 	if Input.is_action_just_pressed("Cycle Right"):
 		$MagicManager.right()
+	
+	if OutOfDialogue:
+		OutOfDialogue = false
 
 func _physics_process(_delta):
 	if Input.is_action_pressed("Up"):
@@ -62,6 +73,18 @@ func takeDamage(dmg : int):
 func die():
 	# TODO: Fix
 	queue_free()
+
+# ================================================================================================================
+# Dialogue Functions
+
+func finishDialogue():
+	print("Dialogue Finished!")
+
+func returnedYes():
+	game.callPauseDialogue(self, ["That's great!"])
+
+func returnedNo():
+	game.callPauseDialogue(self, ["Ah shit, thats a problem", "You should fix that"])
 
 # ================================================================================================================
 # Getters and Setters

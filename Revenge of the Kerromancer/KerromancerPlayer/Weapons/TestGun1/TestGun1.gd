@@ -2,7 +2,7 @@ extends Node2D
 
 # A low level gun for testing bullet behaviour
 
-var gunName = "TestGun1"
+var gunName = "Test Gun 1"
 var desc = "A very basic gun that shoots very basic bullets"
 
 onready var bulletInstance = preload("res://KerromancerPlayer/Weapons/TestGun1/TG1Bullet.tscn")
@@ -12,6 +12,7 @@ const MAX_BULLETS = 3
 
 
 func shoot(axis):
+	$Sprite.play("Fire")
 	var dir = 1
 	var posn = $RightShootPosn
 	if get_parent().get_parent().sprite.flip_h:
@@ -26,8 +27,7 @@ func shoot(axis):
 		dir,
 		axis,
 		bulletInstance.instance(), 
-		MAX_BULLETS
-		)
+		MAX_BULLETS)
 
 func getPosition(posn):
 	if rotation_degrees == -90:
@@ -43,3 +43,8 @@ func getPosition(posn):
 			return position + posn.position
 	
 	return position + posn.position
+
+
+func _on_Sprite_animation_finished():
+	if $Sprite.animation == "Fire":
+		$Sprite.play("Base")
