@@ -9,5 +9,5 @@ func useMagic(kino):
 	[
 		"Hello There", 
 		"Lets see if this dialogue works!", 
-		["But is it working?"]
+		["Revenge of the Kerromancer is getting closer to being released! are you excited?"]
 	])

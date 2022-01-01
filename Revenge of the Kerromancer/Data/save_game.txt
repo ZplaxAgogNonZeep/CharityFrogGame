@@ -1,4 +1,6 @@
-10/10
+99/99
 5/5
 TestGun1
-TestMagic1,TestMagic2
+TestGun1
+TestMagic1
+TestMagic1,TestMagic2,TestMagic3

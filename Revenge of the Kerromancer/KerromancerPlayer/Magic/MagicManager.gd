@@ -12,7 +12,8 @@ func _ready():
 		primaryMagic = magicSlots[0]
 
 func onMagicPressed():
-	primaryMagic.useMagic(kino)
+	if magicSlots != []:
+		primaryMagic.useMagic(kino)
 
 func left():
 	if magicSlots != []:
@@ -33,3 +34,16 @@ func right():
 		primaryMagic = get_child(0)
 	
 	kino.Kino_updateUI()
+
+func setMagic(magicInstances):
+	if get_child_count() > 0:
+		var count = 0
+		while count < get_child_count():
+			get_child(count).queue_free()
+			count += 1
+	
+	var count = 0
+	while count < magicInstances.size():
+		add_child(magicInstances[count])
+		count += 1
+	

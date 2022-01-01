@@ -95,6 +95,12 @@ func getMagicSlots():
 func getActiveWeapon():
 	return $WeaponManager.get_child(0)
 
+func setActiveWeapon(weaponInstance):
+	$WeaponManager.setWeapon(weaponInstance)
+
+func setMagicSlots(MagicInstanceList):
+	$MagicManager.setMagic(MagicInstanceList)
+
 # ================================================================================================================
 # Functions marked "Kino_" are intended for nodes that are children 
 # of the Kinematic to call completely seperate parts of the game like the HUD
