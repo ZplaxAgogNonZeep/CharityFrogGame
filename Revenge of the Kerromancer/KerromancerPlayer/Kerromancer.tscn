@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://KerromancerPlayer/Weapons/WeaponManager.gd" type="Script" id=1]
 [ext_resource path="res://KerromancerPlayer/Weapons/TestGun1/TestGun1.tscn" type="PackedScene" id=2]
@@ -12,133 +12,131 @@
 [ext_resource path="res://KerromancerPlayer/StateMachine/KMStateMachine.gd" type="Script" id=10]
 [ext_resource path="res://KerromancerPlayer/Kerromancer.gd" type="Script" id=11]
 [ext_resource path="res://SpriteSheets/Kerromancer/Kerromancer-Falling-Sheet.png" type="Texture" id=12]
-[ext_resource path="res://KerromancerPlayer/Magic/Spells/TestMagic/TestMagic1.tscn" type="PackedScene" id=13]
 [ext_resource path="res://KerromancerPlayer/Magic/MagicManager.gd" type="Script" id=14]
-[ext_resource path="res://KerromancerPlayer/Magic/Spells/TestMagic/TestMagic2.tscn" type="PackedScene" id=15]
 [ext_resource path="res://KerromancerPlayer/StateMachine/KMKnockback.gd" type="Script" id=16]
 [ext_resource path="res://KerromancerPlayer/Interaction.gd" type="Script" id=17]
 
 [sub_resource type="AtlasTexture" id=1]
-atlas = ExtResource( 12 )
+atlas = ExtResource( 5 )
 region = Rect2( 0, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 12 )
+atlas = ExtResource( 5 )
 region = Rect2( 64, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 12 )
+atlas = ExtResource( 5 )
 region = Rect2( 128, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 12 )
+atlas = ExtResource( 5 )
 region = Rect2( 192, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 12 )
+atlas = ExtResource( 5 )
 region = Rect2( 256, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 12 )
-region = Rect2( 320, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 3 )
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 12 )
 region = Rect2( 64, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=9]
-atlas = ExtResource( 3 )
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 12 )
 region = Rect2( 128, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=10]
-atlas = ExtResource( 3 )
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 12 )
 region = Rect2( 192, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=11]
-atlas = ExtResource( 3 )
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 12 )
 region = Rect2( 256, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=12]
-atlas = ExtResource( 3 )
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 12 )
 region = Rect2( 320, 0, 64, 64 )
 
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 64, 64 )
+
 [sub_resource type="AtlasTexture" id=13]
-atlas = ExtResource( 3 )
-region = Rect2( 384, 0, 64, 64 )
+atlas = ExtResource( 4 )
+region = Rect2( 192, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 4 )
-region = Rect2( 0, 0, 64, 64 )
+region = Rect2( 256, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=15]
 atlas = ExtResource( 4 )
-region = Rect2( 192, 0, 64, 64 )
+region = Rect2( 320, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=16]
 atlas = ExtResource( 4 )
-region = Rect2( 256, 0, 64, 64 )
+region = Rect2( 384, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=17]
 atlas = ExtResource( 4 )
-region = Rect2( 320, 0, 64, 64 )
+region = Rect2( 448, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=18]
 atlas = ExtResource( 4 )
-region = Rect2( 384, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=19]
-atlas = ExtResource( 4 )
-region = Rect2( 448, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=20]
-atlas = ExtResource( 4 )
 region = Rect2( 512, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=21]
-atlas = ExtResource( 5 )
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=22]
-atlas = ExtResource( 5 )
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 3 )
 region = Rect2( 64, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=23]
-atlas = ExtResource( 5 )
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 3 )
 region = Rect2( 128, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=24]
-atlas = ExtResource( 5 )
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 3 )
 region = Rect2( 192, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=25]
-atlas = ExtResource( 5 )
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 3 )
 region = Rect2( 256, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 3 )
+region = Rect2( 320, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 3 )
+region = Rect2( 384, 0, 64, 64 )
 
 [sub_resource type="SpriteFrames" id=26]
 animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
+"loop": true,
+"name": "Jump",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
 "loop": true,
 "name": "Falling",
 "speed": 15.0
 }, {
-"frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
-"loop": true,
-"name": "Walk",
-"speed": 13.0
-}, {
-"frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ) ],
+"frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
 "loop": true,
 "name": "Idle",
 "speed": 10.0
 }, {
-"frames": [ SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ) ],
+"frames": [ SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ) ],
 "loop": true,
-"name": "Jump",
-"speed": 10.0
+"name": "Walk",
+"speed": 13.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=27]
@@ -220,10 +218,6 @@ __meta__ = {
 
 [node name="MagicManager" type="Node2D" parent="."]
 script = ExtResource( 14 )
-
-[node name="TestMagic1" parent="MagicManager" instance=ExtResource( 13 )]
-
-[node name="TestMagic2" parent="MagicManager" instance=ExtResource( 15 )]
 [connection signal="area_entered" from="Interaction" to="Interaction" method="_on_Interaction_area_entered"]
 [connection signal="area_exited" from="Interaction" to="Interaction" method="_on_Interaction_area_exited"]
 [connection signal="timeout" from="StateMachine/Knockback/Timer" to="StateMachine/Knockback" method="_on_Timer_timeout"]

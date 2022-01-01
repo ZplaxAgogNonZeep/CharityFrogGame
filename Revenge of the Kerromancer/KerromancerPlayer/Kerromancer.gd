@@ -90,7 +90,10 @@ func returnedNo():
 # Getters and Setters
 
 func getMagicSlots():
-	return $MagicManager.magicSlots
+	return $MagicManager.get_children()
+
+func getActiveWeapon():
+	return $WeaponManager.get_child(0)
 
 # ================================================================================================================
 # Functions marked "Kino_" are intended for nodes that are children 

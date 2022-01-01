@@ -1,6 +1,9 @@
 extends Node2D
 
-onready var activeWeapon = get_child(0)
+var activeWeapon
+
+func _ready():
+	activeWeapon = get_children()[0]
 
 var directionName = ""
 
