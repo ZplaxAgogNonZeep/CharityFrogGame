@@ -71,7 +71,7 @@ func takeDamage(dmg : int):
 		$StateMachine.changeState("Knockback")
 
 func die():
-	# TODO: Fix
+	game.respawn()
 	queue_free()
 
 # ================================================================================================================

@@ -2,4 +2,4 @@ extends Area2D
 
 
 func activate():
-	print("doot")
+	get_tree().root.get_node("Game").spawnPlayerInLevel("TestScene", "TestSign")

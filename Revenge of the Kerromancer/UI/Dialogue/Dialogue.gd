@@ -73,9 +73,9 @@ func nextPage():
 	if posn >= dialogue.size():
 		endDialogue()
 	else:
-		if typeof(dialogue[posn]) == TYPE_STRING:
+		if dialogue[posn].substr(0, 3) != ":B:":
 			readPage()
-		elif typeof(dialogue[posn]) == TYPE_ARRAY:
+		elif dialogue[posn].substr(0, 3) == ":B:":
 			readBoolPage()
 		else:
 			print("SOMETHING IS WRONG")
@@ -93,9 +93,10 @@ func startDialogue(nSpeaker, dialogueTree):
 	
 	$Name.text = nSpeaker.dialogueName + ":"
 	
-	if typeof(dialogue[posn]) == TYPE_STRING:
+	
+	if dialogue[posn].substr(0, 3) != ":B:":
 		readPage()
-	elif typeof(dialogue[posn]) == TYPE_ARRAY:
+	elif dialogue[posn].substr(0, 3) == ":B:":
 		readBoolPage()
 	else:
 		print("SOMETHING IS WRONG")
@@ -120,7 +121,7 @@ func readPage():
 	set_process_unhandled_input(true)
 
 func readBoolPage():
-	$Label.text = dialogue[posn][0]
+	$Label.text = dialogue[posn].substr(3)
 	$Label.percent_visible = 0
 	set_physics_process(true)
 	set_process_unhandled_input(true)

@@ -12,6 +12,8 @@ var flags = {
 var unlockedWeapons = []
 var unlockedMagic = []
 
+var respawnPoint 
+
 func _ready():
 	gameVisibility(false)
 	$LevelManager.add_child(mainMenu)
@@ -38,10 +40,15 @@ func loadLevel(levelInstance):
 # Player Spawning code
 
 func spawnPlayerInLevel(levelName, interactableName):
-	print(levelName)
+	UI.get_node("Transition/ColorRect").visible = true
+	respawnPoint = levelName + ":" + interactableName
+	storePlayer()
+	yield(get_tree(),"idle_frame")
 	loadLevel($IndexSearch.searchLevelIndex(levelName).instance())
+	player = playerPath.instance()
 	yield(get_tree(), "idle_frame")
 	$LevelManager.get_child(0).spawnPlayer(interactableName, player)
+	UI.get_node("Transition/ColorRect").visible = false
 
 func spawn():
 	loadPlayer()
@@ -49,6 +56,15 @@ func spawn():
 	$LevelManager.get_child(0).loadplayer()
 	updateUI()
 
+func storePlayer():
+	saveFlags()
+	savePlayer()
+	player = playerPath.instance()
+	loadPlayer()
+
+func respawn():
+	var respawnPointList = respawnPoint.split(":")
+	spawnPlayerInLevel(respawnPointList[0], respawnPointList[1])
 #=============================================================================================================================
 # Saving Flag Data
 
@@ -106,10 +122,15 @@ func savePlayer():
 	file.open("res://Data/save_game.txt", file.WRITE)
 	
 	var fileString = ""
+	
+	fileString += respawnPoint + "\n"
+	
 	fileString += str(player.health) + "/" + str(player.MAX_health) + "\n"
 	fileString += str(player.mana) + "/" + str(player.MAX_mana) + "\n"
 	
-	fileString += player.getActiveWeapon().name + "\n"
+	if player.getActiveWeapon() != null:
+		fileString += player.getActiveWeapon().name
+	fileString += "\n"
 	
 	var count = 0
 	while count < unlockedWeapons.size():
@@ -144,28 +165,31 @@ func loadPlayer():
 	file.open("res://Data/save_game.txt", File.READ)
 	var dataList = file.get_as_text().split("\n")
 	
-	var healthList = dataList[0].split("/")
+	respawnPoint = dataList[0]
+	
+	var healthList = dataList[1].split("/")
 	player.health = int(healthList[0])
 	player.MAX_health = int(healthList[1])
 	
-	var manaList = dataList[1].split("/")
+	var manaList = dataList[2].split("/")
 	player.mana = int(manaList[0])
 	player.MAX_mana = int(manaList[1])
+	if $IndexSearch.searchWeaponIndex(dataList[3]) != null:
+		player.setActiveWeapon($IndexSearch.searchWeaponIndex(dataList[3]).instance())
 	
-	player.setActiveWeapon($IndexSearch.searchWeaponIndex(dataList[2]).instance())
+	unlockedWeapons = dataList[4].split(",")
 	
-	unlockedWeapons = dataList[3].split(",")
-	
-	var magicSlotStings = dataList[4].split(",")
+	var magicSlotStings = dataList[5].split(",")
 	
 	var magicSlotInstances = []
 	var count = 0
 	while count < magicSlotStings.size():
-		magicSlotInstances.append($IndexSearch.searchMagicIndex(magicSlotStings[count]).instance())
+		if $IndexSearch.searchMagicIndex(magicSlotStings[count]) != null:
+			magicSlotInstances.append($IndexSearch.searchMagicIndex(magicSlotStings[count]).instance())
 		count += 1
 	player.setMagicSlots(magicSlotInstances)
 	
-	unlockedMagic = dataList[5].split(",")
+	unlockedMagic = dataList[6].split(",")
 
 #=============================================================================================================================
 # Start Menu Information
@@ -177,3 +201,9 @@ func startNewGame():
 	# Update this to the starting area
 	spawnPlayerInLevel("TestScene", "TestDoor")
 
+func continueGame():
+	gameVisibility(true)
+	player = playerPath.instance()
+	loadPlayer()
+	respawn()
+	

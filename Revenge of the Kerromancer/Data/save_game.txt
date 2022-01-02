@@ -1,6 +1,7 @@
-99/99
+TestScene:TestSign
+0/10
 5/5
-TestGun1
-TestGun1
-TestMagic1
-TestMagic1,TestMagic2,TestMagic3
+
+
+
+

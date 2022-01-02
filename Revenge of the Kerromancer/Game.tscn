@@ -65,15 +65,15 @@ region = Rect2( 140, 0, 20, 20 )
 
 [sub_resource type="SpriteFrames" id=14]
 animations = [ {
-"frames": [ ExtResource( 12 ) ],
-"loop": true,
-"name": "Still",
-"speed": 5.0
-}, {
 "frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
 "loop": true,
 "name": "Moving",
 "speed": 10.0
+}, {
+"frames": [ ExtResource( 12 ) ],
+"loop": true,
+"name": "Still",
+"speed": 5.0
 } ]
 
 [node name="Game" type="Node2D"]
@@ -176,9 +176,14 @@ position = Vector2( 48, 72 )
 scale = Vector2( 0.6875, 0.6875 )
 
 [node name="Dialogue" type="Control" parent="CanvasLayer/UI"]
-anchor_top = 0.68
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = 108.0
+margin_right = 512.0
+margin_bottom = 300.0
 script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": true
@@ -229,7 +234,6 @@ position = Vector2( 960, 152 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 14 )
 animation = "Moving"
-frame = 4
 playing = true
 
 [node name="Transition" type="Control" parent="CanvasLayer/UI"]

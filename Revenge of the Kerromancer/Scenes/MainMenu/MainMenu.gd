@@ -5,7 +5,7 @@ onready var game = get_tree().root.get_node("Game")
 
 func _ready():
 	game.loadFlags()
-	menu.get_node("Continue").disabled = game.isFlagTriggered("SaveDataExists")
+	menu.get_node("Continue").disabled = !game.isFlagTriggered("SaveDataExists")
 
 
 func _on_New_Game_pressed():
@@ -13,4 +13,4 @@ func _on_New_Game_pressed():
 
 
 func _on_Continue_pressed():
-	pass # Replace with function body.
+	game.continueGame()
