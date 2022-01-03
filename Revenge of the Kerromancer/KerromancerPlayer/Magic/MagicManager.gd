@@ -46,4 +46,10 @@ func setMagic(magicInstances):
 	while count < magicInstances.size():
 		add_child(magicInstances[count])
 		count += 1
+
+func addMagic(magicInstance):
+	if get_child_count() < 3:
+		add_child(magicInstance)
+		magicSlots.append(magicInstance)
+		primaryMagic = get_child(0)
 	

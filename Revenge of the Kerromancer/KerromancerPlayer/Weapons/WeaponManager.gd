@@ -2,10 +2,6 @@ extends Node2D
 
 var activeWeapon
 
-func _ready():
-	if get_child_count() != 0:
-		activeWeapon = get_children()[0]
-
 var directionName = ""
 
 # This is an Unholy Abomination but damn does it do the job
@@ -69,4 +65,5 @@ func changeDirection(direction):
 func setWeapon(weaponInstance):
 	if get_child_count() > 0:
 		get_child(0).queue_free()
+	activeWeapon = weaponInstance
 	add_child(weaponInstance)

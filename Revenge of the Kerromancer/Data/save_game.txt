@@ -1,5 +1,5 @@
-TestScene:TestSign
-0/10
+TestScene:TestDoor
+10/10
 5/5
 
 

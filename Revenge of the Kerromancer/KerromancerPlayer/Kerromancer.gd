@@ -74,6 +74,13 @@ func die():
 	game.respawn()
 	queue_free()
 
+func weaponUnlocked(weaponInstance):
+	if $WeaponManager.get_child_count() == 0:
+		$WeaponManager.setWeapon(weaponInstance)
+
+func magicUnlocked(magicInstance):
+	$MagicManager.addMagic(magicInstance)
+
 # ================================================================================================================
 # Dialogue Functions
 

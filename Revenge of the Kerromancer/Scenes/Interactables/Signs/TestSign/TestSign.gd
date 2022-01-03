@@ -13,4 +13,5 @@ func activate():
 	get_tree().root.get_node("Game").callPauseDialogue(self, dialogueText)
 
 func finishDialogue():
-	pass
+	get_tree().root.get_node("Game").obtainItem("Weapon", "TestGun1")
+	get_tree().root.get_node("Game").obtainItem("Magic", "TestMagic1")

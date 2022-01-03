@@ -36,6 +36,21 @@ func loadLevel(levelInstance):
 	
 	$LevelManager.add_child(levelInstance)
 
+func obtainItem(itemType, itemName):
+	var item = null
+	match (itemType):
+		"Weapon":
+			item = $IndexSearch.searchWeaponIndex(itemName).instance()
+			unlockedWeapons.append(item.name)
+			player.weaponUnlocked(item)
+		"Magic":
+			item = $IndexSearch.searchMagicIndex(itemName).instance()
+			unlockedMagic.append(item.name)
+			player.magicUnlocked(item)
+	
+	updateUI()
+
+
 #=============================================================================================================================
 # Player Spawning code
 
@@ -46,6 +61,7 @@ func spawnPlayerInLevel(levelName, interactableName):
 	yield(get_tree(),"idle_frame")
 	loadLevel($IndexSearch.searchLevelIndex(levelName).instance())
 	player = playerPath.instance()
+	loadPlayer()
 	yield(get_tree(), "idle_frame")
 	$LevelManager.get_child(0).spawnPlayer(interactableName, player)
 	UI.get_node("Transition/ColorRect").visible = false
@@ -174,6 +190,7 @@ func loadPlayer():
 	var manaList = dataList[2].split("/")
 	player.mana = int(manaList[0])
 	player.MAX_mana = int(manaList[1])
+	
 	if $IndexSearch.searchWeaponIndex(dataList[3]) != null:
 		player.setActiveWeapon($IndexSearch.searchWeaponIndex(dataList[3]).instance())
 	
