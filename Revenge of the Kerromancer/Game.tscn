@@ -234,7 +234,7 @@ position = Vector2( 960, 152 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 14 )
 animation = "Moving"
-frame = 4
+frame = 6
 playing = true
 
 [node name="Transition" type="Control" parent="CanvasLayer/UI"]

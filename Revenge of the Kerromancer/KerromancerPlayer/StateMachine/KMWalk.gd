@@ -21,19 +21,11 @@ func physics_process(_delta):
 	if Input.is_action_just_pressed("Jump"):
 		sm.changeState("Jump")
 	
-	print(kino.velocity.x)
-	
 	if kino.velocity.x > 0 or kino.velocity.x == 0:
-		print(kino.velocity)
-		print(sm.dir)
 		if sm.dir == 0 and kino.velocity.x < 1:
-			print("doot")
 			sm.changeState("Idle")
 	elif kino.velocity.x < 0 or kino.velocity.x == 0:
-		print(kino.velocity)
-		print(sm.dir)
 		if sm.dir == 0 and kino.velocity.x >= -1:
-			print("doot")
 			sm.changeState("Idle")
 
 
