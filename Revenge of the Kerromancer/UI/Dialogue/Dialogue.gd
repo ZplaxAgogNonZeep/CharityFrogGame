@@ -143,6 +143,8 @@ func _on_Yes_pressed():
 	boolBoxMode = false
 	updatePointer()
 	
+	game.endDialogue()
+	
 	set_process_unhandled_input(false)
 	set_physics_process(false)
 	game.player.OutOfDialogue = true
@@ -156,6 +158,8 @@ func _on_No_pressed():
 	$BoolBox.visible = false
 	boolBoxMode = false
 	updatePointer()
+	
+	game.endDialogue()
 	
 	set_process_unhandled_input(false)
 	set_physics_process(false)

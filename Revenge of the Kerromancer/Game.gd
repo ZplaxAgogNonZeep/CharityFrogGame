@@ -30,7 +30,7 @@ func updateUI():
 
 func loadLevel(levelInstance):
 	$LevelManager.get_child(0).queue_free()
-	
+	yield(get_tree(), "idle_frame")
 	$LevelManager.add_child(levelInstance)
 
 func obtainItem(itemType, itemName):
@@ -38,14 +38,35 @@ func obtainItem(itemType, itemName):
 	match (itemType):
 		"Weapon":
 			item = $IndexSearch.searchWeaponIndex(itemName).instance()
-			unlockedWeapons.append(item.name)
-			player.weaponUnlocked(item)
+			if unlockWeapon(item.name):
+				player.weaponUnlocked(item)
 		"Magic":
 			item = $IndexSearch.searchMagicIndex(itemName).instance()
-			unlockedMagic.append(item.name)
-			player.magicUnlocked(item)
-	
+			if unlockMagic(item.name):
+				player.magicUnlocked(item)
 	updateUI()
+
+func unlockWeapon(weaponName):
+	if unlockedWeapons[0] == "":
+		unlockedWeapons = [weaponName]
+		return true
+	else:
+		if unlockedWeapons.find(weaponName) == -1:
+			unlockedWeapons.append(weaponName)
+			return true
+		else:
+			return false
+
+func unlockMagic(magicName):
+	if unlockedMagic[0] == "":
+		unlockedMagic = [magicName]
+		return true
+	else:
+		if unlockedMagic.find(magicName) == -1:
+			unlockedMagic.append(magicName)
+			return true
+		else:
+			return false
 
 
 #=============================================================================================================================
@@ -67,11 +88,15 @@ func endDialogue():
 func spawnPlayerInLevel(levelName, interactableName):
 	UI.get_node("Transition/ColorRect").visible = true
 	respawnPoint = levelName + ":" + interactableName
-	storePlayer()
+	
+	saveTemp()
+	
 	yield(get_tree(),"idle_frame")
 	loadLevel($IndexSearch.searchLevelIndex(levelName).instance())
 	player = playerPath.instance()
-	loadPlayer()
+	
+	loadtemp()
+	
 	updateUI()
 	yield(get_tree(), "idle_frame")
 	$LevelManager.get_child(0).spawnPlayer(interactableName, player)
@@ -82,12 +107,6 @@ func spawn():
 	$LevelManager.add_child(preload("res://TestScenes/TestScene.tscn").instance())
 	$LevelManager.get_child(0).loadplayer()
 	updateUI()
-
-func storePlayer():
-	saveFlags()
-	savePlayer()
-	player = playerPath.instance()
-	loadPlayer()
 
 func respawn():
 	var respawnPointList = respawnPoint.split(":")
@@ -143,8 +162,6 @@ func loadFlags():
 #=============================================================================================================================
 # Saving player data
 
-var existingData = false
-
 func savePlayer():
 	var file = File.new()
 	file.open("res://Data/save_game.txt", file.WRITE)
@@ -161,6 +178,7 @@ func savePlayer():
 	fileString += "\n"
 	
 	var count = 0
+	print(unlockedWeapons)
 	while count < unlockedWeapons.size():
 		fileString += unlockedWeapons[count]
 		if count != unlockedWeapons.size() - 1:
@@ -219,6 +237,92 @@ func loadPlayer():
 	player.setMagicSlots(magicSlotInstances)
 	
 	unlockedMagic = dataList[6].split(",")
+	
+	file.close()
+	
+
+func saveTemp():
+	var file = File.new()
+	file.open("res://Data/temp.txt", file.WRITE)
+	
+	var fileString = ""
+	
+	fileString += respawnPoint + "\n"
+	
+	fileString += str(player.health) + "/" + str(player.MAX_health) + "\n"
+	fileString += str(player.mana) + "/" + str(player.MAX_mana) + "\n"
+	
+	if player.getActiveWeapon() != null:
+		fileString += player.getActiveWeapon().name
+	fileString += "\n"
+	
+	var count = 0
+	while count < unlockedWeapons.size():
+		fileString += unlockedWeapons[count]
+		if count != unlockedWeapons.size() - 1:
+			fileString += ","
+		count += 1
+	fileString += "\n"
+	
+	count = 0
+	while count < player.getMagicSlots().size():
+		fileString += player.getMagicSlots()[count].name
+		if count != player.getMagicSlots().size() - 1:
+			fileString += ","
+		count += 1
+	fileString += "\n"
+	
+	count = 0
+	while count < unlockedMagic.size():
+		fileString += unlockedMagic[count]
+		if count != unlockedMagic.size() - 1:
+			fileString += ","
+		count += 1
+	fileString += "\n"
+	
+	file.store_string(fileString)
+	
+	file.close()
+
+func loadtemp():
+	var file = File.new()
+	file.open("res://Data/temp.txt", File.READ)
+	var dataList = file.get_as_text().split("\n")
+	
+	respawnPoint = dataList[0]
+	
+	var healthList = dataList[1].split("/")
+	player.health = int(healthList[0])
+	player.MAX_health = int(healthList[1])
+	
+	var manaList = dataList[2].split("/")
+	player.mana = int(manaList[0])
+	player.MAX_mana = int(manaList[1])
+	
+	if $IndexSearch.searchWeaponIndex(dataList[3]) != null:
+		player.setActiveWeapon($IndexSearch.searchWeaponIndex(dataList[3]).instance())
+	
+	unlockedWeapons = dataList[4].split(",")
+	
+	var magicSlotStings = dataList[5].split(",")
+	
+	var magicSlotInstances = []
+	var count = 0
+	while count < magicSlotStings.size():
+		if $IndexSearch.searchMagicIndex(magicSlotStings[count]) != null:
+			magicSlotInstances.append($IndexSearch.searchMagicIndex(magicSlotStings[count]).instance())
+		count += 1
+	player.setMagicSlots(magicSlotInstances)
+	
+	unlockedMagic = dataList[6].split(",")
+	
+	file.close()
+	
+	file.open("res://Data/temp.txt", file.WRITE)
+	
+	file.store_string("")
+	
+	file.close()
 
 #=============================================================================================================================
 # Start Menu Information

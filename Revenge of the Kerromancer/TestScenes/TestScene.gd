@@ -8,3 +8,4 @@ func _ready():
 func spawnPlayer(locationName, player):
 	player.position = $Interactables.get_node(locationName).position
 	$PlayerManager.playerSpawned(player)
+
