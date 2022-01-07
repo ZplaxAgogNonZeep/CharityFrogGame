@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://UI/Fonts/UITheme.tres" type="Theme" id=2]
@@ -13,6 +13,8 @@
 [ext_resource path="res://SpriteSheets/UI/Pointer-Sheet.png" type="Texture" id=11]
 [ext_resource path="res://SpriteSheets/UI/Pointer.png" type="Texture" id=12]
 [ext_resource path="res://KerromancerPlayer/IndexSearch.gd" type="Script" id=13]
+[ext_resource path="res://SpriteSheets/UI/HUD.png" type="Texture" id=14]
+[ext_resource path="res://SpriteSheets/Magic/Icons/EmptySpell.png" type="Texture" id=15]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 1, 0, 0, 1 )
@@ -95,6 +97,7 @@ anchor_bottom = 1.0
 theme = ExtResource( 2 )
 script = ExtResource( 3 )
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -107,6 +110,7 @@ __meta__ = {
 }
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/UI/HUD"]
+visible = false
 anchor_left = -0.0357143
 anchor_right = 0.964286
 anchor_bottom = 1.0
@@ -115,11 +119,16 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
+[node name="Sprite" type="Sprite" parent="CanvasLayer/UI/HUD"]
+position = Vector2( 168, 72 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 14 )
+
 [node name="HealthBar" type="ProgressBar" parent="CanvasLayer/UI/HUD"]
-anchor_left = 0.464286
-anchor_top = 0.272727
-anchor_right = 0.933036
-anchor_bottom = 0.420455
+anchor_left = 0.714286
+anchor_top = 0.363636
+anchor_right = 1.32589
+anchor_bottom = 0.545453
 custom_styles/fg = SubResource( 1 )
 custom_styles/bg = SubResource( 2 )
 custom_fonts/font = ExtResource( 4 )
@@ -130,10 +139,10 @@ __meta__ = {
 }
 
 [node name="ManaBar" type="ProgressBar" parent="CanvasLayer/UI/HUD"]
-anchor_left = 0.464286
-anchor_top = 0.454544
-anchor_right = 0.933036
-anchor_bottom = 0.602272
+anchor_left = 0.714286
+anchor_top = 0.636362
+anchor_right = 1.32589
+anchor_bottom = 0.81818
 custom_styles/fg = SubResource( 3 )
 custom_styles/bg = SubResource( 4 )
 custom_fonts/font = ExtResource( 4 )
@@ -144,36 +153,39 @@ __meta__ = {
 }
 
 [node name="HealthNumber" type="Label" parent="CanvasLayer/UI/HUD"]
-anchor_left = 0.285714
-anchor_top = 0.181818
-anchor_right = 0.464286
-anchor_bottom = 0.386363
+anchor_left = 0.535714
+anchor_top = 0.363636
+anchor_right = 0.714286
+anchor_bottom = 0.568181
 text = "00"
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
 [node name="ManaNumber" type="Label" parent="CanvasLayer/UI/HUD"]
-anchor_left = 0.285714
-anchor_top = 0.454544
-anchor_right = 0.464286
-anchor_bottom = 0.659089
+anchor_left = 0.535714
+anchor_top = 0.636362
+anchor_right = 0.714286
+anchor_bottom = 0.840907
 text = "00"
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
 [node name="Primary" type="Sprite" parent="CanvasLayer/UI/HUD"]
-position = Vector2( 32, 32 )
+position = Vector2( 72, 56 )
 scale = Vector2( 1.5, 1.5 )
+texture = ExtResource( 15 )
 
 [node name="Secondary" type="Sprite" parent="CanvasLayer/UI/HUD"]
-position = Vector2( 16, 72 )
+position = Vector2( 48, 96 )
 scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 15 )
 
 [node name="Tertiary" type="Sprite" parent="CanvasLayer/UI/HUD"]
-position = Vector2( 48, 72 )
+position = Vector2( 96, 96 )
 scale = Vector2( 0.6875, 0.6875 )
+texture = ExtResource( 15 )
 
 [node name="Dialogue" type="Control" parent="CanvasLayer/UI"]
 anchor_left = 0.5
@@ -186,6 +198,7 @@ margin_right = 512.0
 margin_bottom = 300.0
 script = ExtResource( 7 )
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": true
 }
 
@@ -241,6 +254,7 @@ playing = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": true
 }
 

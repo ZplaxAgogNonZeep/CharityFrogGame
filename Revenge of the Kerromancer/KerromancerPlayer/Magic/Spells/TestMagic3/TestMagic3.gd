@@ -7,4 +7,5 @@ var cost = 1
 func useMagic(kino):
 	if kino.mana >= 0 and cost <= kino.mana:
 		kino.mana -= cost
-		kino.takeDamage(1)
+		kino.CutSceneMode = true
+		kino.slideCamera(Vector2(100,100))

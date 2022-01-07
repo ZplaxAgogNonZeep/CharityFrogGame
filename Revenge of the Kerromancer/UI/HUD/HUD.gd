@@ -1,5 +1,6 @@
 extends Control
 
+onready var empty = preload("res://SpriteSheets/Magic/Icons/EmptySpell.png")
 
 func _ready():
 	pass
@@ -18,7 +19,15 @@ func updateHUD(player):
 		
 		if player.getMagicSlots().size() >= 2:
 			$Secondary.texture = player.getMagicSlots()[1].icon
+		else:
+			$Secondary.texture = empty
 		
 		if player.getMagicSlots().size() >= 3:
 			$Tertiary.texture = player.getMagicSlots()[2].icon
+		else:
+			$Tertiary.texture = empty
+	else:
+		$Primary.texture = empty
+		$Secondary.texture = empty
+		$Tertiary.texture = empty
 	

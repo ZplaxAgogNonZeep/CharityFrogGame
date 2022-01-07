@@ -24,7 +24,7 @@ func _ready():
 	changeState("Idle")
 
 func _physics_process(delta):
-	if state.has_method("physics_process"):
+	if state.has_method("physics_process") and not parent.CutSceneMode:
 		state.physics_process(delta)
 
 func changeState(name):

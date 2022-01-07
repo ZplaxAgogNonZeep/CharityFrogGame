@@ -81,13 +81,15 @@ func nextPage():
 			print("SOMETHING IS WRONG")
 			endDialogue()
 
-func startDialogue(nSpeaker, dialogueTree):
+func startDialogue(nSpeaker, dialogueTree, isPause):
 	boolBoxMode = false
 	$BoolBox.visible = false
 	visible = true
 	$Pointer.visible = true
 	speaker = nSpeaker
-	get_tree().paused = true
+	
+	get_tree().paused = isPause
+	
 	dialogue = dialogueTree
 	posn = 0
 	
@@ -106,6 +108,7 @@ func endDialogue():
 	set_process_unhandled_input(false)
 	set_physics_process(false)
 	game.player.OutOfDialogue = true
+	game.endDialogue()
 	speaker.finishDialogue()
 	speaker = null
 	posn = 0

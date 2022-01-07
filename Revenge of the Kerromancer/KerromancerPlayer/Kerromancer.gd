@@ -10,6 +10,7 @@ var MAX_mana : int = 5
 
 var vulnerable = true
 var OutOfDialogue = false
+var CutSceneMode = false
 
 onready var sprite = $Graphic
 onready var game = get_tree().root.get_node("Game")
@@ -19,35 +20,43 @@ var velocity = Vector2.ZERO
 
 
 func _unhandled_input(_event):
-	if Input.is_action_just_pressed("Interact") and !OutOfDialogue:
-		$Interaction.interact()
-	
-	if Input.is_action_just_pressed("Shoot"):
-		$WeaponManager.onShootPressed()
-	if Input.is_action_just_pressed("Magic"):
-		$MagicManager.onMagicPressed()
-	
-	if Input.is_action_just_pressed("Cycle Left"):
-		$MagicManager.left()
-	if Input.is_action_just_pressed("Cycle Right"):
-		$MagicManager.right()
-	
-	if OutOfDialogue:
-		OutOfDialogue = false
+	if not CutSceneMode:
+		if Input.is_action_just_pressed("Interact") and !OutOfDialogue:
+			$Interaction.interact()
+		
+		if Input.is_action_just_pressed("Shoot"):
+			$WeaponManager.onShootPressed()
+		if Input.is_action_just_pressed("Magic"):
+			$MagicManager.onMagicPressed()
+		
+		if Input.is_action_just_pressed("Cycle Left"):
+			$MagicManager.left()
+		if Input.is_action_just_pressed("Cycle Right"):
+			$MagicManager.right()
+		
+		if OutOfDialogue:
+			OutOfDialogue = false
 
 func _physics_process(_delta):
-	if Input.is_action_pressed("Up"):
-		$WeaponManager.changeDirection("Up")
-	elif not is_on_floor() and Input.is_action_pressed("Down"):
-		$WeaponManager.changeDirection("Down")
-	
-	if Input.is_action_just_released("Up") and not Input.is_action_pressed("Down"):
-		$WeaponManager.changeDirection("Forward")
-	elif Input.is_action_just_released("Down") and not Input.is_action_pressed("Up"):
-		$WeaponManager.changeDirection("Forward")
-	
-	if Input.is_action_pressed("Down") and is_on_floor():
-		$WeaponManager.changeDirection("Forward")
+	if CutSceneMode:
+		if $StateMachine.stateName != "Idle":
+			$StateMachine.changeState("Idle")
+		velocity.x = 0
+		velocity.y += $StateMachine.gravity * _delta
+		velocity = move_and_slide(velocity, Vector2.UP)
+	else:
+		if Input.is_action_pressed("Up"):
+			$WeaponManager.changeDirection("Up")
+		elif not is_on_floor() and Input.is_action_pressed("Down"):
+			$WeaponManager.changeDirection("Down")
+		
+		if Input.is_action_just_released("Up") and not Input.is_action_pressed("Down"):
+			$WeaponManager.changeDirection("Forward")
+		elif Input.is_action_just_released("Down") and not Input.is_action_pressed("Up"):
+			$WeaponManager.changeDirection("Forward")
+		
+		if Input.is_action_pressed("Down") and is_on_floor():
+			$WeaponManager.changeDirection("Forward")
 
 
 func flip(isLeft : bool):
@@ -84,14 +93,13 @@ func magicUnlocked(magicInstance):
 # ================================================================================================================
 # Dialogue Functions
 
-func finishDialogue():
-	print("Dialogue Finished!")
+func slideCamera(posn):
+	$Camera2D/Tween.interpolate_property($Camera2D, "position", $Camera2D.position, posn - position, 1, Tween.EASE_IN, Tween.EASE_IN_OUT)
+	$Camera2D/Tween.start()
 
-func returnedYes():
-	game.callPauseDialogue(self, ["That's great!"])
-
-func returnedNo():
-	game.callPauseDialogue(self, ["Ah shit, thats a problem", "You should fix that"])
+func resetCamera():
+	$Camera2D/Tween.interpolate_property($Camera2D, "position", $Camera2D.position, Vector2(0, -20), 1, Tween.EASE_IN, Tween.EASE_IN_OUT)
+	$Camera2D/Tween.start()
 
 # ================================================================================================================
 # Getters and Setters
@@ -107,6 +115,9 @@ func setActiveWeapon(weaponInstance):
 
 func setMagicSlots(MagicInstanceList):
 	$MagicManager.setMagic(MagicInstanceList)
+
+func setCutSceneMode(boolean):
+	CutSceneMode = boolean
 
 # ================================================================================================================
 # Functions marked "Kino_" are intended for nodes that are children 

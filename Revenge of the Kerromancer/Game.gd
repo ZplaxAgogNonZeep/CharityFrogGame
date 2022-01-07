@@ -18,9 +18,6 @@ func _ready():
 	gameVisibility(false)
 	$LevelManager.add_child(mainMenu)
 
-func callPauseDialogue(speaker, speech):
-	UI.get_node("Dialogue").startDialogue(speaker, speech)
-
 func callDamageNumber(dam, posn):
 	$DamageNumbManager.show_value(dam, false, posn)
 
@@ -52,6 +49,19 @@ func obtainItem(itemType, itemName):
 
 
 #=============================================================================================================================
+# Dialogue
+
+func callPauseDialogue(speaker, speech):
+	UI.get_node("Dialogue").startDialogue(speaker, speech, true)
+
+func callDialogue(speaker, speech):
+	UI.get_node("Dialogue").startDialogue(speaker, speech, false)
+	player.setCutSceneMode(true)
+
+func endDialogue():
+	player.setCutSceneMode(false)
+
+#=============================================================================================================================
 # Player Spawning code
 
 func spawnPlayerInLevel(levelName, interactableName):
@@ -62,6 +72,7 @@ func spawnPlayerInLevel(levelName, interactableName):
 	loadLevel($IndexSearch.searchLevelIndex(levelName).instance())
 	player = playerPath.instance()
 	loadPlayer()
+	updateUI()
 	yield(get_tree(), "idle_frame")
 	$LevelManager.get_child(0).spawnPlayer(interactableName, player)
 	UI.get_node("Transition/ColorRect").visible = false
@@ -80,6 +91,7 @@ func storePlayer():
 
 func respawn():
 	var respawnPointList = respawnPoint.split(":")
+	player.health = player.MAX_health
 	spawnPlayerInLevel(respawnPointList[0], respawnPointList[1])
 #=============================================================================================================================
 # Saving Flag Data

@@ -10,6 +10,7 @@ var axis = ""
 
 var damage = 1
 var distance = 0
+var max_distance = 300
 
 func _physics_process(delta):
 	if axis == "Horizontal":
@@ -21,7 +22,7 @@ func _physics_process(delta):
 		distance += velocity.x
 		position += velocity
 		
-		if distance == 400 * dir:
+		if distance == max_distance * dir:
 			despawnBullet()
 	
 	elif axis == "Up":
@@ -30,7 +31,7 @@ func _physics_process(delta):
 		distance += velocity.y
 		position -= velocity
 		
-		if distance == 400:
+		if distance == max_distance:
 			despawnBullet()
 	elif axis == "Down":
 		rotation_degrees = 90
@@ -38,11 +39,8 @@ func _physics_process(delta):
 		distance += velocity.y
 		position += velocity
 		
-		if distance == 400:
+		if distance == max_distance:
 			despawnBullet()
-
-	
-	
 
 
 func _on_TG1Bullet_body_entered(body):

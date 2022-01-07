@@ -10,7 +10,7 @@ var dialogueText : PoolStringArray = [
 ]
 
 func activate():
-	get_tree().root.get_node("Game").callPauseDialogue(self, dialogueText)
+	get_tree().root.get_node("Game").callDialogue(self, dialogueText)
 
 func finishDialogue():
 	get_tree().root.get_node("Game").obtainItem("Weapon", "TestGun1")
