@@ -17,8 +17,6 @@ onready var game = get_tree().root.get_node("Game")
 
 var velocity = Vector2.ZERO
 
-
-
 func _unhandled_input(_event):
 	if not CutSceneMode:
 		if Input.is_action_just_pressed("Interact") and !OutOfDialogue:

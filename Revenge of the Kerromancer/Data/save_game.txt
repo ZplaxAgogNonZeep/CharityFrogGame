@@ -1,7 +1,7 @@
 TestScene:SaveCrystal
-10/10
+9/10
 5/5
 TestGun1
 TestGun1
-TestMagic1,TestMagic2
-TestMagic1,TestMagic2
+TestMagic1
+TestMagic1
