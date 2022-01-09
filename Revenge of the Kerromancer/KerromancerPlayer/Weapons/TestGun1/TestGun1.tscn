@@ -9,27 +9,27 @@ region = Rect2( 0, 0, 20, 15 )
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 2 )
-region = Rect2( 20, 0, 20, 15 )
+region = Rect2( 0, 0, 20, 15 )
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 2 )
-region = Rect2( 40, 0, 20, 15 )
+region = Rect2( 20, 0, 20, 15 )
 
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 2 )
-region = Rect2( 0, 0, 20, 15 )
+region = Rect2( 40, 0, 20, 15 )
 
 [sub_resource type="SpriteFrames" id=5]
 animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ) ],
-"loop": false,
-"name": "Fire",
-"speed": 10.0
-}, {
-"frames": [ SubResource( 4 ) ],
+"frames": [ SubResource( 1 ) ],
 "loop": true,
 "name": "Base",
 "speed": 5.0
+}, {
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"loop": false,
+"name": "Fire",
+"speed": 10.0
 } ]
 
 [node name="TestGun1" type="Node2D"]

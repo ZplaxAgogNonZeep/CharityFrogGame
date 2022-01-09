@@ -33,6 +33,18 @@ func loadLevel(levelInstance):
 	yield(get_tree(), "idle_frame")
 	$LevelManager.add_child(levelInstance)
 
+# ================================================================================================================================
+# Item Managing
+
+func openItemMenu(activeWeapon, magicSlots):
+	var count = 1
+	# Why are godot Arrays so fucking WEIRD
+	var magicSlotsNames = [magicSlots[0].name]
+	while count < magicSlots.size():
+		magicSlotsNames.append(magicSlots[count].name)
+		count +=1
+	$CanvasLayer/UI/PauseManager.loadEquipMenu(player, unlockedWeapons, activeWeapon.name, unlockedMagic, magicSlotsNames)
+
 func obtainItem(itemType, itemName):
 	var item = null
 	match (itemType):

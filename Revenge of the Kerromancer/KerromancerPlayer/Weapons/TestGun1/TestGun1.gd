@@ -2,8 +2,10 @@ extends Node2D
 
 # A low level gun for testing bullet behaviour
 
-var gunName = "Test Gun 1"
-var desc = "A very basic gun that shoots very basic bullets"
+var itemName = "Test Gun 1"
+var itemDesc = "A very basic gun that shoots very basic bullets"
+
+var icon = preload("res://SpriteSheets/Weapons/TestGun1/TestWeaponIcon.png")
 
 onready var bulletInstance = preload("res://KerromancerPlayer/Weapons/TestGun1/TG1Bullet.tscn")
 onready var sprite = $Sprite

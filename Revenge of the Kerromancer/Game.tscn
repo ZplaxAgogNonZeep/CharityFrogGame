@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://UI/Fonts/UITheme.tres" type="Theme" id=2]
@@ -16,6 +16,11 @@
 [ext_resource path="res://SpriteSheets/UI/HUD.png" type="Texture" id=14]
 [ext_resource path="res://SpriteSheets/Magic/Icons/EmptySpell.png" type="Texture" id=15]
 [ext_resource path="res://UI/PauseMenu/PauseMenu.gd" type="Script" id=16]
+[ext_resource path="res://UI/EquipMenuButtons.tres" type="Theme" id=17]
+[ext_resource path="res://UI/EquipMenu/WeaponSide.gd" type="Script" id=18]
+[ext_resource path="res://SpriteSheets/UI/EmptySpace.png" type="Texture" id=19]
+[ext_resource path="res://UI/EquipMenu/MagicSide.gd" type="Script" id=20]
+[ext_resource path="res://UI/PauseManager.gd" type="Script" id=21]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 1, 0, 0, 1 )
@@ -68,15 +73,15 @@ region = Rect2( 140, 0, 20, 20 )
 
 [sub_resource type="SpriteFrames" id=14]
 animations = [ {
-"frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
-"loop": true,
-"name": "Moving",
-"speed": 10.0
-}, {
 "frames": [ ExtResource( 12 ) ],
 "loop": true,
 "name": "Still",
 "speed": 5.0
+}, {
+"frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
+"loop": true,
+"name": "Moving",
+"speed": 10.0
 } ]
 
 [sub_resource type="DynamicFont" id=15]
@@ -256,18 +261,28 @@ position = Vector2( 960, 152 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 14 )
 animation = "Moving"
-frame = 4
+frame = 3
 playing = true
 
-[node name="EquipMenu" type="Control" parent="CanvasLayer/UI"]
+[node name="PauseManager" type="Control" parent="CanvasLayer/UI"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 21 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="EquipMenu" type="Control" parent="CanvasLayer/UI/PauseManager"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
 script = ExtResource( 16 )
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/UI/EquipMenu"]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/UI/PauseManager/EquipMenu"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -275,27 +290,34 @@ anchor_bottom = 0.5
 margin_left = -448.0
 margin_top = -236.0
 margin_right = 448.0
-margin_bottom = 236.0
+margin_bottom = 276.0
 color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/UI/EquipMenu"]
-margin_left = 128.0
-margin_top = 128.0
-margin_right = 192.0
-margin_bottom = 192.0
-rect_scale = Vector2( 2, 2 )
+[node name="WeaponSide" type="Control" parent="CanvasLayer/UI/PauseManager/EquipMenu"]
+anchor_right = 1.0
+margin_left = 64.0
+margin_top = 64.0
+margin_right = -64.0
+margin_bottom = 320.0
+mouse_filter = 2
+script = ExtResource( 18 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="WeaponName" type="Label" parent="CanvasLayer/UI/EquipMenu"]
-margin_left = 272.0
-margin_top = 144.0
-margin_right = 576.0
-margin_bottom = 184.0
+[node name="Sprite" type="Sprite" parent="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide"]
+position = Vector2( 128, 128 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 19 )
+
+[node name="WeaponName" type="Label" parent="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide"]
+margin_left = 216.0
+margin_top = 64.0
+margin_right = 480.0
+margin_bottom = 104.0
 custom_fonts/font = SubResource( 15 )
 custom_colors/font_color = Color( 0.0470588, 0.607843, 0, 1 )
 text = "Gatling Gun"
@@ -304,11 +326,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="CanvasLayer/UI/EquipMenu"]
-margin_left = 264.0
-margin_top = 192.0
-margin_right = 512.0
-margin_bottom = 256.0
+[node name="WeaponDesc" type="Label" parent="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide"]
+margin_left = 208.0
+margin_top = 112.0
+margin_right = 456.0
+margin_bottom = 216.0
 custom_fonts/font = SubResource( 16 )
 custom_colors/font_color = Color( 0.0117647, 0.745098, 0, 1 )
 text = "A Powerfull rapid fire gun. Be careful who you point it at!"
@@ -317,9 +339,438 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Equip" type="Button" parent="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide"]
+margin_left = 72.0
+margin_top = 208.0
+margin_right = 182.0
+margin_bottom = 232.0
+text = "Equip"
+
+[node name="EquipView" type="Control" parent="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide"]
+margin_left = 448.0
+margin_top = 64.0
+margin_right = 896.0
+margin_bottom = 192.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Left" type="Button" parent="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide/EquipView"]
+margin_left = 16.0
+margin_top = 48.0
+margin_right = 46.0
+margin_bottom = 80.0
+text = "<"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Right" type="Button" parent="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide/EquipView"]
+margin_left = 400.0
+margin_top = 48.0
+margin_right = 430.0
+margin_bottom = 80.0
+text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot0" type="Sprite" parent="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide/EquipView"]
+position = Vector2( 96, 32 )
+texture = ExtResource( 19 )
+
+[node name="Slot1" type="Sprite" parent="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide/EquipView"]
+position = Vector2( 161.083, 32 )
+texture = ExtResource( 19 )
+
+[node name="Slot2" type="Sprite" parent="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide/EquipView"]
+position = Vector2( 224, 32 )
+texture = ExtResource( 19 )
+
+[node name="Slot3" type="Sprite" parent="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide/EquipView"]
+position = Vector2( 288, 32 )
+texture = ExtResource( 19 )
+
+[node name="Slot4" type="Sprite" parent="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide/EquipView"]
+position = Vector2( 352, 32 )
+texture = ExtResource( 19 )
+
+[node name="Slot5" type="Sprite" parent="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide/EquipView"]
+position = Vector2( 96, 96 )
+texture = ExtResource( 19 )
+
+[node name="Slot6" type="Sprite" parent="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide/EquipView"]
+position = Vector2( 160, 96 )
+texture = ExtResource( 19 )
+
+[node name="Slot7" type="Sprite" parent="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide/EquipView"]
+position = Vector2( 224, 96 )
+texture = ExtResource( 19 )
+
+[node name="Slot8" type="Sprite" parent="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide/EquipView"]
+position = Vector2( 288, 96 )
+texture = ExtResource( 19 )
+
+[node name="Slot9" type="Sprite" parent="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide/EquipView"]
+position = Vector2( 352, 96 )
+texture = ExtResource( 19 )
+
+[node name="Button0" type="Button" parent="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide/EquipView"]
+margin_left = 64.0
+margin_right = 128.0
+margin_bottom = 64.0
+focus_mode = 0
+theme = ExtResource( 17 )
+toggle_mode = true
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button1" type="Button" parent="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide/EquipView"]
+margin_left = 128.0
+margin_right = 192.0
+margin_bottom = 64.0
+focus_mode = 0
+theme = ExtResource( 17 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button2" type="Button" parent="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide/EquipView"]
+margin_left = 192.0
+margin_right = 256.0
+margin_bottom = 64.0
+focus_mode = 0
+theme = ExtResource( 17 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button3" type="Button" parent="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide/EquipView"]
+margin_left = 256.0
+margin_right = 320.0
+margin_bottom = 64.0
+focus_mode = 0
+theme = ExtResource( 17 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button4" type="Button" parent="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide/EquipView"]
+margin_left = 320.0
+margin_right = 384.0
+margin_bottom = 64.0
+focus_mode = 0
+theme = ExtResource( 17 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button5" type="Button" parent="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide/EquipView"]
+margin_left = 64.0
+margin_top = 64.0
+margin_right = 128.0
+margin_bottom = 128.0
+focus_mode = 0
+theme = ExtResource( 17 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button6" type="Button" parent="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide/EquipView"]
+margin_left = 128.0
+margin_top = 64.0
+margin_right = 192.0
+margin_bottom = 128.0
+focus_mode = 0
+theme = ExtResource( 17 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button7" type="Button" parent="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide/EquipView"]
+margin_left = 192.0
+margin_top = 64.0
+margin_right = 256.0
+margin_bottom = 128.0
+focus_mode = 0
+theme = ExtResource( 17 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button8" type="Button" parent="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide/EquipView"]
+margin_left = 256.0
+margin_top = 64.0
+margin_right = 320.0
+margin_bottom = 128.0
+focus_mode = 0
+theme = ExtResource( 17 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button9" type="Button" parent="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide/EquipView"]
+margin_left = 320.0
+margin_top = 64.0
+margin_right = 384.0
+margin_bottom = 128.0
+focus_mode = 0
+theme = ExtResource( 17 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MagicSide" type="Control" parent="CanvasLayer/UI/PauseManager/EquipMenu"]
+margin_left = 64.0
+margin_top = 320.0
+margin_right = 960.0
+margin_bottom = 576.0
+script = ExtResource( 20 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="CanvasLayer/UI/PauseManager/EquipMenu/MagicSide"]
+position = Vector2( 768, 128 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 19 )
+
+[node name="Equip" type="Button" parent="CanvasLayer/UI/PauseManager/EquipMenu/MagicSide"]
+margin_left = 712.0
+margin_top = 208.0
+margin_right = 822.0
+margin_bottom = 232.0
+text = "Equip"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WeaponName" type="Label" parent="CanvasLayer/UI/PauseManager/EquipMenu/MagicSide"]
+margin_left = 416.0
+margin_top = 72.0
+margin_right = 680.0
+margin_bottom = 112.0
+custom_fonts/font = SubResource( 15 )
+custom_colors/font_color = Color( 0.0470588, 0.607843, 0, 1 )
+text = "Puff of Smoke"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WeaponDesc" type="Label" parent="CanvasLayer/UI/PauseManager/EquipMenu/MagicSide"]
+margin_left = 448.0
+margin_top = 120.0
+margin_right = 696.0
+margin_bottom = 224.0
+custom_fonts/font = SubResource( 16 )
+custom_colors/font_color = Color( 0.0117647, 0.745098, 0, 1 )
+text = "Allows you to jump again while falling."
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EquipView" type="Control" parent="CanvasLayer/UI/PauseManager/EquipMenu/MagicSide"]
+margin_top = 64.0
+margin_right = 448.0
+margin_bottom = 192.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Left" type="Button" parent="CanvasLayer/UI/PauseManager/EquipMenu/MagicSide/EquipView"]
+margin_left = 16.0
+margin_top = 48.0
+margin_right = 46.0
+margin_bottom = 80.0
+text = "<"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Left2" type="Button" parent="CanvasLayer/UI/PauseManager/EquipMenu/MagicSide/EquipView"]
+margin_left = 400.0
+margin_top = 48.0
+margin_right = 430.0
+margin_bottom = 80.0
+text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot1" type="Sprite" parent="CanvasLayer/UI/PauseManager/EquipMenu/MagicSide/EquipView"]
+position = Vector2( 96, 32 )
+texture = ExtResource( 19 )
+
+[node name="Slot2" type="Sprite" parent="CanvasLayer/UI/PauseManager/EquipMenu/MagicSide/EquipView"]
+position = Vector2( 161.083, 32 )
+texture = ExtResource( 19 )
+
+[node name="Slot3" type="Sprite" parent="CanvasLayer/UI/PauseManager/EquipMenu/MagicSide/EquipView"]
+position = Vector2( 224, 32 )
+texture = ExtResource( 19 )
+
+[node name="Slot4" type="Sprite" parent="CanvasLayer/UI/PauseManager/EquipMenu/MagicSide/EquipView"]
+position = Vector2( 288, 32 )
+texture = ExtResource( 19 )
+
+[node name="Slot5" type="Sprite" parent="CanvasLayer/UI/PauseManager/EquipMenu/MagicSide/EquipView"]
+position = Vector2( 352, 32 )
+texture = ExtResource( 19 )
+
+[node name="Slot6" type="Sprite" parent="CanvasLayer/UI/PauseManager/EquipMenu/MagicSide/EquipView"]
+position = Vector2( 96, 96 )
+texture = ExtResource( 19 )
+
+[node name="Slot7" type="Sprite" parent="CanvasLayer/UI/PauseManager/EquipMenu/MagicSide/EquipView"]
+position = Vector2( 160, 96 )
+texture = ExtResource( 19 )
+
+[node name="Slot8" type="Sprite" parent="CanvasLayer/UI/PauseManager/EquipMenu/MagicSide/EquipView"]
+position = Vector2( 224, 96 )
+texture = ExtResource( 19 )
+
+[node name="Slot9" type="Sprite" parent="CanvasLayer/UI/PauseManager/EquipMenu/MagicSide/EquipView"]
+position = Vector2( 288, 96 )
+texture = ExtResource( 19 )
+
+[node name="Slot10" type="Sprite" parent="CanvasLayer/UI/PauseManager/EquipMenu/MagicSide/EquipView"]
+position = Vector2( 352, 96 )
+texture = ExtResource( 19 )
+
+[node name="Button1" type="Button" parent="CanvasLayer/UI/PauseManager/EquipMenu/MagicSide/EquipView"]
+margin_left = 64.0
+margin_right = 128.0
+margin_bottom = 64.0
+focus_mode = 0
+theme = ExtResource( 17 )
+toggle_mode = true
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button2" type="Button" parent="CanvasLayer/UI/PauseManager/EquipMenu/MagicSide/EquipView"]
+margin_left = 128.0
+margin_right = 192.0
+margin_bottom = 64.0
+focus_mode = 0
+theme = ExtResource( 17 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button3" type="Button" parent="CanvasLayer/UI/PauseManager/EquipMenu/MagicSide/EquipView"]
+margin_left = 192.0
+margin_right = 256.0
+margin_bottom = 64.0
+focus_mode = 0
+theme = ExtResource( 17 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button4" type="Button" parent="CanvasLayer/UI/PauseManager/EquipMenu/MagicSide/EquipView"]
+margin_left = 256.0
+margin_right = 320.0
+margin_bottom = 64.0
+focus_mode = 0
+theme = ExtResource( 17 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button5" type="Button" parent="CanvasLayer/UI/PauseManager/EquipMenu/MagicSide/EquipView"]
+margin_left = 320.0
+margin_right = 384.0
+margin_bottom = 64.0
+focus_mode = 0
+theme = ExtResource( 17 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button6" type="Button" parent="CanvasLayer/UI/PauseManager/EquipMenu/MagicSide/EquipView"]
+margin_left = 64.0
+margin_top = 64.0
+margin_right = 128.0
+margin_bottom = 128.0
+focus_mode = 0
+theme = ExtResource( 17 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button7" type="Button" parent="CanvasLayer/UI/PauseManager/EquipMenu/MagicSide/EquipView"]
+margin_left = 128.0
+margin_top = 64.0
+margin_right = 192.0
+margin_bottom = 128.0
+focus_mode = 0
+theme = ExtResource( 17 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button8" type="Button" parent="CanvasLayer/UI/PauseManager/EquipMenu/MagicSide/EquipView"]
+margin_left = 192.0
+margin_top = 64.0
+margin_right = 256.0
+margin_bottom = 128.0
+focus_mode = 0
+theme = ExtResource( 17 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button9" type="Button" parent="CanvasLayer/UI/PauseManager/EquipMenu/MagicSide/EquipView"]
+margin_left = 256.0
+margin_top = 64.0
+margin_right = 320.0
+margin_bottom = 128.0
+focus_mode = 0
+theme = ExtResource( 17 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button10" type="Button" parent="CanvasLayer/UI/PauseManager/EquipMenu/MagicSide/EquipView"]
+margin_left = 320.0
+margin_top = 64.0
+margin_right = 384.0
+margin_bottom = 128.0
+focus_mode = 0
+theme = ExtResource( 17 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Transition" type="Control" parent="CanvasLayer/UI"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": true
@@ -333,3 +784,15 @@ color = Color( 0, 0, 0, 0.462745 )
 __meta__ = {
 "_edit_use_anchors_": true
 }
+[connection signal="pressed" from="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide/EquipView/Left" to="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide" method="_on_Left_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide/EquipView/Right" to="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide" method="_on_Right_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide/EquipView/Button0" to="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide" method="_on_Button0_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide/EquipView/Button1" to="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide" method="_on_Button1_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide/EquipView/Button2" to="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide" method="_on_Button2_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide/EquipView/Button3" to="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide" method="_on_Button3_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide/EquipView/Button4" to="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide" method="_on_Button4_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide/EquipView/Button5" to="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide" method="_on_Button5_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide/EquipView/Button6" to="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide" method="_on_Button6_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide/EquipView/Button7" to="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide" method="_on_Button7_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide/EquipView/Button8" to="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide" method="_on_Button8_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide/EquipView/Button9" to="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide" method="_on_Button9_pressed"]
