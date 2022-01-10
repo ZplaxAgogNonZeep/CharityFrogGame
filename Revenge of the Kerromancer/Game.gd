@@ -9,7 +9,7 @@ var flags = {
 	"SaveDataExists" : false,
 	}
 
-var unlockedWeapons = []
+var unlockedWeapons = ["TestGun1"]
 var unlockedMagic = []
 
 var respawnPoint 
@@ -39,11 +39,16 @@ func loadLevel(levelInstance):
 func openItemMenu(activeWeapon, magicSlots):
 	var count = 1
 	# Why are godot Arrays so fucking WEIRD
-	var magicSlotsNames = [magicSlots[0].name]
-	while count < magicSlots.size():
-		magicSlotsNames.append(magicSlots[count].name)
-		count +=1
-	$CanvasLayer/UI/PauseManager.loadEquipMenu(player, unlockedWeapons, activeWeapon.name, unlockedMagic, magicSlotsNames)
+	var magicSlotsNames
+	if magicSlots != []:
+		magicSlotsNames = [magicSlots[0].name]
+		while count < magicSlots.size():
+			magicSlotsNames.append(magicSlots[count].name)
+			count +=1
+	var weaponName
+	if activeWeapon != null:
+		weaponName = activeWeapon.name
+	$CanvasLayer/UI/PauseManager.loadEquipMenu(player, unlockedWeapons, weaponName, unlockedMagic, magicSlotsNames)
 
 func obtainItem(itemType, itemName):
 	var item = null

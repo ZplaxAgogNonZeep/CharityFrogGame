@@ -67,3 +67,4 @@ func setWeapon(weaponInstance):
 		get_child(0).queue_free()
 	activeWeapon = weaponInstance
 	add_child(weaponInstance)
+	get_parent().Kino_updateUI()

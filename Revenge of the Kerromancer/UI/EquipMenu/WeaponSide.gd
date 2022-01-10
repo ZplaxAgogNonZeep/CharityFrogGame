@@ -46,12 +46,18 @@ func fillEquipView():
 		$EquipView.get_node("Right").disabled = false
 
 func fillSelected():
-	var weapon = index.searchWeaponIndex(selectedWeapon).instance()
-	$Sprite.texture = weapon.icon
-	$WeaponName.text = weapon.itemName
-	$WeaponDesc.text = weapon.itemDesc
-	
-	$Equip.disabled = false
+	var weapon = index.searchWeaponIndex(selectedWeapon)
+	if weapon != null:
+		weapon = index.searchWeaponIndex(selectedWeapon).instance()
+		$Sprite.texture = weapon.icon
+		$WeaponName.text = weapon.itemName
+		$WeaponDesc.text = weapon.itemDesc
+		
+		$Equip.disabled = false
+	else:
+		$Sprite.texture = emptySlot
+		$WeaponName.text = ""
+		$WeaponDesc.text = ""
 
 func sectionMod():
 	return 10 * section
@@ -105,3 +111,8 @@ func _on_Button8_pressed():
 func _on_Button9_pressed():
 	selectedWeapon = weaponList[9 - sectionMod()]
 	fillSelected()
+
+
+func _on_Equip_pressed():
+	get_parent().playerInstance.setActiveWeapon(index.searchWeaponIndex(selectedWeapon).instance())
+	get_parent().unloadMenu()

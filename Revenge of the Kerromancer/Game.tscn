@@ -73,15 +73,15 @@ region = Rect2( 140, 0, 20, 20 )
 
 [sub_resource type="SpriteFrames" id=14]
 animations = [ {
-"frames": [ ExtResource( 12 ) ],
-"loop": true,
-"name": "Still",
-"speed": 5.0
-}, {
 "frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
 "loop": true,
 "name": "Moving",
 "speed": 10.0
+}, {
+"frames": [ ExtResource( 12 ) ],
+"loop": true,
+"name": "Still",
+"speed": 5.0
 } ]
 
 [sub_resource type="DynamicFont" id=15]
@@ -261,7 +261,7 @@ position = Vector2( 960, 152 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 14 )
 animation = "Moving"
-frame = 3
+frame = 5
 playing = true
 
 [node name="PauseManager" type="Control" parent="CanvasLayer/UI"]
@@ -784,6 +784,7 @@ color = Color( 0, 0, 0, 0.462745 )
 __meta__ = {
 "_edit_use_anchors_": true
 }
+[connection signal="pressed" from="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide/Equip" to="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide" method="_on_Equip_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide/EquipView/Left" to="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide" method="_on_Left_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide/EquipView/Right" to="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide" method="_on_Right_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide/EquipView/Button0" to="CanvasLayer/UI/PauseManager/EquipMenu/WeaponSide" method="_on_Button0_pressed"]

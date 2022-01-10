@@ -6,3 +6,6 @@ func loadMenu(player, unlockedWeapons, unlockedMagic, equipedWeapon, equipedMagi
 	playerInstance = player
 	$WeaponSide.loadWeaponSide(unlockedWeapons, equipedWeapon)
 	#$MagicSide.loadMagicSide(unlockedMagic, equipedMagic)
+
+func unloadMenu():
+	visible = false

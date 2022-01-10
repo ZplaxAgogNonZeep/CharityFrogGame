@@ -100,7 +100,7 @@ func magicUnlocked(magicInstance):
 func slideCamera(posn):
 	$Camera2D/Tween.interpolate_property($Camera2D, "position", $Camera2D.position, posn - position, 1, Tween.EASE_IN, Tween.EASE_IN_OUT)
 	$Camera2D/Tween.start()
-
+"StateMachine/Knockback"
 func resetCamera():
 	$Camera2D/Tween.interpolate_property($Camera2D, "position", $Camera2D.position, Vector2(0, -20), 1, Tween.EASE_IN, Tween.EASE_IN_OUT)
 	$Camera2D/Tween.start()
