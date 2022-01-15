@@ -1,0 +1,578 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://UI/Fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://UI/EquipMenuButtons.tres" type="Theme" id=2]
+[ext_resource path="res://SpriteSheets/Magic/Icons/EmptySpell.png" type="Texture" id=3]
+[ext_resource path="res://UI/EquipMenu/WeaponSide.gd" type="Script" id=4]
+[ext_resource path="res://UI/PauseMenu/PauseMenu.gd" type="Script" id=5]
+[ext_resource path="res://UI/EquipMenu/MagicSide.gd" type="Script" id=6]
+[ext_resource path="res://SpriteSheets/UI/EmptySpace.png" type="Texture" id=7]
+[ext_resource path="res://UI/Fonts/UITheme.tres" type="Theme" id=8]
+[ext_resource path="res://SpriteSheets/UI/EquipMenu.png" type="Texture" id=9]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 12
+font_data = ExtResource( 1 )
+
+[node name="EquipMenu" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme = ExtResource( 8 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -448.0
+margin_top = -236.0
+margin_right = 448.0
+margin_bottom = 284.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EquipMenu" type="Sprite" parent="."]
+position = Vector2( 512, 328 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 9 )
+
+[node name="WeaponSide" type="Control" parent="."]
+anchor_right = 1.0
+margin_left = 64.0
+margin_top = 64.0
+margin_right = -64.0
+margin_bottom = 320.0
+mouse_filter = 2
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="WeaponSide"]
+position = Vector2( 128, 128 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 7 )
+
+[node name="WeaponName" type="Label" parent="WeaponSide"]
+margin_left = 216.0
+margin_top = 64.0
+margin_right = 480.0
+margin_bottom = 104.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.0470588, 0.607843, 0, 1 )
+text = "Gatling Gun"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WeaponDesc" type="Label" parent="WeaponSide"]
+margin_left = 208.0
+margin_top = 112.0
+margin_right = 456.0
+margin_bottom = 216.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.0117647, 0.745098, 0, 1 )
+text = "A Powerfull rapid fire gun. Be careful who you point it at!"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Equip" type="Button" parent="WeaponSide"]
+margin_left = 72.0
+margin_top = 208.0
+margin_right = 182.0
+margin_bottom = 232.0
+text = "Equip"
+
+[node name="EquipView" type="Control" parent="WeaponSide"]
+margin_left = 448.0
+margin_top = 64.0
+margin_right = 896.0
+margin_bottom = 192.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Left" type="Button" parent="WeaponSide/EquipView"]
+margin_left = 16.0
+margin_top = 48.0
+margin_right = 46.0
+margin_bottom = 80.0
+text = "<"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Right" type="Button" parent="WeaponSide/EquipView"]
+margin_left = 400.0
+margin_top = 48.0
+margin_right = 430.0
+margin_bottom = 80.0
+text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot0" type="Sprite" parent="WeaponSide/EquipView"]
+position = Vector2( 96, 32 )
+texture = ExtResource( 7 )
+
+[node name="Slot1" type="Sprite" parent="WeaponSide/EquipView"]
+position = Vector2( 161.083, 32 )
+texture = ExtResource( 7 )
+
+[node name="Slot2" type="Sprite" parent="WeaponSide/EquipView"]
+position = Vector2( 224, 32 )
+texture = ExtResource( 7 )
+
+[node name="Slot3" type="Sprite" parent="WeaponSide/EquipView"]
+position = Vector2( 288, 32 )
+texture = ExtResource( 7 )
+
+[node name="Slot4" type="Sprite" parent="WeaponSide/EquipView"]
+position = Vector2( 352, 32 )
+texture = ExtResource( 7 )
+
+[node name="Slot5" type="Sprite" parent="WeaponSide/EquipView"]
+position = Vector2( 96, 96 )
+texture = ExtResource( 7 )
+
+[node name="Slot6" type="Sprite" parent="WeaponSide/EquipView"]
+position = Vector2( 160, 96 )
+texture = ExtResource( 7 )
+
+[node name="Slot7" type="Sprite" parent="WeaponSide/EquipView"]
+position = Vector2( 224, 96 )
+texture = ExtResource( 7 )
+
+[node name="Slot8" type="Sprite" parent="WeaponSide/EquipView"]
+position = Vector2( 288, 96 )
+texture = ExtResource( 7 )
+
+[node name="Slot9" type="Sprite" parent="WeaponSide/EquipView"]
+position = Vector2( 352, 96 )
+texture = ExtResource( 7 )
+
+[node name="Button0" type="Button" parent="WeaponSide/EquipView"]
+margin_left = 64.0
+margin_right = 128.0
+margin_bottom = 64.0
+focus_mode = 0
+theme = ExtResource( 2 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button1" type="Button" parent="WeaponSide/EquipView"]
+margin_left = 128.0
+margin_right = 192.0
+margin_bottom = 64.0
+focus_mode = 0
+theme = ExtResource( 2 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button2" type="Button" parent="WeaponSide/EquipView"]
+margin_left = 192.0
+margin_right = 256.0
+margin_bottom = 64.0
+focus_mode = 0
+theme = ExtResource( 2 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button3" type="Button" parent="WeaponSide/EquipView"]
+margin_left = 256.0
+margin_right = 320.0
+margin_bottom = 64.0
+focus_mode = 0
+theme = ExtResource( 2 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button4" type="Button" parent="WeaponSide/EquipView"]
+margin_left = 320.0
+margin_right = 384.0
+margin_bottom = 64.0
+focus_mode = 0
+theme = ExtResource( 2 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button5" type="Button" parent="WeaponSide/EquipView"]
+margin_left = 64.0
+margin_top = 64.0
+margin_right = 128.0
+margin_bottom = 128.0
+focus_mode = 0
+theme = ExtResource( 2 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button6" type="Button" parent="WeaponSide/EquipView"]
+margin_left = 128.0
+margin_top = 64.0
+margin_right = 192.0
+margin_bottom = 128.0
+focus_mode = 0
+theme = ExtResource( 2 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button7" type="Button" parent="WeaponSide/EquipView"]
+margin_left = 192.0
+margin_top = 64.0
+margin_right = 256.0
+margin_bottom = 128.0
+focus_mode = 0
+theme = ExtResource( 2 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button8" type="Button" parent="WeaponSide/EquipView"]
+margin_left = 256.0
+margin_top = 64.0
+margin_right = 320.0
+margin_bottom = 128.0
+focus_mode = 0
+theme = ExtResource( 2 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button9" type="Button" parent="WeaponSide/EquipView"]
+margin_left = 320.0
+margin_top = 64.0
+margin_right = 384.0
+margin_bottom = 128.0
+focus_mode = 0
+theme = ExtResource( 2 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MagicSide" type="Control" parent="."]
+margin_left = 64.0
+margin_top = 320.0
+margin_right = 960.0
+margin_bottom = 576.0
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="MagicSide"]
+position = Vector2( 768, 128 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 3 )
+
+[node name="Equip" type="Button" parent="MagicSide"]
+margin_left = 712.0
+margin_top = 200.0
+margin_right = 824.0
+margin_bottom = 224.0
+text = "Equip"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Unequip" type="Button" parent="MagicSide"]
+margin_left = 696.0
+margin_top = 232.0
+margin_right = 842.0
+margin_bottom = 256.0
+text = "Unequip"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MagicName" type="Label" parent="MagicSide"]
+margin_left = 416.0
+margin_top = 72.0
+margin_right = 680.0
+margin_bottom = 112.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.0470588, 0.607843, 0, 1 )
+text = "Puff of Smoke"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MagicDesc" type="Label" parent="MagicSide"]
+margin_left = 448.0
+margin_top = 120.0
+margin_right = 696.0
+margin_bottom = 224.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.0117647, 0.745098, 0, 1 )
+text = "Allows you to jump again while falling."
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EquipView" type="Control" parent="MagicSide"]
+margin_top = 64.0
+margin_right = 448.0
+margin_bottom = 192.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Left" type="Button" parent="MagicSide/EquipView"]
+margin_left = 16.0
+margin_top = 48.0
+margin_right = 46.0
+margin_bottom = 80.0
+text = "<"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Right" type="Button" parent="MagicSide/EquipView"]
+margin_left = 400.0
+margin_top = 48.0
+margin_right = 430.0
+margin_bottom = 80.0
+text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot0" type="Sprite" parent="MagicSide/EquipView"]
+position = Vector2( 96, 32 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+
+[node name="Slot1" type="Sprite" parent="MagicSide/EquipView"]
+position = Vector2( 160, 32 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+
+[node name="Slot2" type="Sprite" parent="MagicSide/EquipView"]
+position = Vector2( 224, 32 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+
+[node name="Slot3" type="Sprite" parent="MagicSide/EquipView"]
+position = Vector2( 288, 32 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+
+[node name="Slot4" type="Sprite" parent="MagicSide/EquipView"]
+position = Vector2( 352, 32 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+
+[node name="Slot5" type="Sprite" parent="MagicSide/EquipView"]
+position = Vector2( 96, 96 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+
+[node name="Slot6" type="Sprite" parent="MagicSide/EquipView"]
+position = Vector2( 160, 96 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+
+[node name="Slot7" type="Sprite" parent="MagicSide/EquipView"]
+position = Vector2( 224, 96 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+
+[node name="Slot8" type="Sprite" parent="MagicSide/EquipView"]
+position = Vector2( 288, 96 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+
+[node name="Slot9" type="Sprite" parent="MagicSide/EquipView"]
+position = Vector2( 352, 96 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+
+[node name="Button0" type="Button" parent="MagicSide/EquipView"]
+margin_left = 64.0
+margin_right = 128.0
+margin_bottom = 64.0
+focus_mode = 0
+theme = ExtResource( 2 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button1" type="Button" parent="MagicSide/EquipView"]
+margin_left = 128.0
+margin_right = 192.0
+margin_bottom = 64.0
+focus_mode = 0
+theme = ExtResource( 2 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button2" type="Button" parent="MagicSide/EquipView"]
+margin_left = 192.0
+margin_right = 256.0
+margin_bottom = 64.0
+focus_mode = 0
+theme = ExtResource( 2 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button3" type="Button" parent="MagicSide/EquipView"]
+margin_left = 256.0
+margin_right = 320.0
+margin_bottom = 64.0
+focus_mode = 0
+theme = ExtResource( 2 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button4" type="Button" parent="MagicSide/EquipView"]
+margin_left = 320.0
+margin_right = 384.0
+margin_bottom = 64.0
+focus_mode = 0
+theme = ExtResource( 2 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button5" type="Button" parent="MagicSide/EquipView"]
+margin_left = 64.0
+margin_top = 64.0
+margin_right = 128.0
+margin_bottom = 128.0
+focus_mode = 0
+theme = ExtResource( 2 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button6" type="Button" parent="MagicSide/EquipView"]
+margin_left = 128.0
+margin_top = 64.0
+margin_right = 192.0
+margin_bottom = 128.0
+focus_mode = 0
+theme = ExtResource( 2 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button7" type="Button" parent="MagicSide/EquipView"]
+margin_left = 192.0
+margin_top = 64.0
+margin_right = 256.0
+margin_bottom = 128.0
+focus_mode = 0
+theme = ExtResource( 2 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button8" type="Button" parent="MagicSide/EquipView"]
+margin_left = 256.0
+margin_top = 64.0
+margin_right = 320.0
+margin_bottom = 128.0
+focus_mode = 0
+theme = ExtResource( 2 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button9" type="Button" parent="MagicSide/EquipView"]
+margin_left = 320.0
+margin_top = 64.0
+margin_right = 384.0
+margin_bottom = 128.0
+focus_mode = 0
+theme = ExtResource( 2 )
+enabled_focus_mode = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Equip0" type="Sprite" parent="MagicSide"]
+position = Vector2( 720, 32 )
+texture = ExtResource( 3 )
+
+[node name="Equip1" type="Sprite" parent="MagicSide"]
+position = Vector2( 768, 32 )
+texture = ExtResource( 3 )
+
+[node name="Equip2" type="Sprite" parent="MagicSide"]
+position = Vector2( 816, 32 )
+texture = ExtResource( 3 )
+[connection signal="pressed" from="WeaponSide/Equip" to="WeaponSide" method="_on_Equip_pressed"]
+[connection signal="pressed" from="WeaponSide/EquipView/Left" to="WeaponSide" method="_on_Left_pressed"]
+[connection signal="pressed" from="WeaponSide/EquipView/Right" to="WeaponSide" method="_on_Right_pressed"]
+[connection signal="pressed" from="WeaponSide/EquipView/Button0" to="WeaponSide" method="_on_Button0_pressed"]
+[connection signal="pressed" from="WeaponSide/EquipView/Button1" to="WeaponSide" method="_on_Button1_pressed"]
+[connection signal="pressed" from="WeaponSide/EquipView/Button2" to="WeaponSide" method="_on_Button2_pressed"]
+[connection signal="pressed" from="WeaponSide/EquipView/Button3" to="WeaponSide" method="_on_Button3_pressed"]
+[connection signal="pressed" from="WeaponSide/EquipView/Button4" to="WeaponSide" method="_on_Button4_pressed"]
+[connection signal="pressed" from="WeaponSide/EquipView/Button5" to="WeaponSide" method="_on_Button5_pressed"]
+[connection signal="pressed" from="WeaponSide/EquipView/Button6" to="WeaponSide" method="_on_Button6_pressed"]
+[connection signal="pressed" from="WeaponSide/EquipView/Button7" to="WeaponSide" method="_on_Button7_pressed"]
+[connection signal="pressed" from="WeaponSide/EquipView/Button8" to="WeaponSide" method="_on_Button8_pressed"]
+[connection signal="pressed" from="WeaponSide/EquipView/Button9" to="WeaponSide" method="_on_Button9_pressed"]
+[connection signal="pressed" from="MagicSide/Equip" to="MagicSide" method="_on_Equip_pressed"]
+[connection signal="pressed" from="MagicSide/Unequip" to="MagicSide" method="_on_Unequip_pressed"]
+[connection signal="pressed" from="MagicSide/EquipView/Left" to="MagicSide" method="_on_Left_pressed"]
+[connection signal="pressed" from="MagicSide/EquipView/Right" to="MagicSide" method="_on_Right_pressed"]
+[connection signal="pressed" from="MagicSide/EquipView/Button0" to="MagicSide" method="_on_Button0_pressed"]
+[connection signal="pressed" from="MagicSide/EquipView/Button1" to="MagicSide" method="_on_Button1_pressed"]
+[connection signal="pressed" from="MagicSide/EquipView/Button2" to="MagicSide" method="_on_Button2_pressed"]
+[connection signal="pressed" from="MagicSide/EquipView/Button3" to="MagicSide" method="_on_Button3_pressed"]
+[connection signal="pressed" from="MagicSide/EquipView/Button4" to="MagicSide" method="_on_Button4_pressed"]
+[connection signal="pressed" from="MagicSide/EquipView/Button5" to="MagicSide" method="_on_Button5_pressed"]
+[connection signal="pressed" from="MagicSide/EquipView/Button6" to="MagicSide" method="_on_Button6_pressed"]
+[connection signal="pressed" from="MagicSide/EquipView/Button7" to="MagicSide" method="_on_Button7_pressed"]
+[connection signal="pressed" from="MagicSide/EquipView/Button8" to="MagicSide" method="_on_Button8_pressed"]
+[connection signal="pressed" from="MagicSide/EquipView/Button9" to="MagicSide" method="_on_Button9_pressed"]

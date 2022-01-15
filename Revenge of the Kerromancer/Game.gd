@@ -9,8 +9,8 @@ var flags = {
 	"SaveDataExists" : false,
 	}
 
-var unlockedWeapons = ["TestGun1"]
-var unlockedMagic = []
+var unlockedWeapons : Array = []
+var unlockedMagic : Array = ["TestMagic1"]
 
 var respawnPoint 
 

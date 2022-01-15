@@ -112,7 +112,7 @@ func getMagicSlots():
 	return $MagicManager.get_children()
 
 func getActiveWeapon():
-	return $WeaponManager.get_child(0)
+	return $WeaponManager.activeWeapon
 
 func setActiveWeapon(weaponInstance):
 	$WeaponManager.setWeapon(weaponInstance)

@@ -17,7 +17,11 @@ func _ready():
 
 func loadWeaponSide(unlockedWeapons, equipedWeapon):
 	selectedWeapon = equipedWeapon
-	weaponList = unlockedWeapons
+	if unlockedWeapons[0] == "":
+		weaponList = []
+		print(weaponList.size())
+	else:
+		weaponList = unlockedWeapons
 	fillEquipView()
 	fillSelected()
 
@@ -58,6 +62,8 @@ func fillSelected():
 		$Sprite.texture = emptySlot
 		$WeaponName.text = ""
 		$WeaponDesc.text = ""
+		
+		$Equip.disabled = true
 
 func sectionMod():
 	return 10 * section
@@ -115,4 +121,3 @@ func _on_Button9_pressed():
 
 func _on_Equip_pressed():
 	get_parent().playerInstance.setActiveWeapon(index.searchWeaponIndex(selectedWeapon).instance())
-	get_parent().unloadMenu()

@@ -2,6 +2,9 @@ extends Node2D
 
 var icon = preload("res://SpriteSheets/Magic/Icons/TestSpell3.png")
 
+var itemName = "Test Magic 3"
+var itemDesc = "Moves the camera or something? idk."
+
 var cost = 1
 
 func useMagic(kino):

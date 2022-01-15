@@ -2,6 +2,13 @@ extends Control
 
 
 func loadEquipMenu(player, unlockedWeapons, activeWeapon, unlockedMagic, magicSlots):
-	#TODO: FIX THIS
-	get_child(0).loadMenu(player, unlockedWeapons, unlockedMagic, activeWeapon, magicSlots)
-	get_child(0).visible = true
+	get_tree().paused = true
+	var menuInstance = preload("res://UI/EquipMenu/EquipMenu.tscn").instance()
+	add_child(menuInstance)
+	menuInstance.loadMenu(player, unlockedWeapons, unlockedMagic, activeWeapon, magicSlots)
+
+func unloadEquipMenu():
+	get_child(0).queue_free()
+	yield(get_tree(), "idle_frame")
+	get_tree().paused = false
+	
