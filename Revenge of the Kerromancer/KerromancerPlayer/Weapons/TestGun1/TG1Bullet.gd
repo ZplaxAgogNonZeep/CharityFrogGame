@@ -23,7 +23,7 @@ func _physics_process(delta):
 		position += velocity
 		
 		if distance == max_distance * dir:
-			despawnBullet()
+			despawnBullet(2)
 	
 	elif axis == "Up":
 		rotation_degrees = -90
@@ -32,7 +32,7 @@ func _physics_process(delta):
 		position -= velocity
 		
 		if distance == max_distance:
-			despawnBullet()
+			despawnBullet(2)
 	elif axis == "Down":
 		rotation_degrees = 90
 		velocity.y = SPEED 
@@ -40,25 +40,28 @@ func _physics_process(delta):
 		position += velocity
 		
 		if distance == max_distance:
-			despawnBullet()
+			despawnBullet(2)
 
 
 func _on_TG1Bullet_body_entered(body):
-	despawnBullet()
+	if body.is_in_group("Destructable"):
+		body.breakBlock()
+	despawnBullet(1)
 
-func despawnBullet():
+
+#func _on_TG1Bullet_area_shape_entered(_area_id, area, _area_shape, _self_shape):
+#	print("Bulllet")
+#	if area != null:
+#		if not area.is_in_group("Player_Projectile"):
+#			despawnBullet()
+
+func despawnBullet(despawnSource : int):
+	# 0 = Enemy
+	# 1 = Environment
+	# 2 = Time Out
 	set_physics_process(false)
 	$Graphic.play("Despawn")
-
-
-func _on_TG1Bullet_area_shape_entered(_area_id, area, _area_shape, _self_shape):
-	if area.is_in_group("Enemy"):
-		area.takeDamage(damage)
-	if not area.is_in_group("Player_Projectile"):
-		despawnBullet()
-
 
 func _on_Graphic_animation_finished():
 	if $Graphic.animation == "Despawn":
 		queue_free()
-		print("done")

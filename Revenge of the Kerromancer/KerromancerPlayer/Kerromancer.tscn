@@ -1,6 +1,7 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://KerromancerPlayer/Weapons/WeaponManager.gd" type="Script" id=1]
+[ext_resource path="res://KerromancerPlayer/Crush.gd" type="Script" id=2]
 [ext_resource path="res://SpriteSheets/Kerromancer/Kerromancer-Walk-Sheet.png" type="Texture" id=3]
 [ext_resource path="res://SpriteSheets/Kerromancer/Kerromancer-Idle-Sheet.png" type="Texture" id=4]
 [ext_resource path="res://SpriteSheets/Kerromancer/Kerromancer-Jump-Sheet.png" type="Texture" id=5]
@@ -44,76 +45,76 @@ atlas = ExtResource( 4 )
 region = Rect2( 512, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 5 )
+atlas = ExtResource( 12 )
 region = Rect2( 0, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=9]
-atlas = ExtResource( 5 )
+atlas = ExtResource( 12 )
 region = Rect2( 64, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=10]
-atlas = ExtResource( 5 )
+atlas = ExtResource( 12 )
 region = Rect2( 128, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=11]
-atlas = ExtResource( 5 )
+atlas = ExtResource( 12 )
 region = Rect2( 192, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=12]
-atlas = ExtResource( 5 )
+atlas = ExtResource( 12 )
 region = Rect2( 256, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=13]
-atlas = ExtResource( 3 )
-region = Rect2( 0, 0, 64, 64 )
+atlas = ExtResource( 12 )
+region = Rect2( 320, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=14]
-atlas = ExtResource( 3 )
-region = Rect2( 64, 0, 64, 64 )
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=15]
-atlas = ExtResource( 3 )
-region = Rect2( 128, 0, 64, 64 )
+atlas = ExtResource( 5 )
+region = Rect2( 64, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=16]
-atlas = ExtResource( 3 )
-region = Rect2( 192, 0, 64, 64 )
+atlas = ExtResource( 5 )
+region = Rect2( 128, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=17]
-atlas = ExtResource( 3 )
-region = Rect2( 256, 0, 64, 64 )
+atlas = ExtResource( 5 )
+region = Rect2( 192, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=18]
-atlas = ExtResource( 3 )
-region = Rect2( 320, 0, 64, 64 )
+atlas = ExtResource( 5 )
+region = Rect2( 256, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=19]
 atlas = ExtResource( 3 )
-region = Rect2( 384, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=20]
-atlas = ExtResource( 12 )
 region = Rect2( 0, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=21]
-atlas = ExtResource( 12 )
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 3 )
 region = Rect2( 64, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=22]
-atlas = ExtResource( 12 )
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 3 )
 region = Rect2( 128, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=23]
-atlas = ExtResource( 12 )
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 3 )
 region = Rect2( 192, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=24]
-atlas = ExtResource( 12 )
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 3 )
 region = Rect2( 256, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=25]
-atlas = ExtResource( 12 )
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 3 )
 region = Rect2( 320, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=25]
+atlas = ExtResource( 3 )
+region = Rect2( 384, 0, 64, 64 )
 
 [sub_resource type="SpriteFrames" id=26]
 animations = [ {
@@ -122,20 +123,20 @@ animations = [ {
 "name": "Idle",
 "speed": 10.0
 }, {
-"frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
+"frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
+"loop": true,
+"name": "Falling",
+"speed": 15.0
+}, {
+"frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
 "loop": true,
 "name": "Jump",
 "speed": 10.0
 }, {
-"frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ) ],
+"frames": [ SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ) ],
 "loop": true,
 "name": "Walk",
 "speed": 13.0
-}, {
-"frames": [ SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ) ],
-"loop": true,
-"name": "Falling",
-"speed": 15.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=27]
@@ -143,22 +144,79 @@ radius = 19.1487
 height = 60.9765
 
 [sub_resource type="RectangleShape2D" id=28]
+extents = Vector2( 8.35428, 32 )
+
+[sub_resource type="RectangleShape2D" id=29]
+extents = Vector2( 10.8958, 33.8014 )
+
+[sub_resource type="CircleShape2D" id=30]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id=31]
+radius = 16.0
+
+[sub_resource type="RectangleShape2D" id=32]
 extents = Vector2( 21.0051, 13.75 )
 
 [node name="Kerromancer" type="KinematicBody2D" groups=[
 "Player",
 ]]
+collision_layer = 2147483649
+collision_mask = 2147483649
 script = ExtResource( 11 )
 
 [node name="Graphic" type="AnimatedSprite" parent="."]
 scale = Vector2( 2, 2 )
 frames = SubResource( 26 )
-animation = "Idle"
+animation = "Falling"
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0.599818, 15.3973 )
 shape = SubResource( 27 )
+
+[node name="Crush" type="Node2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="Left" type="Area2D" parent="Crush"]
+collision_layer = 2147483658
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Crush/Left"]
+modulate = Color( 0.521569, 1, 0, 1 )
+position = Vector2( -9.68559, 15.4381 )
+shape = SubResource( 28 )
+
+[node name="Right" type="Area2D" parent="Crush"]
+collision_layer = 10
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Crush/Right"]
+modulate = Color( 0, 1, 0.25098, 1 )
+position = Vector2( 8, 16 )
+shape = SubResource( 29 )
+
+[node name="Top" type="Area2D" parent="Crush"]
+collision_layer = 10
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Crush/Top"]
+modulate = Color( 0.0313726, 1, 0, 1 )
+position = Vector2( 0, -16 )
+shape = SubResource( 30 )
+
+[node name="Bottom" type="Area2D" parent="Crush"]
+collision_layer = 10
+collision_mask = 0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Crush/Bottom"]
+modulate = Color( 0, 1, 0.0627451, 1 )
+position = Vector2( 0, 48 )
+shape = SubResource( 31 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 0.667419, -58.0429 )
@@ -174,8 +232,8 @@ script = ExtResource( 17 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interaction"]
 modulate = Color( 0, 0, 0, 1 )
-position = Vector2( 0.335785, 50.7071 )
-shape = SubResource( 28 )
+position = Vector2( 0, 48 )
+shape = SubResource( 32 )
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 10 )
@@ -196,9 +254,9 @@ script = ExtResource( 7 )
 script = ExtResource( 16 )
 
 [node name="Timer" type="Timer" parent="StateMachine/Knockback"]
+wait_time = 3.0
 
 [node name="Debug" type="Label" parent="."]
-visible = false
 margin_left = 12.5992
 margin_top = -52.9167
 margin_right = 52.5992
@@ -217,6 +275,14 @@ __meta__ = {
 
 [node name="MagicManager" type="Node2D" parent="."]
 script = ExtResource( 14 )
+[connection signal="body_entered" from="Crush/Left" to="Crush" method="_on_Left_body_entered"]
+[connection signal="body_exited" from="Crush/Left" to="Crush" method="_on_Left_body_exited"]
+[connection signal="body_entered" from="Crush/Right" to="Crush" method="_on_Right_body_entered"]
+[connection signal="body_exited" from="Crush/Right" to="Crush" method="_on_Right_body_exited"]
+[connection signal="body_entered" from="Crush/Top" to="Crush" method="_on_Top_body_entered"]
+[connection signal="body_exited" from="Crush/Top" to="Crush" method="_on_Top_body_exited"]
+[connection signal="body_entered" from="Crush/Bottom" to="Crush" method="_on_Bottom_body_entered"]
+[connection signal="body_exited" from="Crush/Bottom" to="Crush" method="_on_Bottom_body_exited"]
 [connection signal="area_entered" from="Interaction" to="Interaction" method="_on_Interaction_area_entered"]
 [connection signal="area_exited" from="Interaction" to="Interaction" method="_on_Interaction_area_exited"]
-[connection signal="timeout" from="StateMachine/Knockback/Timer" to="StateMachine/Knockback" method="_on_Timer_timeout"]
+[connection signal="timeout" from="StateMachine/Knockback/Timer" to="StateMachine" method="_on_Timer_timeout"]

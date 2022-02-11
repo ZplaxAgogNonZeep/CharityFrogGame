@@ -68,15 +68,15 @@ region = Rect2( 140, 0, 20, 20 )
 
 [sub_resource type="SpriteFrames" id=14]
 animations = [ {
-"frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
-"loop": true,
-"name": "Moving",
-"speed": 10.0
-}, {
 "frames": [ ExtResource( 12 ) ],
 "loop": true,
 "name": "Still",
 "speed": 5.0
+}, {
+"frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
+"loop": true,
+"name": "Moving",
+"speed": 10.0
 } ]
 
 [node name="Game" type="Node2D"]
@@ -105,6 +105,7 @@ __meta__ = {
 [node name="HUD" type="Control" parent="CanvasLayer/UI"]
 anchor_right = 0.21875
 anchor_bottom = 0.146667
+mouse_filter = 2
 script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": true
@@ -197,6 +198,7 @@ margin_left = -512.0
 margin_top = 108.0
 margin_right = 512.0
 margin_bottom = 300.0
+mouse_filter = 2
 script = ExtResource( 7 )
 __meta__ = {
 "_edit_lock_": true,
@@ -248,12 +250,14 @@ position = Vector2( 960, 152 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 14 )
 animation = "Moving"
-frame = 4
+frame = 1
 playing = true
 
 [node name="PauseManager" type="Control" parent="CanvasLayer/UI"]
+pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 1
 script = ExtResource( 21 )
 __meta__ = {
 "_edit_use_anchors_": true
@@ -272,6 +276,7 @@ __meta__ = {
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 color = Color( 0, 0, 0, 0.462745 )
 __meta__ = {
 "_edit_use_anchors_": true

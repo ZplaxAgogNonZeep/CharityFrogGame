@@ -36,22 +36,14 @@ func right():
 	kino.Kino_updateUI()
 
 func setMagic(magicInstances):
-	
-	print("Starting Player Routine ============")
-	
-	print("Child Count: " + str(get_child_count()))
 	if get_child_count() > 0:
 		var loopTime = get_child_count()
 		var count = 0
 		magicSlots = []
 		while count < loopTime:
-			print("COUNT IS AT: " + str(count))
-			print("to be cleared: " + str(get_child(count)))
 			if get_child(0) != null:
 				get_child(0).free()
 			count += 1
-	
-	print("after clearing " + str(get_children()))
 	
 	var count = 0
 	while count < magicInstances.size():
@@ -61,9 +53,6 @@ func setMagic(magicInstances):
 	if get_child_count() > 0:
 		primaryMagic = get_child(0)
 		magicSlots = get_children()
-		# GET CHILDREN IS THE ISSUE FIX IT
-		print("In Children Are: " + str(get_children()))
-		print("PLAYER DONE =====================")
 
 func addMagic(magicInstance):
 	if get_child_count() < 3:

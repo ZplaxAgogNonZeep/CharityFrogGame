@@ -1,7 +1,5 @@
 extends KinematicBody2D
 
-var dialogueName = "The Kerromancer"
-
 var health : int = 10
 var MAX_health : int = 10
 
@@ -13,13 +11,15 @@ var OutOfDialogue = false
 var CutSceneMode = false
 
 onready var sprite = $Graphic
-onready var game = get_tree().root.get_node("Game")
+var game = null
 
 var velocity = Vector2.ZERO
 
+
+
 func _unhandled_input(_event):
 	if Input.is_action_just_pressed("Pause"):
-		pass
+		game.callPauseMenu()
 	
 	if not CutSceneMode:
 		if Input.is_action_just_pressed("OpenMenu"):
@@ -63,6 +63,7 @@ func _physics_process(_delta):
 			$WeaponManager.changeDirection("Forward")
 
 
+
 func flip(isLeft : bool):
 	if sprite.flip_h != isLeft:
 		if not is_on_floor():
@@ -71,8 +72,8 @@ func flip(isLeft : bool):
 	sprite.flip_h = isLeft
 	$WeaponManager.setSide(isLeft)
 
-func takeDamage(dmg : int):
-	if vulnerable:
+func takeDamage(dmg : int, instaKill=false):
+	if vulnerable or instaKill:
 		health -= dmg
 		
 		if health <= 0:
@@ -98,11 +99,25 @@ func magicUnlocked(magicInstance):
 # Dialogue Functions
 
 func slideCamera(posn):
-	$Camera2D/Tween.interpolate_property($Camera2D, "position", $Camera2D.position, posn - position, 1, Tween.EASE_IN, Tween.EASE_IN_OUT)
+	$Camera2D/Tween.interpolate_property(
+		$Camera2D, 
+		"position", 
+		$Camera2D.position, 
+		posn - position, 
+		1, 
+		Tween.EASE_IN, 
+		Tween.EASE_IN_OUT)
 	$Camera2D/Tween.start()
 "StateMachine/Knockback"
 func resetCamera():
-	$Camera2D/Tween.interpolate_property($Camera2D, "position", $Camera2D.position, Vector2(0, -20), 1, Tween.EASE_IN, Tween.EASE_IN_OUT)
+	$Camera2D/Tween.interpolate_property(
+		$Camera2D, 
+		"position", 
+		$Camera2D.position, 
+		Vector2(0, -20), 
+		1, 
+		Tween.EASE_IN, 
+		Tween.EASE_IN_OUT)
 	$Camera2D/Tween.start()
 
 # ================================================================================================================
@@ -129,3 +144,4 @@ func setCutSceneMode(boolean):
 
 func Kino_updateUI():
 	game.updateUI()
+

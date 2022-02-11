@@ -52,6 +52,4 @@ func _on_Hitbox_body_entered(body):
 		body.takeDamage(damage)
 
 
-func _on_Hitbox_area_shape_entered(area_id, area, area_shape, self_shape):
-	if area.is_in_group("Player_Projectile"):
-		takeDamage(area.damage)
+

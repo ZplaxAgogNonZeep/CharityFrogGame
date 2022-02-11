@@ -1,45 +1,33 @@
 extends Node
 
-onready var parent = get_parent()
-onready var sprite = parent.get_node("Graphic")
-onready var debug = get_parent().get_node("Debug")
+var state = null
+var stateName
 
-onready var state = null
-onready var previousState = null
-var stateName = ""
+var previousState = null
+
+onready var parent = get_parent()
+onready var debug = get_parent().get_node("Label")
+onready var sprite = parent.get_node("Graphic")
 
 export (int) var speed = 400
 export (int) var jump_speed = -650
 export (int) var gravity = 1000
 
-export (float, 0, 1.0) var friction = 0.292
-export (float, 0, 1.0) var acceleration = 0.056
-
-var momentum = 0
-const MAX_MOMENTUM = 300
-
-var dir = 0
+var dir = -1
+var midAir
+var onWall = false
+var courseCorrect = false
 
 func _ready():
 	changeState("Idle")
 
 func _physics_process(delta):
-	
-	if !parent.vulnerable:
-		if parent.visible:
-			parent.visible = false
-		else:
-			parent.visible = true
-	
-	if state.has_method("physics_process") and not parent.CutSceneMode:
+	if state.has_method("physics_process"):
 		state.physics_process(delta)
 
-
-func _on_Timer_timeout():
-	if !parent.vulnerable:
-		parent.visible = true
-		parent.vulnerable = true
-		
+func flipSprite():
+	parent.scale.x *= -1
+	dir *= -1
 
 func changeState(name):
 	if state != null:
@@ -47,7 +35,6 @@ func changeState(name):
 	state = get_node(name)
 	stateName = name
 	debug.text = stateName
-	
 	if previousState != null:
 		if previousState.has_method("endState"):
 			previousState.endState()
@@ -61,8 +48,3 @@ func setAnimation(anim):
 			sprite.play(anim)
 		else:
 			sprite.play()
-
-
-
-
-

@@ -12,3 +12,8 @@ func unloadEquipMenu():
 	yield(get_tree(), "idle_frame")
 	get_tree().paused = false
 	
+
+func loadPauseMenu():
+	get_tree().paused = true
+	var menuInstance = preload("res://UI/PauseMenu/PauseMenu.tscn").instance()
+	add_child(menuInstance)

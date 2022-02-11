@@ -10,7 +10,7 @@ var flags = {
 	}
 
 var unlockedWeapons : Array = []
-var unlockedMagic : Array = ["TestMagic1"]
+var unlockedMagic : Array = []
 
 var respawnPoint 
 
@@ -32,6 +32,9 @@ func loadLevel(levelInstance):
 	$LevelManager.get_child(0).queue_free()
 	yield(get_tree(), "idle_frame")
 	$LevelManager.add_child(levelInstance)
+
+func callPauseMenu():
+	UI.get_node("PauseManager").loadPauseMenu()
 
 # ================================================================================================================================
 # Item Managing
@@ -110,13 +113,12 @@ func spawnPlayerInLevel(levelName, interactableName):
 	
 	yield(get_tree(),"idle_frame")
 	loadLevel($IndexSearch.searchLevelIndex(levelName).instance())
-	player = playerPath.instance()
-	
-	loadtemp()
-	
-	updateUI()
 	yield(get_tree(), "idle_frame")
+	player = playerPath.instance()
 	$LevelManager.get_child(0).spawnPlayer(interactableName, player)
+	loadtemp()
+	updateUI()
+	
 	UI.get_node("Transition/ColorRect").visible = false
 
 func spawn():
@@ -126,9 +128,14 @@ func spawn():
 	updateUI()
 
 func respawn():
+	extractRespawnPoint()
 	var respawnPointList = respawnPoint.split(":")
 	player.health = player.MAX_health
-	spawnPlayerInLevel(respawnPointList[0], respawnPointList[1])
+	yield(spawnPlayerInLevel(respawnPointList[0], respawnPointList[1]), "completed")
+	loadPlayer()
+	print("Respawn Called")
+
+
 #=============================================================================================================================
 # Saving Flag Data
 
@@ -195,7 +202,6 @@ func savePlayer():
 	fileString += "\n"
 	
 	var count = 0
-	print(unlockedWeapons)
 	while count < unlockedWeapons.size():
 		fileString += unlockedWeapons[count]
 		if count != unlockedWeapons.size() - 1:
@@ -224,6 +230,7 @@ func savePlayer():
 	file.close()
 
 func loadPlayer():
+	
 	var file = File.new()
 	file.open("res://Data/save_game.txt", File.READ)
 	var dataList = file.get_as_text().split("\n")
@@ -237,9 +244,10 @@ func loadPlayer():
 	var manaList = dataList[2].split("/")
 	player.mana = int(manaList[0])
 	player.MAX_mana = int(manaList[1])
-	
+
 	if $IndexSearch.searchWeaponIndex(dataList[3]) != null:
-		player.setActiveWeapon($IndexSearch.searchWeaponIndex(dataList[3]).instance())
+		#player.setActiveWeapon($IndexSearch.searchWeaponIndex(dataList[3]).instance())
+		player.call_deferred("setActiveWeapon", $IndexSearch.searchWeaponIndex(dataList[3]).instance())
 	
 	unlockedWeapons = dataList[4].split(",")
 	
@@ -257,6 +265,13 @@ func loadPlayer():
 	
 	file.close()
 	
+
+func extractRespawnPoint():
+	var file = File.new()
+	file.open("res://Data/save_game.txt", File.READ)
+	var dataList = file.get_as_text().split("\n")
+	respawnPoint = dataList[0]
+	file.close()
 
 func saveTemp():
 	var file = File.new()
@@ -317,7 +332,7 @@ func loadtemp():
 	player.MAX_mana = int(manaList[1])
 	
 	if $IndexSearch.searchWeaponIndex(dataList[3]) != null:
-		player.setActiveWeapon($IndexSearch.searchWeaponIndex(dataList[3]).instance())
+		player.call_deferred("setActiveWeapon", $IndexSearch.searchWeaponIndex(dataList[3]).instance())
 	
 	unlockedWeapons = dataList[4].split(",")
 	
@@ -329,7 +344,8 @@ func loadtemp():
 		if $IndexSearch.searchMagicIndex(magicSlotStings[count]) != null:
 			magicSlotInstances.append($IndexSearch.searchMagicIndex(magicSlotStings[count]).instance())
 		count += 1
-	player.setMagicSlots(magicSlotInstances)
+	#player.setMagicSlots(magicSlotInstances)
+	player.call_deferred("setMagicSlots", magicSlotInstances)
 	
 	unlockedMagic = dataList[6].split(",")
 	
@@ -354,6 +370,11 @@ func startNewGame():
 func continueGame():
 	gameVisibility(true)
 	player = playerPath.instance()
-	loadPlayer()
 	respawn()
 	
+
+func returnToMenu():
+	gameVisibility(false)
+	$LevelManager.get_child(0).queue_free()
+	yield(get_tree(), "idle_frame")
+	$LevelManager.add_child(preload("res://Scenes/MainMenu/MainMenu.tscn").instance())

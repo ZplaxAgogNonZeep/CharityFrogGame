@@ -6,7 +6,6 @@ func _ready():
 	pass
 
 func updateHUD(player):
-	print(player.getMagicSlots())
 	$HealthBar.max_value = player.MAX_health
 	$HealthBar.value = player.health
 	$HealthNumber.text = str(player.health)
@@ -16,7 +15,6 @@ func updateHUD(player):
 	$ManaNumber.text = str(player.mana)
 	
 	if player.getMagicSlots() != []:
-		print("In HUD: " + str(player.getMagicSlots()[0]))
 		$Primary.texture = player.getMagicSlots()[0].icon
 		
 		if player.getMagicSlots().size() >= 2:

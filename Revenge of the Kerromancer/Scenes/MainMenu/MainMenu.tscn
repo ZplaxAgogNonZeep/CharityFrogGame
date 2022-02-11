@@ -1,7 +1,48 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://UI/Fonts/UITheme.tres" type="Theme" id=1]
 [ext_resource path="res://Scenes/MainMenu/MainMenu.gd" type="Script" id=2]
+[ext_resource path="res://SpriteSheets/UI/Pointer-Sheet.png" type="Texture" id=3]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 20, 20 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 3 )
+region = Rect2( 20, 0, 20, 20 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 3 )
+region = Rect2( 40, 0, 20, 20 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 3 )
+region = Rect2( 60, 0, 20, 20 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 3 )
+region = Rect2( 80, 0, 20, 20 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 3 )
+region = Rect2( 100, 0, 20, 20 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 3 )
+region = Rect2( 120, 0, 20, 20 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 3 )
+region = Rect2( 140, 0, 20, 20 )
+
+[sub_resource type="SpriteFrames" id=9]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -52,10 +93,10 @@ __meta__ = {
 }
 
 [node name="Continue" type="Button" parent="CanvasLayer/Menu"]
-margin_left = 416.0
-margin_top = 264.0
-margin_right = 608.0
-margin_bottom = 312.0
+margin_left = 812.903
+margin_top = 234.569
+margin_right = 1004.9
+margin_bottom = 282.569
 disabled = true
 text = "Continue"
 __meta__ = {
@@ -63,10 +104,40 @@ __meta__ = {
 }
 
 [node name="New Game" type="Button" parent="CanvasLayer/Menu"]
-margin_left = 416.0
-margin_top = 328.0
-margin_right = 608.0
-margin_bottom = 376.0
+margin_left = 801.131
+margin_top = 311.182
+margin_right = 993.131
+margin_bottom = 359.182
+text = "New Game"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Pointer" type="AnimatedSprite" parent="CanvasLayer/Menu"]
+position = Vector2( 384, 304 )
+rotation = -1.5708
+scale = Vector2( 2, 2 )
+frames = SubResource( 9 )
+frame = 1
+playing = true
+
+[node name="Tween" type="Tween" parent="CanvasLayer/Menu/Pointer"]
+
+[node name="ContinueLabel" type="Label" parent="CanvasLayer/Menu"]
+margin_left = 424.0
+margin_top = 296.0
+margin_right = 592.0
+margin_bottom = 328.0
+text = "Continue"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NewGameLabel" type="Label" parent="CanvasLayer/Menu"]
+margin_left = 424.0
+margin_top = 360.0
+margin_right = 592.0
+margin_bottom = 392.0
 text = "New Game"
 __meta__ = {
 "_edit_use_anchors_": false
