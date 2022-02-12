@@ -104,7 +104,7 @@ position = Vector2( 392, 272 )
 rotation = -1.5708
 scale = Vector2( 2, 2 )
 frames = SubResource( 9 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="Tween" type="Tween" parent="Pointer"]

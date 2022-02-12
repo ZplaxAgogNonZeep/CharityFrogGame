@@ -11,7 +11,7 @@ func startState():
 	kino.velocity.x = 0
 	kino.velocity.y = -300
 	kino.vulnerable = false
-	$Timer.start(1)
+	$Timer.start(2)
 	sm.setAnimation("Falling")
 
 func physics_process(_delta):

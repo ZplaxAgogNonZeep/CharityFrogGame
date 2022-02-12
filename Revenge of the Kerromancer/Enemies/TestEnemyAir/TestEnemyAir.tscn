@@ -6,9 +6,12 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 35.876, 35.3632 )
 
-[node name="TestEnemyAir" type="KinematicBody2D"]
+[node name="TestEnemyAir" type="KinematicBody2D" groups=[
+"Crushable",
+"Enemy",
+]]
 collision_layer = 2147483648
-collision_mask = 2
+collision_mask = 10
 script = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -26,7 +29,8 @@ visible = false
 polygon = PoolVector2Array( 32, -32, 32, 32, -32, 32, -32, -32, 31, -32 )
 
 [node name="Hitbox" type="Area2D" parent="."]
-collision_mask = 1025
+collision_layer = 1025
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 visible = false

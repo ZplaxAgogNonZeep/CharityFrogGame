@@ -24,7 +24,6 @@ func _ready():
 	changeState("Idle")
 
 func _physics_process(delta):
-	
 	if !parent.vulnerable:
 		if parent.visible:
 			parent.visible = false
@@ -39,7 +38,7 @@ func _on_Timer_timeout():
 	if !parent.vulnerable:
 		parent.visible = true
 		parent.vulnerable = true
-		
+
 
 func changeState(name):
 	if state != null:
@@ -61,8 +60,3 @@ func setAnimation(anim):
 			sprite.play(anim)
 		else:
 			sprite.play()
-
-
-
-
-

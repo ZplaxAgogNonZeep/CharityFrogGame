@@ -213,6 +213,7 @@ position = Vector2( 0, -88 )
 position = Vector2( 416, 32 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 7 )
+frame = 4
 playing = true
 
 [node name="Interactables" type="Node2D" parent="."]
@@ -266,7 +267,6 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Interactables/SaveCrystal"]
 frames = SubResource( 28 )
 animation = "New Anim"
-frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/SaveCrystal"]

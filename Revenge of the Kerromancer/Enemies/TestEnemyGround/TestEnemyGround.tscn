@@ -51,11 +51,11 @@ animations = [ {
 "speed": 10.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=13]
+[sub_resource type="CapsuleShape2D" id=12]
 radius = 26.1429
 height = 58.4493
 
-[sub_resource type="CapsuleShape2D" id=12]
+[sub_resource type="CapsuleShape2D" id=13]
 radius = 29.9184
 height = 83.934
 
@@ -70,40 +70,36 @@ script = ExtResource( 4 )
 position = Vector2( 0, -32 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 11 )
-frame = 1
+frame = 6
 playing = true
 
 [node name="Right" type="RayCast2D" parent="."]
 position = Vector2( 6.92053, -1.73654 )
-enabled = true
 cast_to = Vector2( 64, 0 )
 collision_mask = 2
 collide_with_areas = true
 
 [node name="Left" type="RayCast2D" parent="."]
 position = Vector2( -9.07947, -1.73654 )
-enabled = true
 cast_to = Vector2( -64, 0 )
 collision_mask = 2147483650
 collide_with_areas = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 modulate = Color( 1, 0.843137, 0, 1 )
 position = Vector2( -4.01147, -5.66325 )
 rotation = 1.5708
-shape = SubResource( 13 )
+shape = SubResource( 12 )
 
 [node name="Hitbox" type="Area2D" parent="." groups=[
 "Enemy",
 ]]
-collision_layer = 1024
-collision_mask = 1024
+collision_layer = 1025
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-visible = false
 position = Vector2( -1.88776, -5.89922 )
 rotation = 1.5708
-shape = SubResource( 12 )
-[connection signal="area_shape_entered" from="Hitbox" to="." method="_on_Hitbox_area_shape_entered"]
+shape = SubResource( 13 )
+[connection signal="area_entered" from="Hitbox" to="." method="_on_Hitbox_area_entered"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_Hitbox_body_entered"]

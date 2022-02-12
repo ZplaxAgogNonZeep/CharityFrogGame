@@ -74,7 +74,6 @@ func _on_Hitbox_body_entered(body):
 
 func _on_Hitbox_area_entered(area):
 	if area.is_in_group("Player_Projectile"):
-		print("enemy took damage")
 		takeDamage(area.damage)
 		area.despawnBullet(0)
 

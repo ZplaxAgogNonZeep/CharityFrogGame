@@ -35,19 +35,21 @@ func getDir():
 
 func takeDamage(dmg):
 	health -= dmg
-	
 	get_tree().root.get_node("Game").callDamageNumber(dmg, position)
-	
 	if health <= 0:
 		health = 0
 		die()
-	
-	
 
 func die():
 	queue_free()
 
+func _on_Hitbox_area_entered(area):
+	if area.is_in_group("Player_Projectile"):
+		takeDamage(area.damage)
+		area.despawnBullet(0)
+
 func _on_Hitbox_body_entered(body):
+	print(body.name)
 	if body.is_in_group("Player"):
 		body.takeDamage(damage)
 
