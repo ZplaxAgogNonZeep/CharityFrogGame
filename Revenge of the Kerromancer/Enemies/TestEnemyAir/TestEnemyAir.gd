@@ -13,20 +13,12 @@ const damage = 1
 
 var forward = true
 
-#func _physics_process(_delta):
-#	if horizontal:
-#		if dir != getDir():
-#			dir = getDir()
-#			print(getDir())
-#		velocity.x = lerp(velocity.x, dir * 100, 0.056)
-#		velocity.y = 0
-#		velocity = move_and_slide(velocity, Vector2.ZERO)
-#	else:
-#		if dir != getDir():
-#			dir = getDir()
-#		velocity.y = lerp(velocity.y, dir * 100, 0.056)
-#		velocity.x = 0
-#		velocity = move_and_slide(velocity, Vector2.ZERO)
+var playerInRange
+var playerBody
+
+func _physics_process(_delta):
+	if playerInRange:
+		damagePlayer(playerBody)
 
 #func getDir():
 #	if horizontal:
@@ -66,10 +58,14 @@ func takeDamage(dmg):
 func die():
 	queue_free()
 
+func damagePlayer(body):
+	body.takeDamage(damage)
 
 func _on_Hitbox_body_entered(body):
 	if body.is_in_group("Player"):
-		body.takeDamage(damage)
+		playerInRange = true
+		playerBody = body
+		damagePlayer(body)
 
 
 func _on_Hitbox_area_entered(area):
@@ -77,6 +73,9 @@ func _on_Hitbox_area_entered(area):
 		takeDamage(area.damage)
 		area.despawnBullet(0)
 
+func _on_Hitbox_body_exited(body):
+	if body.is_in_group("Player"):
+		playerInRange = false
 
 func _on_Tween_tween_all_completed():
 	forward = !forward
@@ -85,3 +84,6 @@ func _on_Tween_tween_all_completed():
 	else:
 		$Tween.interpolate_property(self, "position", end, start, speed, Tween.TRANS_SINE)
 	$Tween.start()
+
+
+

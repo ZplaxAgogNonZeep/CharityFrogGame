@@ -161,7 +161,9 @@ collision_mask = 0
 format = 1
 tile_data = PoolIntArray( -655356, 17, 0, -655355, 17, 0, -655351, 17, 0, -589820, 17, 0, -589819, 17, 0, -589815, 17, 0, -524284, 17, 0, -524283, 17, 0, -524279, 17, 0, -458748, 17, 0, -458747, 17, 0, -393212, 17, 0, -393211, 17, 0, -327676, 17, 0, -327675, 17, 0, -327666, 13, 0, -262140, 17, 0, -262139, 17, 0, -262130, 15, 0, -196604, 17, 0, -196603, 17, 0, -196594, 15, 0, -131068, 17, 0, -131067, 17, 0, -131065, 14, 0, -131058, 16, 0, -65532, 17, 0, -65531, 17, 0, -65529, 15, 0, -65526, 14, 0, 4, 17, 0, 5, 17, 0, 7, 1073741837, 0, 10, 15, 0, 65546, 15, 0, 131079, 13, 0, 131082, 15, 0, 196615, 16, 0, 196618, 16, 0 )
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="TileMap" type="TileMap" parent="." groups=[
+"Crushable",
+]]
 scale = Vector2( 2, 2 )
 tile_set = ExtResource( 12 )
 cell_size = Vector2( 32, 32 )
@@ -213,7 +215,6 @@ position = Vector2( 0, -88 )
 position = Vector2( 416, 32 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 7 )
-frame = 4
 playing = true
 
 [node name="Interactables" type="Node2D" parent="."]
@@ -267,6 +268,7 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Interactables/SaveCrystal"]
 frames = SubResource( 28 )
 animation = "New Anim"
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/SaveCrystal"]

@@ -74,7 +74,9 @@ collision_mask = 0
 visible = false
 polygon = PoolVector2Array( -8, 8, -312, 120, -416, -104, -336, -168, 0, 0 )
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." groups=[
+"Hitbox",
+]]
 collision_layer = 1025
 collision_mask = 0
 
@@ -86,3 +88,4 @@ shape = SubResource( 4 )
 [connection signal="body_entered" from="View" to="StateMachine/Idle" method="_on_View_body_entered"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_Hitbox_area_entered"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_Hitbox_body_entered"]
+[connection signal="body_exited" from="Hitbox" to="." method="_on_Hitbox_body_exited"]

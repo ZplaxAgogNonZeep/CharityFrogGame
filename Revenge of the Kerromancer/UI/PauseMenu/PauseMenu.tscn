@@ -100,14 +100,22 @@ __meta__ = {
 }
 
 [node name="Pointer" type="AnimatedSprite" parent="."]
-position = Vector2( 392, 272 )
+position = Vector2( 392, 224 )
 rotation = -1.5708
 scale = Vector2( 2, 2 )
 frames = SubResource( 9 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="Tween" type="Tween" parent="Pointer"]
+
+[node name="Label" type="Label" parent="."]
+margin_left = 440.0
+margin_top = 216.0
+margin_right = 592.0
+margin_bottom = 235.0
+theme = ExtResource( 2 )
+text = "Continue"
 [connection signal="pressed" from="MainMenu" to="." method="_on_MainMenu_pressed"]
 [connection signal="pressed" from="Opions" to="." method="_on_Opions_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_Quit_pressed"]
