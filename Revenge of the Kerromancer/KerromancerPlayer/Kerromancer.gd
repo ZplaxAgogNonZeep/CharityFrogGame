@@ -7,6 +7,10 @@ var mana : int = 5
 var MAX_mana : int = 5
 
 var vulnerable = true
+
+var shielded := false
+var activeShield = null
+
 var OutOfDialogue = false
 var CutSceneMode = false
 
@@ -74,15 +78,19 @@ func flip(isLeft : bool):
 
 func takeDamage(dmg : int, instaKill=false):
 	if vulnerable or instaKill:
-		health -= dmg
-		
-		if health <= 0:
-			health = 0
-			die()
-		
-		game.updateUI()
-		get_tree().root.get_node("Game").callDamageNumber(dmg, position)
-		$StateMachine.changeState("Knockback")
+		if shielded:
+			activeShield.pokeShield(dmg)
+			$StateMachine.changeState("Knockback")
+		else:
+			health -= dmg
+			
+			if health <= 0:
+				health = 0
+				die()
+			
+			game.updateUI()
+			get_tree().root.get_node("Game").callDamageNumber(dmg, position)
+			$StateMachine.changeState("Knockback")
 
 func die():
 	game.respawn()
@@ -119,6 +127,12 @@ func resetCamera():
 		Tween.EASE_IN, 
 		Tween.EASE_IN_OUT)
 	$Camera2D/Tween.start()
+
+# ================================================================================================================
+# Particle Effects
+
+func EmitParticles():
+	$PlayerParticles.emitting = true
 
 # ================================================================================================================
 # Getters and Setters

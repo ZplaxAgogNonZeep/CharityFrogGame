@@ -6,6 +6,7 @@ onready var kino = get_parent().get_parent()
 var active = false
 
 func startState():
+	kino.resetRaycast()
 	sm.midAir = false
 	active = true
 	sm.setAnimation("Idle")
@@ -25,14 +26,19 @@ func physics_process(_delta):
 	kino.velocity.x = 0
 
 func PlayerInRange():
-	kino.position += Vector2(0, -1)
-	sm.changeState("Jump")
+	sm.setAnimation("Alert")
 
 func _on_View_body_entered(body):
-	if active:
+	if active and kino.isPlayerVisible(body.position):
 		PlayerInRange()
 
 func _on_Timer_timeout():
 	if active:
 		sm.flipSprite()
 		$Timer.start(3)
+
+
+func _on_Graphic_animation_finished():
+	if kino.get_node("Graphic").animation == "Alert":
+		kino.position += Vector2(0, -1)
+		sm.changeState("Jump")

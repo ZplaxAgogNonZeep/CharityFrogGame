@@ -18,7 +18,9 @@ func _physics_process(_delta):
 	if playerInRange:
 		damagePlayer(playerBody)
 	
+
 	if dir != getDir():
+		scale.x *= -1
 		dir = getDir()
 	
 	velocity.x = lerp(velocity.x, dir * 100, 0.056)
@@ -30,12 +32,6 @@ func getDir():
 	if velocity.x == 0:
 		return dir * -1
 	else:
-		if $Right.is_colliding():
-			return -1
-		
-		if $Left.is_colliding():
-			return 1
-		
 		return dir
 
 func takeDamage(dmg):

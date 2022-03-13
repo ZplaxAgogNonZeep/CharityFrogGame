@@ -12,7 +12,7 @@ var damage = 1
 var distance = 0
 var max_distance = 300
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if axis == "Horizontal":
 		if dir < 0:
 			$Graphic.flip_h = true

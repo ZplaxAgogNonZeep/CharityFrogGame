@@ -9,8 +9,10 @@ func interact():
 		pass
 
 func _on_Interaction_area_entered(area):
-	activeArea = area
+	if area.is_in_group("Interactable"):
+		activeArea = area
 
 
 func _on_Interaction_area_exited(area):
-	activeArea = null
+	if area.is_in_group("Interactable"):
+		activeArea = null

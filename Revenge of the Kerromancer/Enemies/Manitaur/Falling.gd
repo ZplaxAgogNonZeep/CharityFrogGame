@@ -9,16 +9,15 @@ var stateName
 var previousState = null
 
 onready var parent = get_parent()
-onready var debug = get_parent().get_node("Label")
-onready var sprite = parent.get_node("Graphic")
 
 func _ready():
 	pass
 
 
 func startState():
-	#sm.setAnimation("Falling")
+	sm.setAnimation("Falling")
 	sm.midAir = true
+	
 
 func endState():
 	kino.velocity.x = 0

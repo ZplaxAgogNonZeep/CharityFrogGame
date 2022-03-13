@@ -6,7 +6,7 @@ onready var kino = get_parent().get_parent()
 
 func startState():
 	sm.setAnimation("Jump")
-	kino.velocity.y = -625
+	kino.velocity.y = -630
 
 
 func physics_process(_delta):

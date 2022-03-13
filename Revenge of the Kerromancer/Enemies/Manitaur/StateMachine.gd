@@ -26,8 +26,11 @@ func _physics_process(delta):
 		state.physics_process(delta)
 
 func flipSprite():
+	var current = $Idle.active
+	$Idle.active = false
 	parent.scale.x *= -1
 	dir *= -1
+	$Idle.active = current
 
 func changeState(name):
 	if state != null:

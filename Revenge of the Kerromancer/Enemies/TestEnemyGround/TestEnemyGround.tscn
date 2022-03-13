@@ -51,13 +51,12 @@ animations = [ {
 "speed": 10.0
 } ]
 
-[sub_resource type="CapsuleShape2D" id=12]
-radius = 26.1429
-height = 58.4493
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 26.8075, 58.4577 )
 
 [sub_resource type="CapsuleShape2D" id=13]
-radius = 29.9184
-height = 83.934
+radius = 30.3391
+height = 61.0208
 
 [node name="TestEnemyGround" type="KinematicBody2D" groups=[
 "Enemy",
@@ -70,8 +69,9 @@ script = ExtResource( 4 )
 position = Vector2( 0, -32 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 11 )
-frame = 8
+frame = 4
 playing = true
+flip_h = true
 
 [node name="Right" type="RayCast2D" parent="."]
 position = Vector2( 6.92053, -1.73654 )
@@ -87,7 +87,7 @@ collide_with_areas = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 modulate = Color( 1, 0.843137, 0, 1 )
-position = Vector2( -4.01147, -5.66325 )
+position = Vector2( 2.34531, 4.93139 )
 rotation = 1.5708
 shape = SubResource( 12 )
 
@@ -98,7 +98,7 @@ collision_layer = 1025
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2( -1.88776, -5.89922 )
+position = Vector2( 4.46902, 2.04674 )
 rotation = 1.5708
 shape = SubResource( 13 )
 [connection signal="area_entered" from="Hitbox" to="." method="_on_Hitbox_area_entered"]

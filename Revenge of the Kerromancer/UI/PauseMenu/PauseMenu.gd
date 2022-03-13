@@ -7,7 +7,7 @@ func loadMenu(player, unlockedWeapons, unlockedMagic, equipedWeapon, equipedMagi
 	$WeaponSide.loadWeaponSide(unlockedWeapons, equipedWeapon)
 	$MagicSide.loadMagicSide(unlockedMagic, equipedMagic)
 
-func _unhandled_input(event):
+func _unhandled_input(_event):
 	if Input.is_action_just_pressed("OpenMenu"):
 		get_parent().unloadEquipMenu()
 

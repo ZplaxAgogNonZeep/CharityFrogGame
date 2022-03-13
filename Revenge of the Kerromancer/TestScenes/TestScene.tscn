@@ -215,11 +215,14 @@ position = Vector2( 0, -88 )
 position = Vector2( 416, 32 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 7 )
+frame = 4
 playing = true
 
 [node name="Interactables" type="Node2D" parent="."]
 
-[node name="TestDoor" type="Area2D" parent="Interactables"]
+[node name="TestDoor" type="Area2D" parent="Interactables" groups=[
+"Interactable",
+]]
 position = Vector2( 1248, 128 )
 scale = Vector2( 2, 2 )
 collision_layer = 4
@@ -237,7 +240,9 @@ visible = false
 position = Vector2( 0, 20 )
 shape = SubResource( 8 )
 
-[node name="TestSign" type="Area2D" parent="Interactables"]
+[node name="TestSign" type="Area2D" parent="Interactables" groups=[
+"Interactable",
+]]
 position = Vector2( 160, 64 )
 scale = Vector2( 2, 2 )
 collision_layer = 4
@@ -255,7 +260,9 @@ visible = false
 position = Vector2( 0, 16 )
 shape = SubResource( 9 )
 
-[node name="SaveCrystal" type="Area2D" parent="Interactables"]
+[node name="SaveCrystal" type="Area2D" parent="Interactables" groups=[
+"Interactable",
+]]
 position = Vector2( 1056, 0 )
 scale = Vector2( 2, 2 )
 collision_layer = 4
@@ -268,7 +275,7 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Interactables/SaveCrystal"]
 frames = SubResource( 28 )
 animation = "New Anim"
-frame = 2
+frame = 12
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/SaveCrystal"]
@@ -281,6 +288,9 @@ script = ExtResource( 2 )
 
 [node name="BulletManager" type="Node2D" parent="."]
 script = ExtResource( 3 )
+
+[node name="CinderOrb" type="Node2D" parent="BulletManager"]
+position = Vector2( 15, 0 )
 
 [node name="EnemyManager" type="Node2D" parent="."]
 script = ExtResource( 5 )
@@ -299,6 +309,9 @@ position = Vector2( 1.974, 288.301 )
 
 [node name="Jumper" parent="EnemyManager" instance=ExtResource( 18 )]
 position = Vector2( -136, 192 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( -296, 160 )
 
 [editable path="Collidables/LinearPlatform"]
 

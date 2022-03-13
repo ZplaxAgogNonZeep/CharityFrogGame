@@ -47,21 +47,21 @@ func _on_Bottom_body_entered(body):
 
 
 
-func _on_Left_body_exited(body):
+func _on_Left_body_exited(_body):
 	print("Left Exit")
 	horizontalCollision = false
 
 
-func _on_Right_body_exited(body):
+func _on_Right_body_exited(_body):
 	print("Right Exit")
 	horizontalCollision = false
 
 
-func _on_Top_body_exited(body):
+func _on_Top_body_exited(_body):
 	print("Top Exit")
 	verticalCollision = false
 
 
-func _on_Bottom_body_exited(body):
+func _on_Bottom_body_exited(_body):
 	print("Bottom Exit")
 	verticalCollision = false

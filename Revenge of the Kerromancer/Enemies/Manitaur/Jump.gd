@@ -9,8 +9,6 @@ var stateName
 var previousState = null
 
 onready var parent = get_parent()
-onready var debug = get_parent().get_node("Label")
-onready var sprite = parent.get_node("Graphic")
 
 var firstFrameofState
 
@@ -21,9 +19,8 @@ func _ready():
 func startState():
 	firstFrameofState = true
 	sm.midAir = true
-	#sm.setAnimation("Jump")
+	sm.setAnimation("Jump")
 	kino.velocity.y = -625
-	
 	
 	kino.velocity.x = 200 * sm.dir
 	print("Start Jump dir: " + str(sm.dir))

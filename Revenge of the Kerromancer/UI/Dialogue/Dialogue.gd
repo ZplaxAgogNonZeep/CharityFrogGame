@@ -18,7 +18,7 @@ func _ready():
 	set_physics_process(false)
 	set_process_unhandled_input(false)
 
-func _unhandled_input(event):
+func _unhandled_input(_event):
 	if boolBoxMode:
 		if Input.is_action_just_pressed("Up"):
 			if !isYes:
@@ -47,7 +47,7 @@ func _unhandled_input(event):
 		elif Input.is_action_just_pressed("Interact") and !printing:
 			nextPage()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	printing = true
 	if $Label.percent_visible < 1:
 		$Label.percent_visible = lerp(0, 1, $Label.percent_visible + SPEED)

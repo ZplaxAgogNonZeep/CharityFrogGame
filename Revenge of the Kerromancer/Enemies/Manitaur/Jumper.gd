@@ -21,6 +21,29 @@ func die():
 func damagePlayer(body):
 	body.takeDamage(damage)
 
+func isPlayerVisible(playerPosn):
+	if (position.x - playerPosn.x) < 0:
+		$RayCast2D.cast_to = Vector2((position.x - playerPosn.x), -1 * (position.y - playerPosn.y))
+	else:
+		$RayCast2D.cast_to = Vector2((position.x - playerPosn.x) * -1, -1 * (position.y - playerPosn.y))
+	
+	$RayCast2D.force_raycast_update()
+	if $RayCast2D.is_colliding():
+		if $RayCast2D.get_collider().is_in_group("Player"):
+			return true
+	return false
+
+func resetRaycast():
+	print("Reset called")
+	$RayCast2D.cast_to = Vector2(-300, 0)
+	yield(get_tree(), "idle_frame")
+	$RayCast2D.force_raycast_update()
+	
+	if $RayCast2D.is_colliding():
+		print($RayCast2D.get_collider().name)
+		if $RayCast2D.get_collider().is_in_group("Player"):
+			get_node("StateMachine/Idle").PlayerInRange()
+
 func _on_Hitbox_area_entered(area):
 	if area.is_in_group("Player_Projectile"):
 		print("enemy took damage")
