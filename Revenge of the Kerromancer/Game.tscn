@@ -250,7 +250,7 @@ position = Vector2( 960, 152 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 14 )
 animation = "Moving"
-frame = 6
+frame = 3
 playing = true
 
 [node name="PauseManager" type="Control" parent="CanvasLayer/UI"]

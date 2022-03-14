@@ -12,6 +12,9 @@ var damage = 1
 var distance = 0
 var max_distance = 300
 
+func _ready():
+	print("Bullet Spawned at " + str(global_position))
+
 func _physics_process(_delta):
 	if axis == "Horizontal":
 		if dir < 0:
@@ -20,7 +23,7 @@ func _physics_process(_delta):
 			$Graphic.flip_h = false
 		velocity.x = SPEED * dir
 		distance += velocity.x
-		position += velocity
+		global_position += velocity
 		
 		if distance == max_distance * dir:
 			despawnBullet(2)
@@ -29,15 +32,16 @@ func _physics_process(_delta):
 		rotation_degrees = -90
 		velocity.y = SPEED
 		distance += velocity.y
-		position -= velocity
+		global_position -= velocity
 		
 		if distance == max_distance:
 			despawnBullet(2)
+			
 	elif axis == "Down":
 		rotation_degrees = 90
 		velocity.y = SPEED 
 		distance += velocity.y
-		position += velocity
+		global_position += velocity
 		
 		if distance == max_distance:
 			despawnBullet(2)

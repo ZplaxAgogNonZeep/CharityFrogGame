@@ -14,6 +14,7 @@ const MAX_BULLETS = 3
 
 
 func shoot(axis):
+	print(global_position)
 	$Sprite.play("Fire")
 	var dir = 1
 	var posn = $RightShootPosn
@@ -24,12 +25,19 @@ func shoot(axis):
 	if rotation_degrees != 0:
 		posn = $RightShootPosn
 	
-	get_tree().root.get_node("Game").get_node("LevelManager").get_child(0).get_node("BulletManager").spawnBullet(
-		get_parent().get_parent().position + getPosition(posn), 
-		dir,
-		axis,
+	$BulletManager.spawnBullet(
+		posn.position, 
+		dir, 
+		axis, 
 		bulletInstance.instance(), 
 		MAX_BULLETS)
+	
+#	get_tree().root.get_node("Game").get_node("LevelManager").get_child(0).get_node("BulletManager").spawnBullet(
+#		get_parent().get_parent().position + getPosition(posn), 
+#		dir,
+#		axis,
+#		bulletInstance.instance(), 
+#		MAX_BULLETS)
 
 func getPosition(posn):
 	if rotation_degrees == -90:

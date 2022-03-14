@@ -131,8 +131,11 @@ func resetCamera():
 # ================================================================================================================
 # Particle Effects
 
-func EmitParticles():
-	$PlayerParticles.emitting = true
+func setParticles(boolean):
+	$PlayerParticles.emitting = boolean
+
+func setParticleTexture(preloadedPath):
+	$PlayerParticles.texture = preloadedPath
 
 # ================================================================================================================
 # Getters and Setters
