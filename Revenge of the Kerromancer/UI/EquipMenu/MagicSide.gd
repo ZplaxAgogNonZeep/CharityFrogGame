@@ -25,18 +25,17 @@ func loadMagicSide(unlockedMagic, equipedMagic):
 	
 	if unlockedMagic[0] == "":
 		magicList = []
-		print(magicList.size())
+
 	else:
 		magicList = unlockedMagic
 	
-	print("START MENU=====================================================")
-	print("IN MENU equipedMagic: " + str(equipedMagic))
+
 	
 	fillEquipView()
 	fillSelected()
 	updateEquip()
 	
-	print("DONE MENU ===============================")
+
 	
 func fillEquipView():
 	var count = 0
@@ -121,7 +120,7 @@ func updateEquip():
 		get_node("Equip1").texture = preload("res://SpriteSheets/Magic/Icons/EmptySpell.png")
 		get_node("Equip2").texture = preload("res://SpriteSheets/Magic/Icons/EmptySpell.png")
 	
-	print("Magic Equiped: " + str(equipedMagic))
+
 	
 	var magicInstances = []
 	var count = 0
@@ -130,8 +129,7 @@ func updateEquip():
 			magicInstances.append(index.searchMagicIndex(equipedMagic[count]).instance())
 			count += 1
 	
-	print("Magic Instances: " + str(magicInstances))
-	
+
 	get_parent().playerInstance.setMagicSlots(magicInstances)
 	game.updateUI()
 

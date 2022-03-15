@@ -8,6 +8,7 @@ const TestMagic3 = "res://KerromancerPlayer/Magic/Spells/TestMagic3/TestMagic3.t
 const PuffofSmoke = "res://KerromancerPlayer/Magic/Spells/PuffofSmoke.tscn"
 const TailwindLunge = "res://KerromancerPlayer/Magic/Spells/TailwindLunge.tscn"
 const BouncingBubble = "res://KerromancerPlayer/Magic/Spells/BouncingBubble.tscn"
+const CinderOrb = "res://KerromancerPlayer/Magic/Spells/CinderOrb.tscn"
 
 const TestScene = "res://TestScenes/TestScene.tscn"
 
@@ -32,6 +33,8 @@ func searchMagicIndex(name):
 			return preload(TailwindLunge)
 		"BouncingBubble":
 			return preload(BouncingBubble)
+		"CinderOrb":
+			return preload(CinderOrb)
 		_:
 			return null
 

@@ -19,7 +19,7 @@ func loadWeaponSide(unlockedWeapons, equipedWeapon):
 	selectedWeapon = equipedWeapon
 	if unlockedWeapons[0] == "":
 		weaponList = []
-		print(weaponList.size())
+
 	else:
 		weaponList = unlockedWeapons
 	fillEquipView()

@@ -23,7 +23,6 @@ func startState():
 	kino.velocity.y = -625
 	
 	kino.velocity.x = 200 * sm.dir
-	print("Start Jump dir: " + str(sm.dir))
 
 func endState():
 	pass

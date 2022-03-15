@@ -15,7 +15,7 @@ func startState():
 		kino.velocity = Vector2(speed, 0)
 	
 	$Timer.start(MAX_Distance/speed)
-	print(str(MAX_Distance/speed))
+
 
 func endState():
 	if kino.get_node("Graphic").flip_h:

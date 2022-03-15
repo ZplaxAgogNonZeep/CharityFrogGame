@@ -4,9 +4,7 @@ onready var sm = get_parent()
 onready var kino = get_parent().get_parent()
 
 func startState():
-	print(kino.position)
 	kino.position = kino.position + Vector2(0, -5)
-	print(kino.position)
 	sm.momentum = 0
 	kino.velocity.x = 0
 	kino.velocity.y = -300

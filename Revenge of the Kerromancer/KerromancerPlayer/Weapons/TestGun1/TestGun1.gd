@@ -12,47 +12,89 @@ onready var sprite = $Sprite
 
 const MAX_BULLETS = 3
 
+enum DIRECTION {
+	UP,
+	DOWN,
+	FORWARD
+}
+enum SIDE {
+	LEFT,
+	RIGHT
+}
 
-func shoot(axis):
-	print(global_position)
+var currentDirection = DIRECTION.FORWARD
+var currentSide = SIDE.RIGHT
+
+func setSide(side):
+	currentSide = side
+	if side == SIDE.RIGHT:
+		sprite.flip_h = false
+	elif side == SIDE.LEFT:
+		sprite.flip_h = true
+	setDirection(currentDirection)
+
+func setDirection(direction):
+	currentDirection = direction
+	match direction:
+		DIRECTION.UP:
+			if currentSide == SIDE.RIGHT:
+				sprite.rotation_degrees = -90
+			else:
+				sprite.rotation_degrees = 90
+		DIRECTION.DOWN:
+			if currentSide == SIDE.RIGHT:
+				sprite.rotation_degrees = 90
+			else:
+				sprite.rotation_degrees = -90
+		DIRECTION.FORWARD:
+			sprite.rotation_degrees = 0
+		_:
+			pass
+
+func shoot():
 	$Sprite.play("Fire")
-	var dir = 1
-	var posn = $RightShootPosn
-	if get_parent().get_parent().sprite.flip_h:
-		dir = -1
-		posn = $LeftShootPosn
 	
-	if rotation_degrees != 0:
-		posn = $RightShootPosn
-	
-	$BulletManager.spawnBullet(
-		posn.position, 
-		dir, 
-		axis, 
-		bulletInstance.instance(), 
-		MAX_BULLETS)
-	
-#	get_tree().root.get_node("Game").get_node("LevelManager").get_child(0).get_node("BulletManager").spawnBullet(
-#		get_parent().get_parent().position + getPosition(posn), 
-#		dir,
-#		axis,
-#		bulletInstance.instance(), 
-#		MAX_BULLETS)
+	match currentDirection:
+		DIRECTION.UP:
+			var dir = 1
+			find_parent("PlayerManager").get_parent().get_node("LevelBullets").spawnBullet(
+				$UpPosn.global_position, 
+				dir, 
+				DIRECTION.UP,
+				currentSide, 
+				bulletInstance.instance(), 
+				MAX_BULLETS)
+		DIRECTION.DOWN:
+			var dir = -1
+			find_parent("PlayerManager").get_parent().get_node("LevelBullets").spawnBullet(
+				$DownPosn.global_position, 
+				dir, 
+				DIRECTION.DOWN,
+				currentSide,
+				bulletInstance.instance(), 
+				MAX_BULLETS)
+		DIRECTION.FORWARD:
+			if currentSide == SIDE.RIGHT:
+				var dir = 1
+				find_parent("PlayerManager").get_parent().get_node("LevelBullets").spawnBullet(
+					$RightPosn.global_position, 
+					dir, 
+					DIRECTION.FORWARD,
+					currentSide, 
+					bulletInstance.instance(), 
+					MAX_BULLETS)
+			else:
+				var dir = -1
+				find_parent("PlayerManager").get_parent().get_node("LevelBullets").spawnBullet(
+					$LeftPosn.global_position, 
+					dir, 
+					DIRECTION.FORWARD,
+					currentSide, 
+					bulletInstance.instance(), 
+					MAX_BULLETS)
+		_:
+			pass
 
-func getPosition(posn):
-	if rotation_degrees == -90:
-		if get_parent().get_parent().sprite.flip_h:
-			return position + posn.position
-		else:
-			return position - posn.position
-		
-	elif rotation_degrees == 90:
-		if get_parent().get_parent().sprite.flip_h:
-			return position - posn.position
-		else:
-			return position + posn.position
-	
-	return position + posn.position
 
 
 func _on_Sprite_animation_finished():

@@ -11,7 +11,7 @@ func activate():
 
 func returnedYes():
 	var location = get_parent().get_parent().name + ":" + name
-	print(location)
+
 	game.respawnPoint = location
 	game.savePlayer()
 	game.saveFlags()

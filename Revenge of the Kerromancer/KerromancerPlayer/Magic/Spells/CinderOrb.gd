@@ -5,14 +5,24 @@ var itemName = "Cinder Orb"
 var itemDesc = "Fires a ball of cinders both forward and backward"
 
 var icon = preload("res://icon.png")
-var bulletInstance = null
+var bulletInstance = preload("res://KerromancerPlayer/Weapons/Fireball.tscn")
 var cost = 0
+
+enum DIRECTION {
+	UP,
+	DOWN,
+	FORWARD
+}
+enum SIDE {
+	LEFT,
+	RIGHT
+}
 
 func useMagic(kino):
 	if kino.mana >= 0 and cost <= kino.mana:
 		kino.mana -= cost
 		
-		var level = get_parent().kino.get_parent().get_parent()
+		var level = find_parent("PlayerManager").get_parent().get_node("LevelBullets")
 		
-		level.get_node("BulletManager").spawnBullet($FireSpawn.global_position, 1, "Horizontal", bulletInstance, 5)
-		level.get_node("BulletManager").spawnBullet($FireSpawn.global_position, -1, "Horizontal", bulletInstance, 5)
+		level.spawnBullet($FireSpawn.global_position, 1,DIRECTION.FORWARD, SIDE.RIGHT, bulletInstance.instance(), 5)
+		level.spawnBullet($FireSpawn.global_position, -1, DIRECTION.FORWARD, SIDE.LEFT, bulletInstance.instance(), 5)

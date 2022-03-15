@@ -2,49 +2,63 @@ extends Area2D
 
 # Move Forward, stop on collision, or about end of screen.
 
+var type := "TG1"
+
 var dir = 0
 const SPEED = 10
 var velocity = Vector2.ZERO
 
-var axis = ""
+enum DIRECTION {
+	UP,
+	DOWN,
+	FORWARD
+}
+
+enum SIDE {
+	LEFT,
+	RIGHT
+}
+
+var currentDirection = DIRECTION.FORWARD
+var currentSide = SIDE.RIGHT
 
 var damage = 1
 var distance = 0
 var max_distance = 300
 
-func _ready():
-	print("Bullet Spawned at " + str(global_position))
 
 func _physics_process(_delta):
-	if axis == "Horizontal":
-		if dir < 0:
-			$Graphic.flip_h = true
-		else:
-			$Graphic.flip_h = false
-		velocity.x = SPEED * dir
-		distance += velocity.x
-		global_position += velocity
-		
-		if distance == max_distance * dir:
+	match currentDirection:
+		DIRECTION.FORWARD:
+			if dir < 0:
+				$Graphic.flip_h = true
+			else:
+				$Graphic.flip_h = false
+			velocity.x = SPEED * dir
+			distance += velocity.x
+			global_position += velocity
+
+			if distance == max_distance * dir:
+				despawnBullet(2)
+		DIRECTION.UP:
+			rotation_degrees = -90
+			velocity.y = SPEED
+			distance += velocity.y
+			global_position -= velocity
+
+			if distance == max_distance:
+				despawnBullet(2)
+		DIRECTION.DOWN:
+			rotation_degrees = 90
+			velocity.y = SPEED 
+			distance += velocity.y
+			global_position += velocity
+
+			if distance == max_distance:
+				despawnBullet(2)
+		_:
 			despawnBullet(2)
-	
-	elif axis == "Up":
-		rotation_degrees = -90
-		velocity.y = SPEED
-		distance += velocity.y
-		global_position -= velocity
-		
-		if distance == max_distance:
-			despawnBullet(2)
-			
-	elif axis == "Down":
-		rotation_degrees = 90
-		velocity.y = SPEED 
-		distance += velocity.y
-		global_position += velocity
-		
-		if distance == max_distance:
-			despawnBullet(2)
+
 
 
 func _on_TG1Bullet_body_entered(body):
@@ -63,9 +77,5 @@ func despawnBullet(despawnSource : int):
 	# 0 = Enemy
 	# 1 = Environment
 	# 2 = Time Out
-	set_physics_process(false)
-	$Graphic.play("Despawn")
-
-func _on_Graphic_animation_finished():
-	if $Graphic.animation == "Despawn":
-		queue_free()
+	get_parent().removeBullet(type)
+	queue_free()

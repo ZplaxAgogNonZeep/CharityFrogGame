@@ -2,65 +2,36 @@ extends Node2D
 
 var activeWeapon
 
-var directionName = ""
+enum DIRECTION {
+	UP,
+	DOWN,
+	FORWARD
+}
+
+enum SIDE {
+	LEFT,
+	RIGHT
+}
+
+var currentDirection
+var currentSide
 
 # This is an Unholy Abomination but damn does it do the job
+# Haha not anymore
 
 func onShootPressed():
 	if activeWeapon != null:
-		if activeWeapon.rotation_degrees == 0:
-			activeWeapon.shoot("Horizontal")
-			
-		elif activeWeapon.sprite.flip_h:
-			if activeWeapon.rotation_degrees > 0:
-				activeWeapon.shoot("Up")
-			if activeWeapon.rotation_degrees < 0:
-				activeWeapon.shoot("Down")
-				
-		elif not activeWeapon.sprite.flip_h:
-			if activeWeapon.rotation_degrees > 0:
-				activeWeapon.shoot("Down")
-			if activeWeapon.rotation_degrees < 0:
-				activeWeapon.shoot("Up")
-	
+		activeWeapon.shoot()
 
-func setSide(isLeft):
+
+func setSide(side):
 	if activeWeapon != null:
-		if(isLeft):
-			activeWeapon.position.x = 6
-			if directionName == "Down":
-				activeWeapon.rotation_degrees = -90
-			elif directionName == "Up":
-				activeWeapon.rotation_degrees = 90
-		else:
-			activeWeapon.position.x = -6
-			if directionName == "Down":
-				activeWeapon.rotation_degrees = 90
-			elif directionName == "Up":
-				activeWeapon.rotation_degrees = -90
-		
-		activeWeapon.sprite.flip_h = isLeft
+		activeWeapon.setSide(side)
 
 
 func changeDirection(direction):
 	if activeWeapon != null:
-		if direction == "Up":
-			if activeWeapon.sprite.flip_h:
-				activeWeapon.rotation_degrees = 90
-			else:
-				activeWeapon.rotation_degrees = -90
-			directionName = "Up"
-			
-		elif direction == "Down":
-			if activeWeapon.sprite.flip_h:
-				activeWeapon.rotation_degrees = -90
-			else:
-				activeWeapon.rotation_degrees = 90
-			directionName = "Down"
-			
-		elif direction == "Forward":
-			activeWeapon.rotation_degrees = 0
-			directionName = "Forward"
+		activeWeapon.setDirection(direction)
 	
 func setWeapon(weaponInstance):
 	if get_child_count() > 0:

@@ -133,7 +133,7 @@ func respawn():
 	player.health = player.MAX_health
 	yield(spawnPlayerInLevel(respawnPointList[0], respawnPointList[1]), "completed")
 	loadPlayer()
-	print("Respawn Called")
+
 
 
 #=============================================================================================================================

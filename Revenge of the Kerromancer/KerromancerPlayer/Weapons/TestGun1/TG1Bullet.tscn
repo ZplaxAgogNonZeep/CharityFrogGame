@@ -67,11 +67,10 @@ script = ExtResource( 1 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 10 )
 animation = "Base"
-frame = 2
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0.176781, 1.08168 )
 shape = SubResource( 11 )
 [connection signal="body_entered" from="." to="." method="_on_TG1Bullet_body_entered"]
-[connection signal="animation_finished" from="Graphic" to="." method="_on_Graphic_animation_finished"]

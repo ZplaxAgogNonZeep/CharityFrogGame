@@ -78,7 +78,6 @@ func nextPage():
 		elif dialogue[posn].substr(0, 3) == ":B:":
 			readBoolPage()
 		else:
-			print("SOMETHING IS WRONG")
 			endDialogue()
 
 func startDialogue(nSpeaker, dialogueTree, isPause):
@@ -101,7 +100,6 @@ func startDialogue(nSpeaker, dialogueTree, isPause):
 	elif dialogue[posn].substr(0, 3) == ":B:":
 		readBoolPage()
 	else:
-		print("SOMETHING IS WRONG")
 		endDialogue()
 
 func endDialogue():

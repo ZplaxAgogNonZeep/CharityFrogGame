@@ -19,7 +19,20 @@ var game = null
 
 var velocity = Vector2.ZERO
 
+enum DIRECTION {
+	UP,
+	DOWN,
+	FORWARD
+}
 
+var currentDirection = DIRECTION.FORWARD
+
+enum SIDE {
+	LEFT,
+	RIGHT
+}
+
+var currentSide = SIDE.RIGHT
 
 func _unhandled_input(_event):
 	if Input.is_action_just_pressed("Pause"):
@@ -54,19 +67,17 @@ func _physics_process(_delta):
 		velocity = move_and_slide(velocity, Vector2.UP)
 	else:
 		if Input.is_action_pressed("Up"):
-			$WeaponManager.changeDirection("Up")
+			$WeaponManager.changeDirection(DIRECTION.UP)
 		elif not is_on_floor() and Input.is_action_pressed("Down"):
-			$WeaponManager.changeDirection("Down")
+			$WeaponManager.changeDirection(DIRECTION.DOWN)
 		
 		if Input.is_action_just_released("Up") and not Input.is_action_pressed("Down"):
-			$WeaponManager.changeDirection("Forward")
+			$WeaponManager.changeDirection(DIRECTION.FORWARD)
 		elif Input.is_action_just_released("Down") and not Input.is_action_pressed("Up"):
-			$WeaponManager.changeDirection("Forward")
+			$WeaponManager.changeDirection(DIRECTION.FORWARD)
 		
 		if Input.is_action_pressed("Down") and is_on_floor():
-			$WeaponManager.changeDirection("Forward")
-
-
+			$WeaponManager.changeDirection(DIRECTION.FORWARD)
 
 func flip(isLeft : bool):
 	if sprite.flip_h != isLeft:
@@ -74,7 +85,12 @@ func flip(isLeft : bool):
 			$StateMachine.momentum = 0
 	
 	sprite.flip_h = isLeft
-	$WeaponManager.setSide(isLeft)
+	
+	if isLeft:
+		$WeaponManager.setSide(SIDE.LEFT)
+	else:
+		$WeaponManager.setSide(SIDE.RIGHT)
+
 
 func takeDamage(dmg : int, instaKill=false):
 	if vulnerable or instaKill:
