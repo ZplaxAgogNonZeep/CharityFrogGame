@@ -15,13 +15,15 @@ func startState():
 		kino.velocity = Vector2(speed, 0)
 	
 	$Timer.start(MAX_Distance/speed)
-
+	
+	kino.setParticles(true)
 
 func endState():
 	if kino.get_node("Graphic").flip_h:
 		kino.velocity.x = sm.speed * -1
 	else:
 		kino.velocity.x = sm.speed
+	kino.setParticles(false)
 
 func physics_process(_delta):
 

@@ -14,7 +14,7 @@ export var dialogueText : PoolStringArray = [
 var secondDialogueText = ["oh and take this"]
 
 var lastDialogue = ["No more free handouts!"]
-
+ 
 func activate():
 	if posn == 0:
 		get_tree().root.get_node("Game").callDialogue(self, dialogueText)
@@ -25,7 +25,7 @@ func activate():
 func finishDialogue():
 	if posn == 0:
 		get_tree().root.get_node("Game").obtainItem("Weapon", "TestGun1")
-		get_tree().root.get_node("Game").obtainItem("Magic", "CinderOrb")
+		get_tree().root.get_node("Game").obtainItem("Magic", "TailwindLunge")
 		posn += 1
 	elif posn == 1:
 		get_tree().root.get_node("Game").obtainItem("Magic", "TestMagic2")
