@@ -25,6 +25,8 @@ var currentSide = SIDE.RIGHT
 var currentJumps := 0
 var MAX_Jumps := 4
 
+var jumpSpacer := false
+
 func _ready():
 	add_collision_exception_with(find_parent("LevelBullets").get_parent().get_node("PlayerManager").get_child(0))
 
@@ -34,12 +36,15 @@ func _physics_process(_delta):
 	velocity.y += gravity * _delta
 	velocity = move_and_slide(velocity, Vector2.UP)
 	
-	if is_on_floor():
+	if is_on_floor() and not jumpSpacer:
+		jumpSpacer = true
 		currentJumps += 1
 		if currentJumps >= MAX_Jumps:
 			$Hitbox.despawnBullet(2)
 		else:
 			velocity.y -= 300
+	else:
+		jumpSpacer = false
 	
 	if is_on_wall():
 		dir *= -1
