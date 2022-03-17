@@ -19,6 +19,7 @@ enum SIDE {
 	RIGHT
 }
 
+
 var currentDirection = DIRECTION.FORWARD
 var currentSide = SIDE.RIGHT
 
@@ -27,13 +28,24 @@ var distance = 0
 var max_distance = 300
 
 
-func _physics_process(_delta):
+
+func _ready():
 	match currentDirection:
 		DIRECTION.FORWARD:
 			if dir < 0:
 				$Graphic.flip_h = true
 			else:
 				$Graphic.flip_h = false
+		DIRECTION.UP:
+			rotation_degrees = -90
+		DIRECTION.DOWN:
+			rotation_degrees = 90
+		_:
+			pass
+
+func _physics_process(_delta):
+	match currentDirection:
+		DIRECTION.FORWARD:
 			velocity.x = SPEED * dir
 			distance += velocity.x
 			global_position += velocity
@@ -41,7 +53,7 @@ func _physics_process(_delta):
 			if distance == max_distance * dir:
 				despawnBullet(2)
 		DIRECTION.UP:
-			rotation_degrees = -90
+
 			velocity.y = SPEED
 			distance += velocity.y
 			global_position -= velocity
@@ -49,7 +61,7 @@ func _physics_process(_delta):
 			if distance == max_distance:
 				despawnBullet(2)
 		DIRECTION.DOWN:
-			rotation_degrees = 90
+
 			velocity.y = SPEED 
 			distance += velocity.y
 			global_position += velocity

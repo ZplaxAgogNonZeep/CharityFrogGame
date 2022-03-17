@@ -47,6 +47,13 @@ func _unhandled_input(_event):
 		
 		if Input.is_action_just_pressed("Shoot"):
 			$WeaponManager.onShootPressed()
+		
+		if Input.is_action_pressed("Shoot"):
+			$WeaponManager.onShootHold()
+		
+		if Input.is_action_just_released("Shoot"):
+			$WeaponManager.onShootRelease()
+		
 		if Input.is_action_just_pressed("Magic"):
 			$MagicManager.onMagicPressed()
 		

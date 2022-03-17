@@ -23,6 +23,14 @@ func onShootPressed():
 	if activeWeapon != null:
 		activeWeapon.shoot()
 
+func onShootHold():
+	if activeWeapon != null and activeWeapon.has_method("hold"):
+		activeWeapon.hold()
+
+func onShootRelease():
+	if activeWeapon != null and activeWeapon.has_method("release"):
+		activeWeapon.release()
+		
 
 func setSide(side):
 	if activeWeapon != null:

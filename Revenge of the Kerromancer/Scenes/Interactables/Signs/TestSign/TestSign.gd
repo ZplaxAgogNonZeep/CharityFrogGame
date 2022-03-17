@@ -24,7 +24,7 @@ func activate():
 		get_tree().root.get_node("Game").callDialogue(self, lastDialogue)
 func finishDialogue():
 	if posn == 0:
-		get_tree().root.get_node("Game").obtainItem("Weapon", "TestGun1")
+		get_tree().root.get_node("Game").obtainItem("Weapon", "Gatling")
 		get_tree().root.get_node("Game").obtainItem("Magic", "TailwindLunge")
 		posn += 1
 	elif posn == 1:

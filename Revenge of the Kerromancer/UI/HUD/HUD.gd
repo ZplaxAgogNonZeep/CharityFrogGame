@@ -2,6 +2,9 @@ extends Control
 
 onready var empty = preload("res://SpriteSheets/Magic/Icons/EmptySpell.png")
 
+onready var manaFull = preload("res://SpriteSheets/UI/Tadpole.png")
+onready var manaEmpty = preload("res://SpriteSheets/UI/TadpoleEmpty.png")
+
 func _ready():
 	pass
 
@@ -10,9 +13,29 @@ func updateHUD(player):
 	$HealthBar.value = player.health
 	$HealthNumber.text = str(player.health)
 	
-	$ManaBar.max_value = player.MAX_mana
-	$ManaBar.value = player.mana
-	$ManaNumber.text = str(player.mana)
+	# MANA STUFFS
+	
+	var value = player.mana
+	var MAX_mana = player.MAX_mana
+	
+	var count = 0
+	while count < MAX_mana:
+		get_node("Mana" + str(count)).texture = manaEmpty
+		count += 1
+	
+	if MAX_mana < 10:
+		while count < 10:
+			print(count)
+			get_node("Mana" + str(count)).texture = null
+			count += 1
+	
+	count = 0
+	while count < value:
+		get_node("Mana" + str(count)).texture = manaFull
+		count += 1
+	
+	# END MANA
+	
 	
 	if player.getMagicSlots() != []:
 		$Primary.texture = player.getMagicSlots()[0].icon

@@ -1,6 +1,7 @@
 extends Node
 
 const TestGun1 = "res://KerromancerPlayer/Weapons/TestGun1/TestGun1.tscn"
+const Gatling = "res://KerromancerPlayer/Weapons/Gatling.tscn"
 
 const TestMagic1 = "res://KerromancerPlayer/Magic/Spells/TestMagic1/TestMagic1.tscn"
 const TestMagic2 = "res://KerromancerPlayer/Magic/Spells/TestMagic2/TestMagic2.tscn"
@@ -16,6 +17,8 @@ func searchWeaponIndex(name):
 	match name:
 		"TestGun1":
 			return preload(TestGun1)
+		"Gatling":
+			return preload(Gatling)
 		_:
 			return null
 
