@@ -6,7 +6,7 @@ extends Node2D
 var itemName = "Tailwind Lunge"
 var itemDesc = "Use in air to lunge forward"
 
-var icon = preload("res://icon.png")
+var icon = preload("res://SpriteSheets/Magic/Icons/TailwindLungeIcon.png")
 
 var cost = 1
 

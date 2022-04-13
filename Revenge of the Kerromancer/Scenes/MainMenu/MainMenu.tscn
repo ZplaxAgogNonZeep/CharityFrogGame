@@ -64,7 +64,8 @@ __meta__ = {
 }
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/Menu"]
-anchor_right = 1.0
+anchor_left = 0.0078125
+anchor_right = 1.00781
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 1 )
 __meta__ = {
@@ -93,10 +94,10 @@ __meta__ = {
 }
 
 [node name="Continue" type="Button" parent="CanvasLayer/Menu"]
-margin_left = 812.903
-margin_top = 234.569
-margin_right = 1004.9
-margin_bottom = 282.569
+margin_left = 1120.0
+margin_top = 240.0
+margin_right = 1312.0
+margin_bottom = 288.0
 disabled = true
 text = "Continue"
 __meta__ = {
@@ -104,10 +105,10 @@ __meta__ = {
 }
 
 [node name="New Game" type="Button" parent="CanvasLayer/Menu"]
-margin_left = 801.131
-margin_top = 311.182
-margin_right = 993.131
-margin_bottom = 359.182
+margin_left = 1048.0
+margin_top = 320.0
+margin_right = 1240.0
+margin_bottom = 368.0
 text = "New Game"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -118,7 +119,7 @@ position = Vector2( 384, 304 )
 rotation = -1.5708
 scale = Vector2( 2, 2 )
 frames = SubResource( 9 )
-frame = 1
+frame = 6
 playing = true
 
 [node name="Tween" type="Tween" parent="CanvasLayer/Menu/Pointer"]
@@ -139,6 +140,18 @@ margin_top = 360.0
 margin_right = 592.0
 margin_bottom = 392.0
 text = "New Game"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/Menu"]
+margin_left = 664.0
+margin_top = 528.0
+margin_right = 1025.0
+margin_bottom = 591.0
+text = "Z = Jump
+X = Shoot
+C = Interact/Select"
 __meta__ = {
 "_edit_use_anchors_": false
 }

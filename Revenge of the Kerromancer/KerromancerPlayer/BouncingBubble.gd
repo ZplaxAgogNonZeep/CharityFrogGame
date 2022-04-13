@@ -5,7 +5,7 @@ extends Node2D
 var itemName = "Bouncing Bubble"
 var itemDesc = "Shields the player from one hit for a limited time"
 
-var icon = preload("res://icon.png")
+var icon = preload("res://SpriteSheets/Magic/Icons/BubbleIcon.png")
 
 var cost = 0
 

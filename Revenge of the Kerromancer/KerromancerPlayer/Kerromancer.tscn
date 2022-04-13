@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://KerromancerPlayer/Weapons/WeaponManager.gd" type="Script" id=1]
 [ext_resource path="res://KerromancerPlayer/Crush.gd" type="Script" id=2]
@@ -17,146 +17,176 @@
 [ext_resource path="res://KerromancerPlayer/StateMachine/Tailwind Lunge.gd" type="Script" id=15]
 [ext_resource path="res://KerromancerPlayer/StateMachine/KMKnockback.gd" type="Script" id=16]
 [ext_resource path="res://KerromancerPlayer/Interaction.gd" type="Script" id=17]
+[ext_resource path="res://SpriteSheets/Kerromancer/Kerromancer-Dash-Sheet.png" type="Texture" id=18]
 
 [sub_resource type="AtlasTexture" id=1]
-atlas = ExtResource( 5 )
+atlas = ExtResource( 18 )
 region = Rect2( 0, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 5 )
+atlas = ExtResource( 18 )
 region = Rect2( 64, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 5 )
+atlas = ExtResource( 18 )
 region = Rect2( 128, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 5 )
+atlas = ExtResource( 18 )
 region = Rect2( 192, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 5 )
+atlas = ExtResource( 18 )
 region = Rect2( 256, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 12 )
-region = Rect2( 0, 0, 64, 64 )
+atlas = ExtResource( 18 )
+region = Rect2( 320, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 12 )
-region = Rect2( 64, 0, 64, 64 )
+region = Rect2( 0, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 12 )
-region = Rect2( 128, 0, 64, 64 )
+region = Rect2( 64, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 12 )
-region = Rect2( 192, 0, 64, 64 )
+region = Rect2( 128, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 12 )
-region = Rect2( 256, 0, 64, 64 )
+region = Rect2( 192, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 12 )
-region = Rect2( 320, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=12]
-atlas = ExtResource( 4 )
-region = Rect2( 0, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=13]
-atlas = ExtResource( 4 )
-region = Rect2( 192, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=14]
-atlas = ExtResource( 4 )
 region = Rect2( 256, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=15]
-atlas = ExtResource( 4 )
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 12 )
 region = Rect2( 320, 0, 64, 64 )
 
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 5 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 5 )
+region = Rect2( 128, 0, 64, 64 )
+
 [sub_resource type="AtlasTexture" id=16]
-atlas = ExtResource( 4 )
-region = Rect2( 384, 0, 64, 64 )
+atlas = ExtResource( 5 )
+region = Rect2( 192, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=17]
-atlas = ExtResource( 4 )
-region = Rect2( 448, 0, 64, 64 )
+atlas = ExtResource( 5 )
+region = Rect2( 256, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=18]
 atlas = ExtResource( 4 )
-region = Rect2( 512, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=19]
-atlas = ExtResource( 3 )
 region = Rect2( 0, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=20]
-atlas = ExtResource( 3 )
-region = Rect2( 64, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=21]
-atlas = ExtResource( 3 )
-region = Rect2( 128, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=22]
-atlas = ExtResource( 3 )
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 4 )
 region = Rect2( 192, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=23]
-atlas = ExtResource( 3 )
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 4 )
 region = Rect2( 256, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=24]
-atlas = ExtResource( 3 )
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 4 )
 region = Rect2( 320, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 4 )
+region = Rect2( 384, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 4 )
+region = Rect2( 448, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 4 )
+region = Rect2( 512, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=25]
 atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 3 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 3 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 3 )
+region = Rect2( 192, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 3 )
+region = Rect2( 256, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 3 )
+region = Rect2( 320, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 3 )
 region = Rect2( 384, 0, 64, 64 )
 
-[sub_resource type="SpriteFrames" id=26]
+[sub_resource type="SpriteFrames" id=32]
 animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ],
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
 "loop": true,
-"name": "Jump",
-"speed": 10.0
+"name": "Dash",
+"speed": 15.0
 }, {
-"frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
+"frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
 "loop": true,
 "name": "Falling",
 "speed": 15.0
 }, {
-"frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
+"frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ],
+"loop": true,
+"name": "Jump",
+"speed": 10.0
+}, {
+"frames": [ SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ) ],
 "loop": true,
 "name": "Idle",
 "speed": 10.0
 }, {
-"frames": [ SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ) ],
+"frames": [ SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ) ],
 "loop": true,
 "name": "Walk",
 "speed": 13.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=27]
+[sub_resource type="RectangleShape2D" id=33]
 extents = Vector2( 18.9855, 48.3882 )
 
-[sub_resource type="RectangleShape2D" id=28]
+[sub_resource type="RectangleShape2D" id=34]
 extents = Vector2( 8.35428, 20.2173 )
 
-[sub_resource type="RectangleShape2D" id=29]
+[sub_resource type="RectangleShape2D" id=35]
 extents = Vector2( 10.8958, 21.176 )
 
-[sub_resource type="CircleShape2D" id=30]
+[sub_resource type="CircleShape2D" id=36]
 radius = 16.0
 
-[sub_resource type="CircleShape2D" id=31]
+[sub_resource type="CircleShape2D" id=37]
 radius = 16.0
 
-[sub_resource type="RectangleShape2D" id=32]
+[sub_resource type="RectangleShape2D" id=38]
 extents = Vector2( 21.0051, 13.75 )
 
 [node name="Kerromancer" type="KinematicBody2D" groups=[
@@ -176,8 +206,9 @@ gravity = Vector2( 0, 0 )
 
 [node name="Graphic" type="AnimatedSprite" parent="."]
 scale = Vector2( 2, 2 )
-frames = SubResource( 26 )
-animation = "Idle"
+frames = SubResource( 32 )
+animation = "Dash"
+frame = 5
 playing = true
 __meta__ = {
 "_edit_lock_": true
@@ -186,7 +217,7 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2( 0, 16 )
-shape = SubResource( 27 )
+shape = SubResource( 33 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -202,7 +233,7 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Crush/Left"]
 modulate = Color( 0.521569, 1, 0, 1 )
 position = Vector2( -6.31236, 17.4224 )
-shape = SubResource( 28 )
+shape = SubResource( 34 )
 
 [node name="Right" type="Area2D" parent="Crush"]
 collision_layer = 10
@@ -211,7 +242,7 @@ collision_mask = 10
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Crush/Right"]
 modulate = Color( 0, 1, 0.25098, 1 )
 position = Vector2( 6.21417, 17.7858 )
-shape = SubResource( 29 )
+shape = SubResource( 35 )
 
 [node name="Top" type="Area2D" parent="Crush"]
 collision_layer = 10
@@ -220,7 +251,7 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Crush/Top"]
 modulate = Color( 0.0313726, 1, 0, 1 )
 position = Vector2( 0.198425, -15.0079 )
-shape = SubResource( 30 )
+shape = SubResource( 36 )
 
 [node name="Bottom" type="Area2D" parent="Crush"]
 collision_layer = 10
@@ -229,7 +260,7 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Crush/Bottom"]
 modulate = Color( 0, 1, 0.0627451, 1 )
 position = Vector2( 0.595276, 46.0158 )
-shape = SubResource( 31 )
+shape = SubResource( 37 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 0.667419, -58.0429 )
@@ -252,7 +283,7 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interaction"]
 modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 0, 48 )
-shape = SubResource( 32 )
+shape = SubResource( 38 )
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 10 )

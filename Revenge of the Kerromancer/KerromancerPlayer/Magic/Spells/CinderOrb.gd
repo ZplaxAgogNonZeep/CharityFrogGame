@@ -4,7 +4,7 @@ extends Node2D
 var itemName = "Cinder Orb"
 var itemDesc = "Fires a ball of cinders both forward and backward"
 
-var icon = preload("res://icon.png")
+var icon = preload("res://SpriteSheets/Magic/Icons/CinderOrb.png")
 var bulletInstance = preload("res://KerromancerPlayer/Weapons/Fireball.tscn")
 var cost = 0
 

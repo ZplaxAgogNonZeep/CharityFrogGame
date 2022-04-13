@@ -7,7 +7,7 @@ export var speed := 800.0
 export var MAX_Distance := 200.0
 
 func startState():
-	sm.setAnimation("Jump")
+	sm.setAnimation("Dash")
 	
 	if kino.get_node("Graphic").flip_h:
 		kino.velocity = Vector2(-speed, 0)
@@ -16,7 +16,7 @@ func startState():
 	
 	$Timer.start(MAX_Distance/speed)
 	
-	kino.setParticles(true)
+	kino.setParticles(false)
 
 func endState():
 	if kino.get_node("Graphic").flip_h:

@@ -25,7 +25,10 @@ func activate():
 func finishDialogue():
 	if posn == 0:
 		get_tree().root.get_node("Game").obtainItem("Weapon", "Gatling")
+		get_tree().root.get_node("Game").obtainItem("Magic", "CinderOrb")
 		get_tree().root.get_node("Game").obtainItem("Magic", "TailwindLunge")
+		get_tree().root.get_node("Game").obtainItem("Magic", "BouncingBubble")
+		get_tree().root.get_node("Game").obtainItem("Magic", "PuffofSmoke")
 		posn += 1
 	elif posn == 1:
 		get_tree().root.get_node("Game").obtainItem("Magic", "TestMagic2")

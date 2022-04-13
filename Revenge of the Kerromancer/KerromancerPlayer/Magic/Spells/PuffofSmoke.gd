@@ -5,7 +5,7 @@ extends Node2D
 var itemName = "Puff of Smoke"
 var itemDesc = "When falling, jump again"
 
-var icon = preload("res://icon.png")
+var icon = preload("res://SpriteSheets/Magic/Icons/PuffOfSmokeIcon.png")
 
 var cost = 1
 
