@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://UI/Fonts/UITheme.tres" type="Theme" id=2]
@@ -24,6 +24,8 @@
 [ext_resource path="res://SpriteSheets/UI/Cursor.png" type="Texture" id=22]
 [ext_resource path="res://SpriteSheets/Magic/Icons/Selector.png" type="Texture" id=23]
 [ext_resource path="res://SpriteSheets/UI/HUDBottom.png" type="Texture" id=24]
+[ext_resource path="res://SpriteSheets/Portraits/PortraitBase.png" type="Texture" id=25]
+[ext_resource path="res://UI/Fonts/EDUNLINE.TTF" type="DynamicFontData" id=26]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.243137, 1, 0, 1 )
@@ -32,53 +34,57 @@ bg_color = Color( 0.243137, 1, 0, 1 )
 bg_color = Color( 0.0117647, 0.4, 0, 1 )
 
 [sub_resource type="DynamicFont" id=3]
-font_data = ExtResource( 9 )
+size = 34
+font_data = ExtResource( 26 )
 
 [sub_resource type="DynamicFont" id=4]
-size = 20
-outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 9 )
 
-[sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 11 )
-region = Rect2( 0, 0, 20, 20 )
+[sub_resource type="DynamicFont" id=5]
+size = 33
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 26 )
 
 [sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 11 )
-region = Rect2( 20, 0, 20, 20 )
+region = Rect2( 0, 0, 20, 20 )
 
 [sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 11 )
-region = Rect2( 40, 0, 20, 20 )
+region = Rect2( 20, 0, 20, 20 )
 
 [sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 11 )
-region = Rect2( 60, 0, 20, 20 )
+region = Rect2( 40, 0, 20, 20 )
 
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 11 )
-region = Rect2( 80, 0, 20, 20 )
+region = Rect2( 60, 0, 20, 20 )
 
 [sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 11 )
-region = Rect2( 100, 0, 20, 20 )
+region = Rect2( 80, 0, 20, 20 )
 
 [sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 11 )
-region = Rect2( 120, 0, 20, 20 )
+region = Rect2( 100, 0, 20, 20 )
 
 [sub_resource type="AtlasTexture" id=12]
 atlas = ExtResource( 11 )
+region = Rect2( 120, 0, 20, 20 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 11 )
 region = Rect2( 140, 0, 20, 20 )
 
-[sub_resource type="SpriteFrames" id=13]
+[sub_resource type="SpriteFrames" id=14]
 animations = [ {
 "frames": [ ExtResource( 12 ) ],
 "loop": true,
 "name": "Still",
 "speed": 5.0
 }, {
-"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
+"frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
 "loop": true,
 "name": "Moving",
 "speed": 10.0
@@ -253,7 +259,7 @@ texture = ExtResource( 16 )
 margin_left = 416.0
 margin_top = 80.0
 margin_right = 608.0
-margin_bottom = 110.0
+margin_bottom = 117.0
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.243137, 1, 0, 1 )
 text = "Weapon"
@@ -279,9 +285,9 @@ scale = Vector2( 2, 2 )
 texture = ExtResource( 22 )
 
 [node name="Dialogue" type="Control" parent="CanvasLayer/UI"]
-anchor_left = 0.5
+anchor_left = 0.501829
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 0.501829
 anchor_bottom = 0.5
 margin_left = -512.0
 margin_top = 108.0
@@ -295,31 +301,33 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="CanvasLayer/UI/Dialogue"]
-position = Vector2( 416, 96 )
+position = Vector2( 510.127, 95.8425 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 8 )
 
 [node name="Label" type="Label" parent="CanvasLayer/UI/Dialogue"]
 anchor_top = 0.125
 anchor_right = 0.945
-anchor_bottom = 0.818
-margin_left = 144.0
-margin_top = 24.0
-margin_right = -183.68
-margin_bottom = -2.056
-text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis no."
+anchor_bottom = 0.937792
+margin_left = 350.0
+margin_top = 8.0
+margin_right = -89.6799
+margin_bottom = -20.056
+custom_fonts/font = SubResource( 4 )
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed  et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation "
+valign = 1
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Name" type="Label" parent="CanvasLayer/UI/Dialogue"]
-margin_left = -44.8525
-margin_top = 8.0
-margin_right = 219.148
-margin_bottom = 152.0
-custom_fonts/font = SubResource( 4 )
-text = "Name:"
+margin_left = 102.0
+margin_top = 16.0
+margin_right = 350.0
+margin_bottom = 64.0
+custom_fonts/font = SubResource( 5 )
+text = "Kerromancer"
 align = 1
 valign = 1
 autowrap = true
@@ -328,16 +336,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Portrait" type="Sprite" parent="CanvasLayer/UI/Dialogue"]
+position = Vector2( 510.127, 96 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 25 )
+
 [node name="BoolBox" type="Sprite" parent="CanvasLayer/UI/Dialogue"]
-position = Vector2( 872, -10.0649 )
+position = Vector2( 1144, 232 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 10 )
 
 [node name="Pointer" type="AnimatedSprite" parent="CanvasLayer/UI/Dialogue"]
-position = Vector2( 784, 149 )
+position = Vector2( 886.127, 152 )
 scale = Vector2( 2, 2 )
-frames = SubResource( 13 )
+frames = SubResource( 14 )
 animation = "Moving"
+frame = 2
 playing = true
 
 [node name="PauseManager" type="Control" parent="CanvasLayer/UI"]
