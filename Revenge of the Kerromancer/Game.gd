@@ -92,10 +92,10 @@ func unlockMagic(magicName):
 #=============================================================================================================================
 # Dialogue
 
-func callPauseDialogue(speaker, speech):
+func callPauseDialogue(speaker, speech) -> void:
 	UI.get_node("Dialogue").startDialogue(speaker, speech, true)
 
-func callDialogue(speaker, speech):
+func callDialogue(speaker, speech) -> void:
 	UI.get_node("Dialogue").startDialogue(speaker, speech, false)
 	player.setCutSceneMode(true)
 

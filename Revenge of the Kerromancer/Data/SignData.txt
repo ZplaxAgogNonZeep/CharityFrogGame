@@ -1,0 +1,2 @@
+0|Sign|This is a test sign>This and every other sign draw from the same txt file>Hopefully it's working|0 
+1|Sign|This is the second piece of dialogue, read from a different sign|0 

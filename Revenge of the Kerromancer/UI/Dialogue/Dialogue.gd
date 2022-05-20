@@ -91,26 +91,29 @@ func nextPage():
 			endDialogue()
 
 func startDialogue(nSpeaker, dialogueTree, isPause):
-	boolBoxMode = false
-	$BoolBox.visible = false
-	visible = true
-	$Pointer.visible = true
-	speaker = nSpeaker
 	
-	get_tree().paused = isPause
+	dialogueTree.split("|")
 	
-	dialogue = dialogueTree
-	posn = 0
-	
-	dName.text = nSpeaker.dialogueName + ":"
-	
-	
-	if dialogue[posn].substr(0, 3) != ":B:":
-		readPage()
-	elif dialogue[posn].substr(0, 3) == ":B:":
-		readBoolPage()
-	else:
-		endDialogue()
+#	boolBoxMode = false
+#	$BoolBox.visible = false
+#	visible = true
+#	$Pointer.visible = true
+#	speaker = nSpeaker
+#
+#	get_tree().paused = isPause
+#
+#	dialogue = dialogueTree
+#	posn = 0
+#
+#	dName.text = nSpeaker.dialogueName + ":"
+#
+#
+#	if dialogue[posn].substr(0, 3) != ":B:":
+#		readPage()
+#	elif dialogue[posn].substr(0, 3) == ":B:":
+#		readBoolPage()
+#	else:
+#		endDialogue()
 
 func endDialogue():
 	set_process_unhandled_input(false)
