@@ -300,19 +300,26 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="Sprite" type="Sprite" parent="CanvasLayer/UI/Dialogue"]
+[node name="SpeakBox" type="Control" parent="CanvasLayer/UI/Dialogue"]
+margin_right = 1022.0
+margin_bottom = 184.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="CanvasLayer/UI/Dialogue/SpeakBox"]
 position = Vector2( 510.127, 95.8425 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 8 )
 
-[node name="Label" type="Label" parent="CanvasLayer/UI/Dialogue"]
+[node name="Speak" type="Label" parent="CanvasLayer/UI/Dialogue/SpeakBox"]
 anchor_top = 0.125
 anchor_right = 0.945
 anchor_bottom = 0.937792
 margin_left = 350.0
-margin_top = 8.0
+margin_top = 9.0
 margin_right = -89.6799
-margin_bottom = -20.056
+margin_bottom = -19.056
 custom_fonts/font = SubResource( 4 )
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed  et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation "
 valign = 1
@@ -321,7 +328,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Name" type="Label" parent="CanvasLayer/UI/Dialogue"]
+[node name="Name" type="Label" parent="CanvasLayer/UI/Dialogue/SpeakBox"]
 margin_left = 102.0
 margin_top = 16.0
 margin_right = 350.0
@@ -336,22 +343,46 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Portrait" type="Sprite" parent="CanvasLayer/UI/Dialogue"]
+[node name="Portrait" type="Sprite" parent="CanvasLayer/UI/Dialogue/SpeakBox"]
 position = Vector2( 510.127, 96 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 25 )
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="BoolBox" type="Sprite" parent="CanvasLayer/UI/Dialogue"]
-position = Vector2( 1144, 232 )
+[node name="BoolBox" type="Control" parent="CanvasLayer/UI/Dialogue"]
+margin_left = 1038.0
+margin_top = 157.0
+margin_right = 1244.0
+margin_bottom = 304.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="CanvasLayer/UI/Dialogue/BoolBox"]
+position = Vector2( 106, 75 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 10 )
+
+[node name="YN" type="Label" parent="CanvasLayer/UI/Dialogue/BoolBox"]
+margin_left = 104.127
+margin_top = 26.8425
+margin_right = 182.127
+margin_bottom = 125.843
+custom_fonts/font = ExtResource( 17 )
+text = "Yes
+No"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Pointer" type="AnimatedSprite" parent="CanvasLayer/UI/Dialogue"]
 position = Vector2( 886.127, 152 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 14 )
 animation = "Moving"
-frame = 2
+frame = 6
 playing = true
 
 [node name="PauseManager" type="Control" parent="CanvasLayer/UI"]

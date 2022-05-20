@@ -4,6 +4,14 @@ const SPEED = 0.1
 
 onready var game = get_tree().root.get_node("Game")
 
+onready var sprite = $SpeakBox/Sprite
+onready var speak = $SpeakBox/Speak
+onready var dName = $SpeakBox/Name
+onready var portrait = $SpeakBox/Portrait
+
+onready var boolSprite = $BoolBox/Sprite
+onready var yn = $BoolBox/YN
+
 var speaker = null
 var dialogue = []
 var posn = 0
@@ -12,6 +20,8 @@ var printing = false
 var boolBoxMode = false
 
 var isYes = true
+
+
 
 func _ready():
 	visible = false
@@ -32,7 +42,7 @@ func _unhandled_input(_event):
 
 		if Input.is_action_just_pressed("Interact") and printing:
 			set_physics_process(false)
-			$Label.percent_visible = 1
+			speak.percent_visible = 1
 			printing = false
 		elif Input.is_action_just_pressed("Interact") and !printing:
 			if isYes:
@@ -42,15 +52,15 @@ func _unhandled_input(_event):
 	else:
 		if Input.is_action_just_pressed("Interact") and printing:
 			set_physics_process(false)
-			$Label.percent_visible = 1
+			speak.percent_visible = 1
 			printing = false
 		elif Input.is_action_just_pressed("Interact") and !printing:
 			nextPage()
 
 func _physics_process(_delta):
 	printing = true
-	if $Label.percent_visible < 1:
-		$Label.percent_visible = lerp(0, 1, $Label.percent_visible + SPEED)
+	if speak.percent_visible < 1:
+		speak.percent_visible = lerp(0, 1, speak.percent_visible + SPEED)
 	else:
 		printing = false
 		set_physics_process(false)
@@ -92,7 +102,7 @@ func startDialogue(nSpeaker, dialogueTree, isPause):
 	dialogue = dialogueTree
 	posn = 0
 	
-	$Name.text = nSpeaker.dialogueName + ":"
+	dName.text = nSpeaker.dialogueName + ":"
 	
 	
 	if dialogue[posn].substr(0, 3) != ":B:":
@@ -116,14 +126,14 @@ func endDialogue():
 	get_tree().paused = false
 
 func readPage():
-	$Label.text = dialogue[posn]
-	$Label.percent_visible = 0
+	speak.text = dialogue[posn]
+	speak.percent_visible = 0
 	set_physics_process(true)
 	set_process_unhandled_input(true)
 
 func readBoolPage():
-	$Label.text = dialogue[posn].substr(3)
-	$Label.percent_visible = 0
+	speak.text = dialogue[posn].substr(3)
+	speak.percent_visible = 0
 	set_physics_process(true)
 	set_process_unhandled_input(true)
 	
