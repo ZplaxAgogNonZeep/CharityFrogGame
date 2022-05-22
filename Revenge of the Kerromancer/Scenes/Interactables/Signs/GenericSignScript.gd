@@ -6,12 +6,14 @@ func _ready():
 	pass
 
 func activate():
-	var dialogue = getDialogue()
-	
+	get_tree().root.get_node("Game").callDialogue(self, getDialogue())
+
+func setComplete(dialogueNode : Control):
+	dialogueNode.endDialogue()
 
 func getDialogue() -> Array:
 	var file = File.new()
-	file.open("res://Data/save_game.txt", File.READ)
+	file.open("res://Data/SignData.txt", File.READ)
 	var dataList = file.get_as_text().split("\n")
 	file.close()
 	

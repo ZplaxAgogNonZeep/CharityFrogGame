@@ -25,7 +25,6 @@ func updateHUD(player):
 	
 	if MAX_mana < 10:
 		while count < 10:
-			print(count)
 			get_node("Mana" + str(count)).texture = null
 			count += 1
 	

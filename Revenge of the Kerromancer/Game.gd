@@ -91,7 +91,7 @@ func unlockMagic(magicName):
 
 #=============================================================================================================================
 # Dialogue
-
+### Nah dude figure it out on your own
 func callPauseDialogue(speaker, speech) -> void:
 	UI.get_node("Dialogue").startDialogue(speaker, speech, true)
 
@@ -101,6 +101,8 @@ func callDialogue(speaker, speech) -> void:
 
 func endDialogue():
 	player.setCutSceneMode(false)
+
+
 
 #=============================================================================================================================
 # Player Spawning code

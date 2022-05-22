@@ -301,9 +301,11 @@ __meta__ = {
 }
 
 [node name="SpeakBox" type="Control" parent="CanvasLayer/UI/Dialogue"]
+margin_top = 200.0
 margin_right = 1022.0
-margin_bottom = 184.0
+margin_bottom = 384.0
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
@@ -343,6 +345,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Tween" type="Tween" parent="CanvasLayer/UI/Dialogue/SpeakBox/Name"]
+
 [node name="Portrait" type="Sprite" parent="CanvasLayer/UI/Dialogue/SpeakBox"]
 position = Vector2( 510.127, 96 )
 scale = Vector2( 2, 2 )
@@ -351,17 +355,20 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="Tween" type="Tween" parent="CanvasLayer/UI/Dialogue/SpeakBox"]
+
 [node name="BoolBox" type="Control" parent="CanvasLayer/UI/Dialogue"]
 margin_left = 1038.0
 margin_top = 157.0
 margin_right = 1244.0
 margin_bottom = 304.0
 __meta__ = {
+"_edit_group_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="Sprite" type="Sprite" parent="CanvasLayer/UI/Dialogue/BoolBox"]
-position = Vector2( 106, 75 )
+position = Vector2( 104.127, 75 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 10 )
 
@@ -377,12 +384,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Tween" type="Tween" parent="CanvasLayer/UI/Dialogue/BoolBox"]
+
 [node name="Pointer" type="AnimatedSprite" parent="CanvasLayer/UI/Dialogue"]
-position = Vector2( 886.127, 152 )
+position = Vector2( 894.127, 352 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 14 )
 animation = "Moving"
-frame = 6
 playing = true
 
 [node name="PauseManager" type="Control" parent="CanvasLayer/UI"]
