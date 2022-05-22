@@ -47,10 +47,10 @@ func _unhandled_input(_event):
 		elif Input.is_action_just_pressed("Interact") and !printing:
 			if isYes:
 				BoolBoxOUT()
-				speaker.returnedYes()
+				speaker.returnedYes(self)
 			else:
 				BoolBoxOUT()
-				speaker.returnedNo()
+				speaker.returnedNo(self)
 	else:
 		if Input.is_action_just_pressed("Interact") and printing:
 			set_physics_process(false)
@@ -76,7 +76,7 @@ func updatePointer():
 			$Pointer.position = Vector2(862, 16)
 	else:
 		$Pointer.rotation_degrees = 0
-		$Pointer.position = Vector2(960, 152)
+		$Pointer.position = Vector2(894, 157)
 
 
 func nextPage():
@@ -118,7 +118,7 @@ func startDialogue(nSpeaker, set, isPause):
 	if posn >= dialogue.size():
 		endDialogue()
 	else:
-		if posn == dialogue.size() - 1:
+		if posn == dialogue.size() - 1 and boolBoxMode:
 			print(dialogue)
 			readBoolPage()
 		else:
@@ -128,15 +128,15 @@ func startDialogue(nSpeaker, set, isPause):
 func readPage():
 	speak.text = dialogue[posn]
 	
-	$SpeakBox/Name/Tween.interpolate_property($SpeakBox/Name, "percent_visible", 0, 1.0, .5, Tween.TRANS_LINEAR)
-	$SpeakBox/Name/Tween.start()
+	$SpeakBox/Speak/Tween.interpolate_property($SpeakBox/Speak, "percent_visible", 0, 1.0, .5, Tween.TRANS_LINEAR)
+	$SpeakBox/Speak/Tween.start()
 #	set_physics_process(true)
 	set_process_unhandled_input(true)
 
 func readBoolPage():
 	speak.text = dialogue[posn]
-	$SpeakBox/Name/Tween.interpolate_property($SpeakBox/Name, "percent_visible", 0, 1.0, .5, Tween.TRANS_LINEAR)
-	$SpeakBox/Name/Tween.start()
+	$SpeakBox/Speak/Tween.interpolate_property($SpeakBox/Speak, "percent_visible", 0, 1.0, .5, Tween.TRANS_LINEAR)
+	$SpeakBox/Speak/Tween.start()
 #	set_physics_process(true)
 	set_process_unhandled_input(true)
 	
@@ -145,32 +145,35 @@ func readBoolPage():
 
 func DialogueIN():
 	isDialogueVisible = true
-	$SpeakBox/Tween.interpolate_property($SpeakBox, "rect_position", Vector2(0, 200), Vector2(0,0), 1.0, Tween.TRANS_LINEAR)
+	$SpeakBox/Tween.interpolate_property($SpeakBox, "rect_position", Vector2(0, 200), Vector2(0,0), .25, Tween.TRANS_LINEAR)
 	$SpeakBox/Tween.start()
+	yield($SpeakBox/Tween, "tween_all_completed")
+	$Pointer.visible = true
 	updatePointer()
 
 func DialogueOUT():
 	if isBoolBoxVisible:
 		BoolBoxOUT()
-		yield($SpeakBox/Name/Tween, "tween_all_completed")
+		yield($SpeakBox/Speak/Tween, "tween_all_completed")
 	
 	isDialogueVisible = false
-	$SpeakBox/Tween.interpolate_property($SpeakBox, "rect_position", Vector2(0, 0), Vector2(0,200), 1.0, Tween.TRANS_LINEAR)
+	$SpeakBox/Tween.interpolate_property($SpeakBox, "rect_position", Vector2(0, 0), Vector2(0,200), .25, Tween.TRANS_LINEAR)
 	$SpeakBox/Tween.start()
+	$Pointer.visible = false
 
 func BoolBoxIN():
 	isBoolBoxVisible = true
-	$SpeakBox/Tween.interpolate_property($SpeakBox, "rect_position", Vector2(0, 0), Vector2(-80,0), 1.0, Tween.TRANS_LINEAR)
+	$SpeakBox/Tween.interpolate_property($SpeakBox, "rect_position", Vector2(0, 0), Vector2(-80,0), .25, Tween.TRANS_LINEAR)
 	$SpeakBox/Tween.start()
-	$BoolBox/Tween.interpolate_property($BoolBox, "rect_position", Vector2(1038, 157), Vector2(790, -88), 1.0, Tween.TRANS_LINEAR)
+	$BoolBox/Tween.interpolate_property($BoolBox, "rect_position", Vector2(1038, 157), Vector2(790, -88), .25, Tween.TRANS_LINEAR)
 	$BoolBox/Tween.start()
 	updatePointer()
 
 func BoolBoxOUT():
 	isBoolBoxVisible = false
-	$SpeakBox/Tween.interpolate_property($SpeakBox, "rect_position", Vector2(-80, 0), Vector2(0,0), 1.0, Tween.TRANS_LINEAR)
+	$SpeakBox/Tween.interpolate_property($SpeakBox, "rect_position", Vector2(-80, 0), Vector2(0,0), .25, Tween.TRANS_LINEAR)
 	$SpeakBox/Tween.start()
-	$BoolBox/Tween.interpolate_property($BoolBox, "rect_position", Vector2(790, -88), Vector2(1038, 157), 1.0, Tween.TRANS_LINEAR)
+	$BoolBox/Tween.interpolate_property($BoolBox, "rect_position", Vector2(790, -88), Vector2(1038, 157), .25, Tween.TRANS_LINEAR)
 	$BoolBox/Tween.start()
 	updatePointer()
 	

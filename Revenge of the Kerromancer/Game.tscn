@@ -330,6 +330,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Tween" type="Tween" parent="CanvasLayer/UI/Dialogue/SpeakBox/Speak"]
+
 [node name="Name" type="Label" parent="CanvasLayer/UI/Dialogue/SpeakBox"]
 margin_left = 102.0
 margin_top = 16.0
@@ -344,8 +346,6 @@ uppercase = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Tween" type="Tween" parent="CanvasLayer/UI/Dialogue/SpeakBox/Name"]
 
 [node name="Portrait" type="Sprite" parent="CanvasLayer/UI/Dialogue/SpeakBox"]
 position = Vector2( 510.127, 96 )
@@ -387,10 +387,12 @@ __meta__ = {
 [node name="Tween" type="Tween" parent="CanvasLayer/UI/Dialogue/BoolBox"]
 
 [node name="Pointer" type="AnimatedSprite" parent="CanvasLayer/UI/Dialogue"]
-position = Vector2( 894.127, 352 )
+visible = false
+position = Vector2( 894.127, 157 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 14 )
 animation = "Moving"
+frame = 1
 playing = true
 
 [node name="PauseManager" type="Control" parent="CanvasLayer/UI"]

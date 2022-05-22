@@ -1,19 +1,14 @@
 extends Area2D
 
-var dialogueName = "Sign"
+
 
 var posn = 0
 
-export var dialogueText : PoolStringArray = [
-	"Welcome to the testing room!",
-	"If you are reading this, you are likely stuck here",
-	"forever",
-	"I don't really know how you got here, but you should contact @ZplaxZeep on twitter and tell him what happened",
-]
+export var dialogueText : String = "0|Sign|Welcome to the testing room!>If you are reading this, you are likely stuck here>forever>I don't really know how you got here, but you should contact @ZplaxZeep on twitter and tell him what happened|0"
 
-var secondDialogueText = ["oh and take this"]
+var secondDialogueText = "1|Sign|oh and take this|0"
 
-var lastDialogue = ["No more free handouts!"]
+var lastDialogue = "2|Sign|No more free handouts!|0"
  
 func activate():
 	if posn == 0:
@@ -22,7 +17,7 @@ func activate():
 		get_tree().root.get_node("Game").callDialogue(self, secondDialogueText)
 	elif posn == -1:
 		get_tree().root.get_node("Game").callDialogue(self, lastDialogue)
-func finishDialogue():
+func setComplete(dialogueNode):
 	if posn == 0:
 		get_tree().root.get_node("Game").obtainItem("Weapon", "Gatling")
 		get_tree().root.get_node("Game").obtainItem("Magic", "CinderOrb")
@@ -30,6 +25,9 @@ func finishDialogue():
 		get_tree().root.get_node("Game").obtainItem("Magic", "BouncingBubble")
 		get_tree().root.get_node("Game").obtainItem("Magic", "PuffofSmoke")
 		posn += 1
+		
 	elif posn == 1:
 		get_tree().root.get_node("Game").obtainItem("Magic", "TestMagic2")
 		posn = -1
+	
+	dialogueNode.endDialogue()
