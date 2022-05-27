@@ -166,6 +166,9 @@ func setParticleTexture(preloadedPath):
 func getMagicSlots():
 	return $MagicManager.get_children()
 
+func getPrimaryPosn():
+	return $MagicManager.primaryPosn
+
 func getActiveWeapon():
 	return $WeaponManager.activeWeapon
 
@@ -177,6 +180,8 @@ func setMagicSlots(MagicInstanceList):
 
 func setCutSceneMode(boolean):
 	CutSceneMode = boolean
+
+
 
 # ================================================================================================================
 # Functions marked "Kino_" are intended for nodes that are children 

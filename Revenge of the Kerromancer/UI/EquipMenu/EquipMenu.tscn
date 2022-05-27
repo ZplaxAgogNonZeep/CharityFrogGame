@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://UI/Fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://UI/EquipMenuButtons.tres" type="Theme" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://SpriteSheets/UI/EmptySpace.png" type="Texture" id=7]
 [ext_resource path="res://UI/Fonts/UITheme.tres" type="Theme" id=8]
 [ext_resource path="res://SpriteSheets/UI/EquipMenu.png" type="Texture" id=9]
+[ext_resource path="res://SpriteSheets/UI/Pointer-Sheet.png" type="Texture" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -17,6 +18,46 @@ font_data = ExtResource( 1 )
 [sub_resource type="DynamicFont" id=2]
 size = 12
 font_data = ExtResource( 1 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 10 )
+region = Rect2( 0, 0, 20, 20 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 10 )
+region = Rect2( 20, 0, 20, 20 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 10 )
+region = Rect2( 40, 0, 20, 20 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 10 )
+region = Rect2( 60, 0, 20, 20 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 10 )
+region = Rect2( 80, 0, 20, 20 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 10 )
+region = Rect2( 100, 0, 20, 20 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 10 )
+region = Rect2( 120, 0, 20, 20 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 10 )
+region = Rect2( 140, 0, 20, 20 )
+
+[sub_resource type="SpriteFrames" id=11]
+animations = [ {
+"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
 
 [node name="EquipMenu" type="Control"]
 pause_mode = 2
@@ -408,134 +449,26 @@ scale = Vector2( 2, 2 )
 texture = ExtResource( 3 )
 
 [node name="Slot7" type="Sprite" parent="MagicSide/EquipView"]
-position = Vector2( 224, 96 )
+position = Vector2( 227.337, 96 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 3 )
 
 [node name="Slot8" type="Sprite" parent="MagicSide/EquipView"]
-position = Vector2( 288, 96 )
+position = Vector2( 288, 95.3326 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 3 )
 
 [node name="Slot9" type="Sprite" parent="MagicSide/EquipView"]
-position = Vector2( 352, 96 )
+position = Vector2( 352.63, 96 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 3 )
 
-[node name="Button0" type="Button" parent="MagicSide/EquipView"]
-margin_left = 64.0
-margin_right = 128.0
-margin_bottom = 64.0
-focus_mode = 0
-theme = ExtResource( 2 )
-enabled_focus_mode = 0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button1" type="Button" parent="MagicSide/EquipView"]
-margin_left = 128.0
-margin_right = 192.0
-margin_bottom = 64.0
-focus_mode = 0
-theme = ExtResource( 2 )
-enabled_focus_mode = 0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button2" type="Button" parent="MagicSide/EquipView"]
-margin_left = 192.0
-margin_right = 256.0
-margin_bottom = 64.0
-focus_mode = 0
-theme = ExtResource( 2 )
-enabled_focus_mode = 0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button3" type="Button" parent="MagicSide/EquipView"]
-margin_left = 256.0
-margin_right = 320.0
-margin_bottom = 64.0
-focus_mode = 0
-theme = ExtResource( 2 )
-enabled_focus_mode = 0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button4" type="Button" parent="MagicSide/EquipView"]
-margin_left = 320.0
-margin_right = 384.0
-margin_bottom = 64.0
-focus_mode = 0
-theme = ExtResource( 2 )
-enabled_focus_mode = 0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button5" type="Button" parent="MagicSide/EquipView"]
-margin_left = 64.0
-margin_top = 64.0
-margin_right = 128.0
-margin_bottom = 128.0
-focus_mode = 0
-theme = ExtResource( 2 )
-enabled_focus_mode = 0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button6" type="Button" parent="MagicSide/EquipView"]
-margin_left = 128.0
-margin_top = 64.0
-margin_right = 192.0
-margin_bottom = 128.0
-focus_mode = 0
-theme = ExtResource( 2 )
-enabled_focus_mode = 0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button7" type="Button" parent="MagicSide/EquipView"]
-margin_left = 192.0
-margin_top = 64.0
-margin_right = 256.0
-margin_bottom = 128.0
-focus_mode = 0
-theme = ExtResource( 2 )
-enabled_focus_mode = 0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button8" type="Button" parent="MagicSide/EquipView"]
-margin_left = 256.0
-margin_top = 64.0
-margin_right = 320.0
-margin_bottom = 128.0
-focus_mode = 0
-theme = ExtResource( 2 )
-enabled_focus_mode = 0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Button9" type="Button" parent="MagicSide/EquipView"]
-margin_left = 320.0
-margin_top = 64.0
-margin_right = 384.0
-margin_bottom = 128.0
-focus_mode = 0
-theme = ExtResource( 2 )
-enabled_focus_mode = 0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Pointer" type="AnimatedSprite" parent="MagicSide/EquipView"]
+position = Vector2( 32, 40 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 11 )
+frame = 6
+playing = true
 
 [node name="Equip0" type="Sprite" parent="MagicSide"]
 position = Vector2( 720, 32 )
@@ -565,13 +498,3 @@ texture = ExtResource( 3 )
 [connection signal="pressed" from="MagicSide/Unequip" to="MagicSide" method="_on_Unequip_pressed"]
 [connection signal="pressed" from="MagicSide/EquipView/Left" to="MagicSide" method="_on_Left_pressed"]
 [connection signal="pressed" from="MagicSide/EquipView/Right" to="MagicSide" method="_on_Right_pressed"]
-[connection signal="pressed" from="MagicSide/EquipView/Button0" to="MagicSide" method="_on_Button0_pressed"]
-[connection signal="pressed" from="MagicSide/EquipView/Button1" to="MagicSide" method="_on_Button1_pressed"]
-[connection signal="pressed" from="MagicSide/EquipView/Button2" to="MagicSide" method="_on_Button2_pressed"]
-[connection signal="pressed" from="MagicSide/EquipView/Button3" to="MagicSide" method="_on_Button3_pressed"]
-[connection signal="pressed" from="MagicSide/EquipView/Button4" to="MagicSide" method="_on_Button4_pressed"]
-[connection signal="pressed" from="MagicSide/EquipView/Button5" to="MagicSide" method="_on_Button5_pressed"]
-[connection signal="pressed" from="MagicSide/EquipView/Button6" to="MagicSide" method="_on_Button6_pressed"]
-[connection signal="pressed" from="MagicSide/EquipView/Button7" to="MagicSide" method="_on_Button7_pressed"]
-[connection signal="pressed" from="MagicSide/EquipView/Button8" to="MagicSide" method="_on_Button8_pressed"]
-[connection signal="pressed" from="MagicSide/EquipView/Button9" to="MagicSide" method="_on_Button9_pressed"]

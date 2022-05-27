@@ -79,15 +79,15 @@ region = Rect2( 140, 0, 20, 20 )
 
 [sub_resource type="SpriteFrames" id=14]
 animations = [ {
-"frames": [ ExtResource( 12 ) ],
-"loop": true,
-"name": "Still",
-"speed": 5.0
-}, {
 "frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
 "loop": true,
 "name": "Moving",
 "speed": 10.0
+}, {
+"frames": [ ExtResource( 12 ) ],
+"loop": true,
+"name": "Still",
+"speed": 5.0
 } ]
 
 [node name="Game" type="Node2D"]
@@ -147,9 +147,9 @@ __meta__ = {
 
 [node name="HealthNumber" type="Label" parent="CanvasLayer/UI/HUD"]
 anchor_left = 3.07143
-anchor_top = 0.181818
+anchor_top = 0.0909089
 anchor_right = 3.33929
-anchor_bottom = 0.522726
+anchor_bottom = 0.636362
 custom_fonts/font = ExtResource( 17 )
 custom_colors/font_color = Color( 0.243137, 1, 0, 1 )
 text = "00"
@@ -171,6 +171,7 @@ margin_right = 360.0
 margin_bottom = 112.0
 color = Color( 0, 0, 0, 1 )
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -181,17 +182,17 @@ texture = ExtResource( 24 )
 centered = false
 
 [node name="Primary" type="Sprite" parent="CanvasLayer/UI/HUD"]
-position = Vector2( 192, 56 )
+position = Vector2( 64, 56 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 19 )
 
 [node name="Secondary" type="Sprite" parent="CanvasLayer/UI/HUD"]
-position = Vector2( 72, 56 )
+position = Vector2( 184, 56 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 18 )
 
 [node name="Tertiary" type="Sprite" parent="CanvasLayer/UI/HUD"]
-position = Vector2( 312, 56 )
+position = Vector2( 304, 56 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 20 )
 
@@ -275,14 +276,18 @@ scale = Vector2( 2, 2 )
 texture = ExtResource( 15 )
 
 [node name="MagicSelector" type="Sprite" parent="CanvasLayer/UI/HUD"]
-position = Vector2( 192, 56 )
+position = Vector2( 64, 56 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 23 )
 
+[node name="Tween" type="Tween" parent="CanvasLayer/UI/HUD/MagicSelector"]
+
 [node name="Cursor" type="Sprite" parent="CanvasLayer/UI/HUD"]
-position = Vector2( 192, 144 )
+position = Vector2( 64, 144 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 22 )
+
+[node name="Tween" type="Tween" parent="CanvasLayer/UI/HUD/Cursor"]
 
 [node name="Dialogue" type="Control" parent="CanvasLayer/UI"]
 anchor_left = 0.501829
@@ -392,7 +397,7 @@ position = Vector2( 894.127, 157 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 14 )
 animation = "Moving"
-frame = 1
+frame = 3
 playing = true
 
 [node name="PauseManager" type="Control" parent="CanvasLayer/UI"]

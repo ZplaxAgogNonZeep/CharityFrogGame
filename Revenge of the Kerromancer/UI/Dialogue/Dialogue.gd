@@ -98,7 +98,6 @@ func startDialogue(nSpeaker, set, isPause):
 	# 1 = Name
 	# 2 = dialogue tree (needs to be spit by >)
 	# 3 = Yes/No question
-	print(splitSet)
 	dialogue = splitSet[2].split(">")
 	speaker = nSpeaker
 	dName.text = splitSet[1]
@@ -119,7 +118,7 @@ func startDialogue(nSpeaker, set, isPause):
 		endDialogue()
 	else:
 		if posn == dialogue.size() - 1 and boolBoxMode:
-			print(dialogue)
+
 			readBoolPage()
 		else:
 			readPage()
