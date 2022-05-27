@@ -15,7 +15,7 @@ func physics_process(_delta):
 	#if Input.is_action_pressed("Left") or Input.is_action_pressed("Right"):
 	get_input()
 	kino.velocity.y += sm.gravity * _delta
-	kino.velocity = kino.move_and_slide(kino.velocity, Vector2.UP)
+	kino.velocity = kino.move_and_slide(kino.velocity, Vector2.UP, true)
 		
 	
 	if Input.is_action_just_pressed("Jump"):
