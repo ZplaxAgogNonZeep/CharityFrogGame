@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=58 format=2]
 
 [ext_resource path="res://KerromancerPlayer/Weapons/WeaponManager.gd" type="Script" id=1]
 [ext_resource path="res://KerromancerPlayer/Crush.gd" type="Script" id=2]
@@ -40,56 +40,56 @@ atlas = ExtResource( 5 )
 region = Rect2( 256, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=6]
-atlas = ExtResource( 4 )
+atlas = ExtResource( 12 )
 region = Rect2( 0, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 4 )
-region = Rect2( 192, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 4 )
-region = Rect2( 256, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=9]
-atlas = ExtResource( 4 )
-region = Rect2( 320, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=10]
-atlas = ExtResource( 4 )
-region = Rect2( 384, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=11]
-atlas = ExtResource( 4 )
-region = Rect2( 448, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=12]
-atlas = ExtResource( 4 )
-region = Rect2( 512, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=13]
-atlas = ExtResource( 12 )
-region = Rect2( 0, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=14]
 atlas = ExtResource( 12 )
 region = Rect2( 64, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=15]
+[sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 12 )
 region = Rect2( 128, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=16]
+[sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 12 )
 region = Rect2( 192, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=17]
+[sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 12 )
 region = Rect2( 256, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=18]
+[sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 12 )
 region = Rect2( 320, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 3 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 3 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 3 )
+region = Rect2( 192, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 3 )
+region = Rect2( 256, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 3 )
+region = Rect2( 320, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 3 )
+region = Rect2( 384, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=19]
 atlas = ExtResource( 18 )
@@ -116,32 +116,32 @@ atlas = ExtResource( 18 )
 region = Rect2( 320, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=25]
-atlas = ExtResource( 3 )
+atlas = ExtResource( 4 )
 region = Rect2( 0, 0, 64, 64 )
 
 [sub_resource type="AtlasTexture" id=26]
-atlas = ExtResource( 3 )
-region = Rect2( 64, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=27]
-atlas = ExtResource( 3 )
-region = Rect2( 128, 0, 64, 64 )
-
-[sub_resource type="AtlasTexture" id=28]
-atlas = ExtResource( 3 )
+atlas = ExtResource( 4 )
 region = Rect2( 192, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=29]
-atlas = ExtResource( 3 )
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 4 )
 region = Rect2( 256, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=30]
-atlas = ExtResource( 3 )
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 4 )
 region = Rect2( 320, 0, 64, 64 )
 
-[sub_resource type="AtlasTexture" id=31]
-atlas = ExtResource( 3 )
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 4 )
 region = Rect2( 384, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 4 )
+region = Rect2( 448, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 4 )
+region = Rect2( 512, 0, 64, 64 )
 
 [sub_resource type="SpriteFrames" id=32]
 animations = [ {
@@ -150,15 +150,15 @@ animations = [ {
 "name": "Jump",
 "speed": 10.0
 }, {
-"frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
-"loop": true,
-"name": "Idle",
-"speed": 10.0
-}, {
-"frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
+"frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
 "loop": true,
 "name": "Falling",
 "speed": 15.0
+}, {
+"frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
+"loop": true,
+"name": "Walk",
+"speed": 13.0
 }, {
 "frames": [ SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ) ],
 "loop": true,
@@ -167,26 +167,30 @@ animations = [ {
 }, {
 "frames": [ SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ) ],
 "loop": true,
-"name": "Walk",
-"speed": 13.0
+"name": "Idle",
+"speed": 10.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=39]
-extents = Vector2( 17.9816, 48 )
+[sub_resource type="CapsuleShape2D" id=33]
+radius = 17.9829
+height = 61.5661
 
 [sub_resource type="RectangleShape2D" id=34]
-extents = Vector2( 8.35428, 20.2173 )
+extents = Vector2( 20.5723, 10 )
 
 [sub_resource type="RectangleShape2D" id=35]
+extents = Vector2( 8.35428, 20.2173 )
+
+[sub_resource type="RectangleShape2D" id=36]
 extents = Vector2( 10.8958, 21.176 )
 
-[sub_resource type="CircleShape2D" id=36]
-radius = 16.0
-
 [sub_resource type="CircleShape2D" id=37]
+radius = 14.6406
+
+[sub_resource type="CircleShape2D" id=38]
 radius = 16.0
 
-[sub_resource type="RectangleShape2D" id=38]
+[sub_resource type="RectangleShape2D" id=39]
 extents = Vector2( 21.0051, 13.75 )
 
 [node name="Kerromancer" type="KinematicBody2D" groups=[
@@ -208,7 +212,7 @@ gravity = Vector2( 0, 0 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 32 )
 animation = "Idle"
-frame = 4
+frame = 6
 playing = true
 __meta__ = {
 "_edit_lock_": true
@@ -216,13 +220,20 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 16 )
-shape = SubResource( 39 )
+shape = SubResource( 33 )
 __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="SlopeSaver" type="CollisionShape2D" parent="."]
+position = Vector2( 0.353783, 56.1528 )
+shape = SubResource( 34 )
+
 [node name="Crush" type="Node2D" parent="."]
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Left" type="Area2D" parent="Crush"]
 collision_layer = 2147483658
@@ -230,8 +241,8 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Crush/Left"]
 modulate = Color( 0.521569, 1, 0, 1 )
-position = Vector2( -6.31236, 17.4224 )
-shape = SubResource( 34 )
+position = Vector2( -8.4146, 17.4224 )
+shape = SubResource( 35 )
 
 [node name="Right" type="Area2D" parent="Crush"]
 collision_layer = 10
@@ -240,7 +251,7 @@ collision_mask = 10
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Crush/Right"]
 modulate = Color( 0, 1, 0.25098, 1 )
 position = Vector2( 6.21417, 17.7858 )
-shape = SubResource( 35 )
+shape = SubResource( 36 )
 
 [node name="Top" type="Area2D" parent="Crush"]
 collision_layer = 10
@@ -248,8 +259,8 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Crush/Top"]
 modulate = Color( 0.0313726, 1, 0, 1 )
-position = Vector2( 0.198425, -15.0079 )
-shape = SubResource( 36 )
+position = Vector2( -0.0117953, -14.167 )
+shape = SubResource( 37 )
 
 [node name="Bottom" type="Area2D" parent="Crush"]
 collision_layer = 10
@@ -258,7 +269,7 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Crush/Bottom"]
 modulate = Color( 0, 1, 0.0627451, 1 )
 position = Vector2( 0.595276, 46.0158 )
-shape = SubResource( 37 )
+shape = SubResource( 38 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 0.667419, -58.0429 )
@@ -281,7 +292,7 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interaction"]
 modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 0, 48 )
-shape = SubResource( 38 )
+shape = SubResource( 39 )
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 10 )
@@ -291,6 +302,10 @@ script = ExtResource( 8 )
 
 [node name="Walk" type="Node" parent="StateMachine"]
 script = ExtResource( 9 )
+
+[node name="Timer" type="Timer" parent="StateMachine/Walk"]
+wait_time = 0.1
+one_shot = true
 
 [node name="Jump" type="Node" parent="StateMachine"]
 script = ExtResource( 6 )
@@ -337,5 +352,6 @@ script = ExtResource( 14 )
 [connection signal="body_exited" from="Crush/Bottom" to="Crush" method="_on_Bottom_body_exited"]
 [connection signal="area_entered" from="Interaction" to="Interaction" method="_on_Interaction_area_entered"]
 [connection signal="area_exited" from="Interaction" to="Interaction" method="_on_Interaction_area_exited"]
+[connection signal="timeout" from="StateMachine/Walk/Timer" to="StateMachine/Walk" method="_on_Timer_timeout"]
 [connection signal="timeout" from="StateMachine/Knockback/Timer" to="StateMachine" method="_on_Timer_timeout"]
 [connection signal="timeout" from="StateMachine/Tailwind Lunge/Timer" to="StateMachine/Tailwind Lunge" method="_on_Timer_timeout"]

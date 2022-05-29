@@ -8,12 +8,12 @@ onready var state = null
 onready var previousState = null
 var stateName = ""
 
-export (int) var speed = 400
+export (int) var speed = 300
 export (int) var jump_speed = -650
 export (int) var gravity = 1000
 
 export (float, 0, 1.0) var friction = 0.292
-export (float, 0, 1.0) var acceleration = 0.056
+export (float, 0, 1.0) var acceleration = 0.256
 
 var momentum = 0
 const MAX_MOMENTUM = 300
