@@ -3,7 +3,7 @@ extends Node
 onready var sm = get_parent()
 onready var kino = get_parent().get_parent()
 
-var maxSlowdown := .5 
+var maxSlowdown := .2
 
 func startState():
 	sm.setAnimation("Walk")
@@ -17,7 +17,7 @@ func physics_process(_delta):
 	#if Input.is_action_pressed("Left") or Input.is_action_pressed("Right"):
 	get_input()
 	kino.velocity.y += sm.gravity * _delta
-	kino.velocity = kino.move_and_slide_with_snap(kino.velocity, Vector2(0, -.2), Vector2.UP)
+	kino.velocity = kino.move_and_slide_with_snap(kino.velocity, Vector2(0, 2), Vector2.UP)
 		
 	
 	if Input.is_action_just_pressed("Jump"):
