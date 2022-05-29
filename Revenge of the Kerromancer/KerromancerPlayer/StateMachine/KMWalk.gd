@@ -17,13 +17,12 @@ func physics_process(_delta):
 	#if Input.is_action_pressed("Left") or Input.is_action_pressed("Right"):
 	get_input()
 	kino.velocity.y += sm.gravity * _delta
-	kino.velocity = kino.move_and_slide_with_snap(kino.velocity, Vector2(0, 2), Vector2.UP)
+	kino.velocity = kino.move_and_slide_with_snap(kino.velocity, Vector2(0, 10), Vector2.UP)
 		
 	
 	if Input.is_action_just_pressed("Jump"):
 		sm.changeState("Jump")
 	
-	print(kino.velocity.x)
 	
 	if kino.velocity.x > 0 or kino.velocity.x == 0:
 		if sm.dir == 0 and kino.velocity.x < 1:
@@ -48,7 +47,7 @@ func get_input():
 		kino.flip(true)
 	
 	if (Input.is_action_just_released("Right") or Input.is_action_just_released("Left")) and not (Input.is_action_pressed("Left") or Input.is_action_pressed("Right")):
-		print("================================================Start Timer")
+		
 		$Timer.start(maxSlowdown)
 	
 	if sm.dir != 0:
@@ -59,7 +58,6 @@ func get_input():
 		kino.velocity.x = lerp(kino.velocity.x, 0, sm.friction)
 
 func _on_Timer_timeout():
-	print("=====================================================Timer Complete")
 	if kino.velocity.x != 0 and sm.stateName == "Walk":
 		kino.velocity.x = 0
 		sm.changeState("Idle")
