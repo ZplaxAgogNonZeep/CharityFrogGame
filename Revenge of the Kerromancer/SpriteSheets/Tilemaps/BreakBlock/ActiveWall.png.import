@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/BreakBlock.png-cdc318e435b713e2abbbdd6f870abf2e.stex"
+path="res://.import/ActiveWall.png-ea9abdc00811f2e4d118f55c5f398e2a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://SpriteSheets/Tilemaps/BreakBlock.png"
-dest_files=[ "res://.import/BreakBlock.png-cdc318e435b713e2abbbdd6f870abf2e.stex" ]
+source_file="res://SpriteSheets/Tilemaps/BreakBlock/ActiveWall.png"
+dest_files=[ "res://.import/ActiveWall.png-ea9abdc00811f2e4d118f55c5f398e2a.stex" ]
 
 [params]
 
@@ -28,6 +28,7 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true

@@ -220,6 +220,13 @@ position = Vector2( 1136, -16 )
 [node name="OneWayTile8" parent="TileMap/Platforms" instance=ExtResource( 20 )]
 position = Vector2( 1168, -16 )
 
+[node name="Foreground" type="Node2D" parent="."]
+z_index = 1
+z_as_relative = false
+
+[node name="SecretArea1" type="TileMap" parent="Foreground"]
+format = 1
+
 [node name="Collidables" type="Node2D" parent="."]
 
 [node name="BreakBlock" parent="Collidables" instance=ExtResource( 17 )]
@@ -263,7 +270,7 @@ position = Vector2( 0, -88 )
 position = Vector2( 416, 32 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 9 )
-frame = 2
+frame = 4
 playing = true
 
 [node name="Interactables" type="Node2D" parent="."]
@@ -335,7 +342,6 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Interactables/SaveCrystal"]
 frames = SubResource( 30 )
 animation = "New Anim"
-frame = 16
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/SaveCrystal"]

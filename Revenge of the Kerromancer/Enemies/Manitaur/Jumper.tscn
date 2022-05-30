@@ -131,9 +131,7 @@ extents = Vector2( 32, 48 )
 [sub_resource type="CapsuleShape2D" id=26]
 radius = 48.0
 
-[node name="Jumper" type="KinematicBody2D" groups=[
-"Enemy",
-]]
+[node name="Jumper" type="KinematicBody2D" groups=["Enemy"]]
 position = Vector2( -8, 192 )
 collision_layer = 0
 collision_mask = 2
@@ -149,6 +147,7 @@ position = Vector2( 8, 0 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 24 )
 animation = "Idle"
+frame = 3
 playing = true
 __meta__ = {
 "_edit_lock_": true
@@ -192,9 +191,7 @@ collision_mask = 0
 position = Vector2( -0.5, 0 )
 polygon = PoolVector2Array( -8, 8, -312, 120, -416, -104, -336, -168, 0, 0 )
 
-[node name="Hitbox" type="Area2D" parent="." groups=[
-"Hitbox",
-]]
+[node name="Hitbox" type="Area2D" parent="." groups=["Hitbox"]]
 visible = false
 collision_layer = 1025
 collision_mask = 0
@@ -203,6 +200,7 @@ collision_mask = 0
 modulate = Color( 0.921875, 0.885414, 0.338501, 1 )
 position = Vector2( 8, 16 )
 shape = SubResource( 26 )
+
 [connection signal="animation_finished" from="Graphic" to="StateMachine/Idle" method="_on_Graphic_animation_finished"]
 [connection signal="timeout" from="StateMachine/Idle/Timer" to="StateMachine/Idle" method="_on_Timer_timeout"]
 [connection signal="body_entered" from="View" to="StateMachine/Idle" method="_on_View_body_entered"]
