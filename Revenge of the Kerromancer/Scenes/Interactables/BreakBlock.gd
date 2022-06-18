@@ -91,24 +91,24 @@ func updateSprite():
 #	print(" STOP ====================")
 	
 	if up:
-		$UpWall.texture = inactiveTexture
+		$UpWall.texture = preload("res://SpriteSheets/Tilemaps/BreakBlock/upwall.png")
 	else:
-		$UpWall.texture = activeTexture
+		$UpWall.texture = preload("res://SpriteSheets/Tilemaps/BreakBlock/upActiveWall.png")
 	
 	if down:
-		$DownWall.texture = inactiveTexture
+		$DownWall.texture = preload("res://SpriteSheets/Tilemaps/BreakBlock/Downwall.png")
 	else:
-		$DownWall.texture = activeTexture
+		$DownWall.texture = preload("res://SpriteSheets/Tilemaps/BreakBlock/downActiveWall.png")
 	
 	if right:
-		$RightWall.texture = inactiveTexture
+		$RightWall.texture = preload("res://SpriteSheets/Tilemaps/BreakBlock/RightWall.png")
 	else:
-		$RightWall.texture = activeTexture
+		$RightWall.texture = preload("res://SpriteSheets/Tilemaps/BreakBlock/RightActiveWall.png")
 		
 	if left:
-		$LeftWall.texture = inactiveTexture
+		$LeftWall.texture = preload("res://SpriteSheets/Tilemaps/BreakBlock/LeftWall.png")
 	else:
-		$LeftWall.texture = activeTexture
+		$LeftWall.texture = preload("res://SpriteSheets/Tilemaps/BreakBlock/LeftActiveWall.png")
 	
 # Unused Code:
 #func _on_BreakBlock_area_entered(area):

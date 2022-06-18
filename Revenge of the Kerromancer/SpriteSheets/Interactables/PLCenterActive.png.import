@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/OneWayPlatform.png-23367c91e53cd0ca3b8d3391e7afd6b5.stex"
+path="res://.import/PLCenterActive.png-7c234fd7fce22825df9b9cbc0e99bca8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://SpriteSheets/Tilemaps/OneWayPlatform.png"
-dest_files=[ "res://.import/OneWayPlatform.png-23367c91e53cd0ca3b8d3391e7afd6b5.stex" ]
+source_file="res://SpriteSheets/Interactables/PLCenterActive.png"
+dest_files=[ "res://.import/PLCenterActive.png-7c234fd7fce22825df9b9cbc0e99bca8.stex" ]
 
 [params]
 

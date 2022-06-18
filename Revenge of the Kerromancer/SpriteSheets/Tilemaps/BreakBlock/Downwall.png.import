@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/OneWayPlatform.png-23367c91e53cd0ca3b8d3391e7afd6b5.stex"
+path="res://.import/Downwall.png-4291bed66c485ae9fb64928785808dd4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://SpriteSheets/Tilemaps/OneWayPlatform.png"
-dest_files=[ "res://.import/OneWayPlatform.png-23367c91e53cd0ca3b8d3391e7afd6b5.stex" ]
+source_file="res://SpriteSheets/Tilemaps/BreakBlock/Downwall.png"
+dest_files=[ "res://.import/Downwall.png-4291bed66c485ae9fb64928785808dd4.stex" ]
 
 [params]
 
