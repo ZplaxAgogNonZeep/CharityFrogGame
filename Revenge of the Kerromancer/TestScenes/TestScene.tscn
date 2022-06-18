@@ -214,8 +214,10 @@ position = Vector2( 1136, -16 )
 position = Vector2( 1168, -16 )
 
 [node name="Electricity" type="Node2D" parent="TileMap"]
+scale = Vector2( 0.5, 0.5 )
 
 [node name="PowerLine" parent="TileMap/Electricity" instance=ExtResource( 23 )]
+position = Vector2( 32, 32 )
 
 [node name="PowerBox" parent="TileMap/Electricity" instance=ExtResource( 22 )]
 
@@ -269,7 +271,7 @@ position = Vector2( 0, -88 )
 position = Vector2( 416, 32 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 9 )
-frame = 5
+frame = 1
 playing = true
 
 [node name="Interactables" type="Node2D" parent="."]
@@ -341,7 +343,7 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Interactables/SaveCrystal"]
 frames = SubResource( 30 )
 animation = "New Anim"
-frame = 7
+frame = 15
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/SaveCrystal"]
