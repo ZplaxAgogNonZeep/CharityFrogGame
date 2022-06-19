@@ -1,15 +1,19 @@
 extends Node2D
 
-var active = false
+var active := false
 
 func _ready():
 	if $Connection.animation == "Corner":
 		$OutletB.position = $Position2D.position
 
-func power(outlet, liveStatus):
-	setActive(liveStatus)
-	var connection = null
+func power(outlet : String, liveStatus : bool):
+	# The primary signal that is called when passing power to an electric object
+	print("PowerLine Called")
 	
+	setActive(liveStatus)
+	$Timer.start(.1)
+	yield($Timer, "timeout")
+	var connection = null
 	if outlet == "OutletA":
 		if $OutletB.get_overlapping_areas().size() > 0:
 			connection = $OutletB.get_overlapping_areas()[0]
@@ -17,10 +21,10 @@ func power(outlet, liveStatus):
 		if $OutletA.get_overlapping_areas().size() > 0:
 			connection = $OutletA.get_overlapping_areas()[0]
 	
-	if connection != null:
-		connection.power(connection.name, liveStatus)
+	if connection != null and connection.get_parent().active != active:
+		connection.get_parent().power(connection.name, liveStatus)
 
-func setActive(status):
+func setActive(status : bool):
 	active = status
 	if active:
 		$Center.set_animation("Active")
@@ -29,7 +33,7 @@ func setActive(status):
 
 
 # ELECTRICITY INHERENT FUNCTIONS ================================================
-
-#func power(outlet, liveStatus):
+## The primary signal that is called when passing power to an electric object
+#func power(outlet : String, liveStatus : bool):
 #	pass
 

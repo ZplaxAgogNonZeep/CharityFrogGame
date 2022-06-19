@@ -217,9 +217,20 @@ position = Vector2( 1168, -16 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="PowerLine" parent="TileMap/Electricity" instance=ExtResource( 23 )]
-position = Vector2( 32, 32 )
+position = Vector2( 1568, 288 )
+
+[node name="PowerLine2" parent="TileMap/Electricity" instance=ExtResource( 23 )]
+position = Vector2( 1632, 288 )
+
+[node name="PowerLine3" parent="TileMap/Electricity" instance=ExtResource( 23 )]
+position = Vector2( 1696, 288 )
 
 [node name="PowerBox" parent="TileMap/Electricity" instance=ExtResource( 22 )]
+position = Vector2( 1504, 288 )
+active = true
+
+[node name="PowerBox2" parent="TileMap/Electricity" instance=ExtResource( 22 )]
+position = Vector2( 1760, 288 )
 
 [node name="Foreground" type="Node2D" parent="."]
 z_index = 1
@@ -271,7 +282,7 @@ position = Vector2( 0, -88 )
 position = Vector2( 416, 32 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 9 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="Interactables" type="Node2D" parent="."]
@@ -313,7 +324,7 @@ position = Vector2( 0, 16 )
 shape = SubResource( 11 )
 
 [node name="GenericSignTest" type="Area2D" parent="Interactables" groups=["Interactable"]]
-position = Vector2( 1408, 192 )
+position = Vector2( 1632, 192 )
 scale = Vector2( 2, 2 )
 collision_layer = 4
 collision_mask = 4
@@ -343,7 +354,7 @@ __meta__ = {
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Interactables/SaveCrystal"]
 frames = SubResource( 30 )
 animation = "New Anim"
-frame = 15
+frame = 4
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactables/SaveCrystal"]
