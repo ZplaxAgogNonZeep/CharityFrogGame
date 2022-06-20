@@ -23,6 +23,7 @@ func power(outlet : String, liveStatus : bool):
 	print("Power Box power called")
 	
 	var connections = $Outlet.get_overlapping_areas()
+	print(connections)
 	if connections.size() > 0:
 		var posn = 0
 		while posn < connections.size():

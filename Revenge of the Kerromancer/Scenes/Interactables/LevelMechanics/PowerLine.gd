@@ -1,10 +1,14 @@
 extends Node2D
 
 var active := false
+export var isCorner := false
 
 func _ready():
-	if $Connection.animation == "Corner":
-		$OutletB.position = $Position2D.position
+	if isCorner:
+		$Connection.set_animation("Corner")
+		$OutletB.position.x = $Position2D.position.x
+		$OutletB.position.y = $Position2D.position.y
+		print("POWER LINE CORD: " + str($OutletB.position))
 
 func power(outlet : String, liveStatus : bool):
 	# The primary signal that is called when passing power to an electric object

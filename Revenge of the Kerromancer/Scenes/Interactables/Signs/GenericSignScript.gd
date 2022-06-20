@@ -18,3 +18,4 @@ func getDialogue() -> Array:
 	file.close()
 	
 	return dataList[dialogueIndex]
+
