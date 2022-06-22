@@ -1,5 +1,6 @@
 extends Node2D
 
+export var delay := .05
 var active := false
 export var isCorner := false
 
@@ -15,7 +16,7 @@ func power(outlet : String, liveStatus : bool):
 	print("PowerLine Called")
 	
 	setActive(liveStatus)
-	$Timer.start(.1)
+	$Timer.start(delay)
 	yield($Timer, "timeout")
 	var connection = null
 	if outlet == "OutletA":
