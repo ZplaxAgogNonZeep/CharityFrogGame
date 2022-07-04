@@ -8,7 +8,7 @@ func _ready():
 		$Timer.start(1.0)
 
 func _on_Timer_timeout():
-	print("Power Box start")
+	print("Power Box")
 	var connections = $Outlet.get_overlapping_areas()
 	if connections.size() > 0:
 		var posn = 0

@@ -181,8 +181,6 @@ func setMagicSlots(MagicInstanceList):
 func setCutSceneMode(boolean):
 	CutSceneMode = boolean
 
-
-
 # ================================================================================================================
 # Functions marked "Kino_" are intended for nodes that are children 
 # of the Kinematic to call completely seperate parts of the game like the HUD

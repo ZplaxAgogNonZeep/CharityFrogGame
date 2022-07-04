@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://SpriteSheets/Interactables/RailStraight.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/Interactables/LevelMechanics/CenterSprite.tres" type="SpriteFrames" id=2]
+[ext_resource path="res://Scenes/Interactables/LevelMechanics/Rail.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 3, 3 )
+
+[node name="Rail" type="Node2D"]
+
+[node name="Graphic" type="Sprite" parent="."]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+script = ExtResource( 3 )
+
+[node name="OutletB" type="Area2D" parent="Graphic"]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Graphic/OutletB"]
+position = Vector2( 0, 16 )
+shape = SubResource( 1 )
+
+[node name="OutletA" type="Area2D" parent="Graphic"]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Graphic/OutletA"]
+modulate = Color( 0.145098, 0.0823529, 0.0823529, 1 )
+position = Vector2( 0, -16 )
+shape = SubResource( 1 )
+
+[node name="A" type="Position2D" parent="Graphic"]
+position = Vector2( 0, -16 )
+
+[node name="B" type="Position2D" parent="Graphic"]
+position = Vector2( 0, 16 )
+
+[node name="Center" type="AnimatedSprite" parent="."]
+visible = false
+scale = Vector2( 2, 2 )
+frames = ExtResource( 2 )
+animation = "Inactive"
+__meta__ = {
+"_edit_lock_": true
+}
