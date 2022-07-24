@@ -79,15 +79,15 @@ region = Rect2( 140, 0, 20, 20 )
 
 [sub_resource type="SpriteFrames" id=14]
 animations = [ {
-"frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
-"loop": true,
-"name": "Moving",
-"speed": 10.0
-}, {
 "frames": [ ExtResource( 12 ) ],
 "loop": true,
 "name": "Still",
 "speed": 5.0
+}, {
+"frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
+"loop": true,
+"name": "Moving",
+"speed": 10.0
 } ]
 
 [node name="Game" type="Node2D"]
@@ -397,7 +397,7 @@ position = Vector2( 894.127, 157 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 14 )
 animation = "Moving"
-frame = 3
+frame = 4
 playing = true
 
 [node name="PauseManager" type="Control" parent="CanvasLayer/UI"]
